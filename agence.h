@@ -11,7 +11,7 @@ class agence
 {
     private:
 
-        //list<parking*> liste_parking;
+        list<parking> liste_parking;
         list<client> liste_client;
 
     public:

@@ -18,10 +18,8 @@ class agence
 
         //Constructeur
         agence();
-
-        //Lire les données concernant les parking
-        //list<parking> lire_fichier_park();
-
+    
+//********************** Méthodes des clients **************************//
         //Lire les données concernant les clients
         void lire_fichier_cl();
 
@@ -42,7 +40,27 @@ class agence
 
         void update_age_voiture(voiture v);
 
+//********************** Méthodes des parkings **************************//
+        //Lire les données concernant les parking
+        list<parking> lire_fichier_park();
+        void sauvegarder_parking(string nomf, list<parking> l);
 
+
+        Voiture get_voiture(string immatricule);
+
+        void ajout_voiture(Voiture v,int id);
+        void delete_voiture(Voiture V),int id;;
+
+
+        bool voiture_est_dans_ce_parking(Voiture V, int id,);
+        bool le_parking_est_disponible(int id;)
+
+
+        float moy_prix();
+
+        void vider_le_parking();
+        void grouper_dans_un_parking();
+        void vider_selon_categories();
 
 
 

@@ -1,6 +1,5 @@
 
 #include <iostream>
-#include "contrat.h"
 #include "voiture.h"
 #include "parking.h"
 #include "client.h"
@@ -61,6 +60,10 @@ class agence
         void vider_le_parking();
         void grouper_dans_un_parking();
         void vider_selon_categories();
+ //********************** Création du contrat **************************//
+    voiture wanted_car();    
+    void creer_contrat();
+        
 
 
 

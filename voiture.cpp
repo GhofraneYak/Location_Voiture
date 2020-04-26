@@ -71,10 +71,14 @@ void voiture::set_prix(float p)
 }
 
 /*******************location*********************/
-
 bool voiture::voiture_loue()
 {
     return est_loue;
+}
+
+void voiture::set_voiture_loue()
+{
+    est_loue=!est_loue;
 }
 
 int voiture::get_nbr_de_fois_loue()
@@ -82,9 +86,19 @@ int voiture::get_nbr_de_fois_loue()
     return nbr_de_fois_loue;
 }
 
+void voiture::set_nbr_de_fois_loue()
+{
+    nbr_de_fois_loue++;
+}
+
 int voiture::get_id_client()
 {
     return id_client;
+}
+
+void voiture::set_id_client(int id)
+{
+    id_client=id;
 }
 
 date voiture::get_date_de_prise()
@@ -97,21 +111,14 @@ date voiture::get_date_de_remise()
     return date_de_remise;
 }
 
-void location_voiture(int id_client,date date_de_prise,date date_de_remise)
+void voiture::set_date_de_prise(date d)
 {
-    this->id_client=id_client;
-    this->date_de_prise=date_de_prise;
-    this->date_de_remise=date_de_remise;
-    est_loue=true;
-    nbr_de_fois_loue++;
+    date_de_prise=d;
 }
 
-void remise_voiture()
+void voiture::set_date_de_remise(date d)
 {
-    id_client=0;
-    date_de_prise=new date(0,0,0);
-    date_de_remise=new date(0,0,0);
-    est_loue=false;
+    date_de_remise=d;
 }
 
 /*******************Surcharge des operateurs*****************/
@@ -122,9 +129,9 @@ ostream& operator<<(ostream& s,const Voiture& V)
     s<<"/tAge: "<<V.age<<"/n/tPrix par jour: "<<V.prix_par_jour<<endl;
     s<<"/tNombre de fois loue"<<V.nbr_de_fois_loue<<endl;
     if (V.est_loue==true)
-        s<<"la voiture est loue à l'instant"<<endl;
+        s<<"la voiture est loue Ã  l'instant"<<endl;
     else
-        s<<"/tla voiture est disponible à l'instant "<<endl;
+        s<<"/tla voiture est disponible Ã  l'instant "<<endl;
     return s;
 }
 

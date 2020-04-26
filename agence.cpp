@@ -13,13 +13,11 @@ using namespace std;
             lire_fichier_cl();
         }
 
-   list<parking> lire_fichier_park()
+   /*list<parking> lire_fichier_park()
         {
             //fichier_parking.txt
         }
-
-
-
+    */
 
         //********************** Méthodes des clients **************************//
     void agence::lire_fichier_cl()
@@ -55,9 +53,6 @@ using namespace std;
             fclose();
         }
 
-
-
-
     //Vérifier si un client existe ou pas
     bool agence::client_existe(long id)
         {
@@ -70,16 +65,11 @@ using namespace std;
             return false;
         }
 
-
-
     //Ajouter un client
     void agence::ajouter_client(string nom, long id, date date_auj)
         {
             liste_client.emplace(liste_client.end(),nom,id,date_auj);
         }
-
-
-
 
     //La liste des clients dont la date de leur dernière location dépasse 6mois
     list<client> agence::client_6_mois()

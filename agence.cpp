@@ -133,6 +133,61 @@ using namespace std;
             v.setage(age);
         }
 
+        //********************** Création d'un contrat **************************//
+
+            voiture agence::wanted_car(){
+                    
+                cout<<"Entrer la marque desirée";
+                string marq;
+                cin>>marq;
+                cout<<"Entrer le prix qu'il ne faut pas depasser";
+                int pmax;
+                cin>>pmax;
+                cout<<"Entrer la date de prise de la voiture";
+                cin>>date_de_prise;
+                cout<<"Entrer la date de remise de la voiture";
+                cin>>date_de_remise;
+                iterator i;
+                L=liste_voiture_available(date_de_prise,date_de_remise);
+
+                for(i=L.begin();i!=L.end();i++)
+                {
+                    if ((*i.categorie==marq)&&((*i).get_prix_par_jour<pmax))
+                        return *i ;
+
+                }
+
+        }
+
+        void agence::creer_contrat(){
+            //ID contrat
+             cout<<"Donner un id pour ce contrat";
+             cin>>id;
+             // Client
+            cout<<"Entrer la cin du client";
+            cin>>x;
+            if !(client_existe(x))
+                ajouter_client();
+            else
+            {
+                iterator c;
+                for(c=liste_client.begin();c!=liste_client.end();c++)
+                {
+                    if ((*c).id==x)
+                        client cl=*c;
+                }
+                cl.setdate(da);//date d'aujourd'hui
+            }
+            // voiture
+           Voiture v = wanted_car();
+
+        }
+
+
+
+
+
+
         //********************** Méthodes des parkings **************************//
        
 

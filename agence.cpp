@@ -7,13 +7,13 @@ using namespace std;
 
 
 
-        agence::agence()
+    agence::agence()
         {
             lire_fichier_park(liste_parking);
             lire_fichier_cl();
         }
 
-        list<parking> lire_fichier_park()
+   list<parking> lire_fichier_park()
         {
             //fichier_parking.txt
         }
@@ -22,9 +22,8 @@ using namespace std;
 
 
         //********************** Méthodes des clients **************************//
-        void agence::lire_fichier_cl()
+    void agence::lire_fichier_cl()
         {
-            //ouverture de fichier
             //création du fichier au cas où il n'existe pas
             freopen( string "fichier_client.txt", string a+, stdout);
             fclose();
@@ -32,44 +31,35 @@ using namespace std;
             freopen( string "fichier_client.txt", string r, stdin);
             int nb;
             cin>>nb;
-
             string nom;
             long ident;
             int j,m,a;
-
             for (int i=0;i<nb;i++)
             {
                 cin>>nom>>ident>>j>>m>>a;
                 date da(j,m,a);
-
                 liste_client.emplace(liste_client.end(),nom,ident,da);
             }
             fclose();
-
         }
 
-
-
         //Sauvegarder les données des clients dans le fichier
-        void sauvegarder_client(string nom_fichier, list<client> l)
+    void sauvegarder_client(string nom_fichier, list<client> l)
         {
             freopen( string nom_fichier, string a+, stdout);
-
-            iterator it;
+            lis<client>::iterator it;
             for (it=l.beging();it!=l.end();++it)
             {
                 cout<<(*it).getnom<<(*it).getid<<((*it).getdate).getjour<<((*it).getdate).getmois<<((*it).getdate).getannee<<endl;
             }
-
-
             fclose();
         }
 
 
 
 
-        //Vérifier si un client existe ou pas
-        bool agence::client_existe(long id)
+    //Vérifier si un client existe ou pas
+    bool agence::client_existe(long id)
         {
             list<client>::iterator it;
             for (it=liste_client.beging();it!=liste_client.end();++it)
@@ -77,14 +67,13 @@ using namespace std;
                 if ((*it).getid==id)
                     return true;
             }
-
             return false;
         }
 
 
 
-        //Ajouter un client
-        void agence::ajouter_client(string nom, long id, date date_auj)
+    //Ajouter un client
+    void agence::ajouter_client(string nom, long id, date date_auj)
         {
             liste_client.emplace(liste_client.end(),nom,id,date_auj);
         }
@@ -92,8 +81,8 @@ using namespace std;
 
 
 
-        //La liste des clients dont la date de leur dernière location dépasse 6mois
-        list<client> agence::client_6_mois()
+    //La liste des clients dont la date de leur dernière location dépasse 6mois
+    list<client> agence::client_6_mois()
         {
             list<client> l;
             //for (i in client)
@@ -110,7 +99,7 @@ using namespace std;
 
         //********************** Méthodes des voitures **************************//
 
-        void update_age_voiture(voiture v)
+    void update_age_voiture(voiture v)
         {
             date d=v.getdate();
             int age;
@@ -118,13 +107,13 @@ using namespace std;
             v.setage(age);
         }
 
-        bool date::voiture_available(voiture v,date date_prise)
+    bool date::voiture_available(voiture v,date date_prise)
         {
-                
-                if ((v.date_remise>date_prise))
+            if ((v.date_remise>date_prise))
                         return false;
-                else return true;
+            else return true;
          }
+
 
         //********************** Création d'un contrat **************************//
 

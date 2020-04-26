@@ -132,3 +132,69 @@ using namespace std;
             age=d.age_voiture(date_auj,d);
             v.setage(age);
         }
+
+        //********************** Méthodes des parkings **************************//
+       
+
+            void agence::ajout_voiture(voiture V,int id)
+            {
+                bool test;
+
+                list<parking>::iterator it;
+                while (it!=liste_parking.end())
+                {
+                    if (((*it).get_id)!=id)
+                    {
+                        it++;
+                    }
+                    if  (it.le_parking_est_disponible())==false)
+                    {
+                        cout<<"Le parking est plein"<<endl;
+                    }
+                    else
+                    {
+                    (it.le_parking_est_disponible()).push_back(V);
+                    }
+                }
+
+
+            }
+
+            bool agence::le_parking_est_disponible(int id)
+            {
+                list<parking>::iterator it;
+                while (it!=liste_parking.end())
+                {
+                    if (((*it).get_id)!=id)
+                    {
+                        it++;
+                    }
+                    iterator l;
+                    int S=0;
+                    for(l=parking::liste_voiture.begin();l!=parking::liste_voiture.end();l++)
+                    {
+                        S++;
+                    }
+                return(parking::capacite==S);
+            }
+
+            bool agence::voiture_est_dans_ce_parking(voiture V,int id)
+            {
+                 list<parking>::iterator it;
+                while (it!=liste_parking.end())
+                {
+                    if (((*it).get_id)!=id)
+                    {
+                        it++;
+                    }
+
+                     list<voiture>::iterator l;
+                    for(l=parking::liste_voiture.begin();l!=parking::liste_voiture.end();l++)
+                    {
+                        if((*l)==V)
+                            return(true);
+                    }
+                    return(false);
+            }
+
+

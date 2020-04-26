@@ -22,7 +22,7 @@ using namespace std;
 
 
         //********************** Méthodes des clients **************************//
-        list<client> agence::lire_fichier_cl()
+        void agence::lire_fichier_cl()
         {
             //ouverture de fichier
             //création du fichier au cas où il n'existe pas

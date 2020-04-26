@@ -174,9 +174,9 @@ using namespace std;
                 for(c=liste_client.begin();c!=liste_client.end();c++)
                 {
                     if ((*c).id==x)
-                        client cl=*c;
+                        (*c).setdate(da); //da : date d'aujourd'hui
                 }
-                cl.setdate(da);//date d'aujourd'hui
+                
             }
             // voiture
            Voiture v = wanted_car();

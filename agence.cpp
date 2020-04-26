@@ -90,21 +90,6 @@ using namespace std;
         }
 
 
-        //Saisie des données du client
-        void agence::creer_client()
-        {
-            cout<< "Entrer le nom du client";
-            string nom;
-            cin>>nom;
-                cout<< "Entrer votre id";
-                long id;
-                cin>>idd;
-            if (!(client_existe(id)))
-                agence::ajouter_client(nom,id,date_auj);
-
-        }
-
-
 
 
         //La liste des clients dont la date de leur dernière location dépasse 6mois

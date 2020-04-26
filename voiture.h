@@ -1,7 +1,7 @@
 #include "date.cpp"
 #include <bits/stdc++.h>
 using namespace std;
-class Voiture
+class voiture
 {
 private:
     string immatricule;
@@ -14,7 +14,7 @@ private:
     int nbr_de_fois_loue;
     date date_de_prise;
     date date_de_remise;
-    int id_client
+    int id_client;
 public:
     //constructeurs
     voiture(string immatricule,string marque,float prix_par_jour,date date_de_creation,int age,bool est_loue,int nbr_de_fois_loue,date date_de_prise ,date date_de_remise,int id_client);
@@ -28,15 +28,18 @@ public:
     string get_marque();
     float get_prix();
     void set_prix(float);
-                //'->lorsque voiture devenir plus ag� l agence peut etre va changer le prix"
+                //'->lorsque voiture devenir plus agé l agence peut etre va changer le prix"
     //location
     bool voiture_loue();
+    void set_voiture_loue();//!voiture_loue
     int get_nbr_de_fois_loue();
+    void set_nbr_de_fois_loue();//incrementer nbr de fois loué
     int get_id_client();
+    void set_id_client(int);
     date get_date_de_prise();
     date get_date_de_remise();
-    void location_voiture(int id_client,date date_de_prise,date date_de_remise);
-    void remise_voiture();
+    void set_date_de_prise(date);
+    void set_date_de_remise(date);
     //surcharge des operateur
     friend ostream& operator<<(ostream& s,const voiture& V);
     bool operator==(const voiture& v);//comparaison avec wanted car

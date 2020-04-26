@@ -150,7 +150,7 @@ using namespace std;
 
         bool date::operator>(const date& d)
         {
-            return (d>(*this));
+            return (d<(*this));
         }
 
 

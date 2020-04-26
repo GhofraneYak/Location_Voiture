@@ -162,19 +162,24 @@ using namespace std;
         void agence::creer_contrat(){
             //ID contrat
              cout<<"Donner un id pour ce contrat";
+             int id;
              cin>>id;
              // Client
+            cout<<"Entrer le nom du client";
+            string nom;
+            cin>>nom;
             cout<<"Entrer la cin du client";
-            cin>>x;
+            long y;
+            cin>>y;
             if !(client_existe(x))
-                ajouter_client();
+                ajouter_client(nom,y,date_auj);
             else
             {
                 list<client>::iterator c;
                 for(c=liste_client.begin();c!=liste_client.end();c++)
                 {
                     if ((*c).id==x)
-                        (*c).setdate(da); //da : date d'aujourd'hui
+                        (*c).setdate(date_auj); //da : date d'aujourd'hui
                 }
                 
             }

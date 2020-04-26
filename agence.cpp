@@ -147,7 +147,7 @@ using namespace std;
                 cin>>date_de_prise;
                 cout<<"Entrer la date de remise de la voiture";
                 cin>>date_de_remise;
-                iterator i;
+                list<voiture>::iterator i;
                 L=liste_voiture_available(date_de_prise,date_de_remise);
 
                 for(i=L.begin();i!=L.end();i++)
@@ -170,7 +170,7 @@ using namespace std;
                 ajouter_client();
             else
             {
-                iterator c;
+                list<client>::iterator c;
                 for(c=liste_client.begin();c!=liste_client.end();c++)
                 {
                     if ((*c).id==x)

@@ -9,8 +9,8 @@ using namespace std;
 
         agence::agence()
         {
-            liste_parking=lire_fichier_park();
-            liste_client=lire_fichier_cl();
+            lire_fichier_park(liste_parking);
+            lire_fichier_cl();
         }
 
         list<parking> lire_fichier_park()
@@ -33,7 +33,6 @@ using namespace std;
             int nb;
             cin>>nb;
 
-            list<client> liste_cl;
             string nom;
             long ident;
             int j,m,a;
@@ -43,7 +42,7 @@ using namespace std;
                 cin>>nom>>ident>>j>>m>>a;
                 date da(j,m,a);
 
-                liste_cl.emplace(liste_cl.end(),nom,ident,da);
+                liste_client.emplace(liste_client.end(),nom,ident,da);
             }
             fclose();
 
@@ -72,7 +71,7 @@ using namespace std;
         //Vérifier si un client existe ou pas
         bool agence::client_existe(long id)
         {
-            iterator it;
+            list<client>::iterator it;
             for (it=liste_client.beging();it!=liste_client.end();++it)
             {
                 if ((*it).getid==id)
@@ -113,10 +112,10 @@ using namespace std;
         {
             list<client> l;
             //for (i in client)
-            iterator it;
+            list<client>::iterator it;
             for (it=liste_client.begin();it!=liste_client.end();++it)
             {
-                if (    (((*it).getdate()).dernier_loc_client()) >=6   )
+                if (    (   date_auj - (((*it).getdate()).dernier_date_loc)    ) >=6   )
                     l.emplace(liste_client.end(), (*it).getnom, (*it).getid,(*it).getdate );
             }
 
@@ -133,8 +132,3 @@ using namespace std;
             age=d.age_voiture(date_auj,d);
             v.setage(age);
         }
-
-
-
-
-};

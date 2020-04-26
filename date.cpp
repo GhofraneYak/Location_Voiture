@@ -1,7 +1,7 @@
 
 #include <bits/stdc++.h>
 #include "date.h"
-#include "voiture.h"
+
 using namespace std;
 
         date::date(int j, int m, int a)
@@ -216,17 +216,11 @@ using namespace std;
                 //test
             }
 
-            bool date::voiture_available(voiture v)
-            {
-                date p;
-                int nb;
-                nb=v.getnb_jour;
-                p=v.getdateachat();
-                if (*this>(p.date_remise(nb)))
-                    return true;
-                else return false;
-            }
 
+        date& date::operator==(const date& d)
+        {
+            return (    ((*this).annee==d.annee) && ((*this).mois==d.mois) && ((*this).jour==d.jour)    );
+        }
 
 
 

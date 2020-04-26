@@ -118,6 +118,14 @@ using namespace std;
             v.setage(age);
         }
 
+        bool date::voiture_available(voiture v,date date_prise)
+        {
+                
+                if ((v.date_remise>date_prise))
+                        return false;
+                else return true;
+         }
+
         //********************** Création d'un contrat **************************//
 
             voiture agence::wanted_car(){

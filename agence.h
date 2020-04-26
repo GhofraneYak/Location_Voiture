@@ -23,7 +23,7 @@ class agence
         //list<parking> lire_fichier_park();
 
         //Lire les données concernant les clients
-        list<client> lire_fichier_cl();
+        void lire_fichier_cl();
 
 
         //Sauvegarder les données des clients dans le fichier

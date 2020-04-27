@@ -156,6 +156,47 @@ using namespace std;
 
 
 
+ /**************************Liste voiture methodes*******************/
+
+void agence::lire_fichier_voiture()
+{
+    FILE* fichier = fopen("liste_voitures.txt","r+");
+
+    int nbr;
+    string immatricule;
+    string marque;
+    float prix_par_jour;
+    //date date_de_creation;
+    int age;
+    bool est_loue;
+    int nbr_de_fois_loue;
+    //date date_de_prise;
+    //date date_de_remise;
+    long id_client;
+    cin>>nbr;
+    for(int i=0;i<nbr;i++)
+    {
+        cin>>immatricule>>marque>>prix_par_jour>>age>>est_loue>>nbr_de_fois_loue>>id_client;
+        liste_voiture.push_back(voiture(immatricule,marque,prix_par_jour,age,id_client,nbr_de_fois_loue,est_loue));
+    }
+    int fclose(FILE* fichier);
+}
+
+voiture agence::get_voiture(string immatricule)
+{
+     string voiture_immatricule;
+     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+     {
+        voiture_immatricule=(*v).get_immatricule();
+        if(voiture_immatricule==immatricule)
+        {
+            return *v;
+        }
+     }
+     cout<<"voiture non trouvable";
+     return voiture("nontrouvable","nontrouvable",0);
+}
+
 
 
 
@@ -272,43 +313,4 @@ using namespace std;
                     
                     
   
- /**************************Liste voiture methodes*******************/
 
-void agence::lire_fichier_voiture()
-{
-    FILE* fichier = fopen("liste_voitures.txt","r+");
-
-    int nbr;
-    string immatricule;
-    string marque;
-    float prix_par_jour;
-    //date date_de_creation;
-    int age;
-    bool est_loue;
-    int nbr_de_fois_loue;
-    //date date_de_prise;
-    //date date_de_remise;
-    long id_client;
-    cin>>nbr;
-    for(int i=0;i<nbr;i++)
-    {
-        cin>>immatricule>>marque>>prix_par_jour>>age>>est_loue>>nbr_de_fois_loue>>id_client;
-        liste_voiture.push_back(voiture(immatricule,marque,prix_par_jour,age,id_client,nbr_de_fois_loue,est_loue));
-    }
-    int fclose(FILE* fichier);
-}
-
-voiture agence::get_voiture(string immatricule)
-{
-     string voiture_immatricule;
-     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
-     {
-        voiture_immatricule=(*v).get_immatricule();
-        if(voiture_immatricule==immatricule)
-        {
-            return *v;
-        }
-     }
-     cout<<"voiture non trouvable";
-     return voiture("nontrouvable","nontrouvable",0);
-}

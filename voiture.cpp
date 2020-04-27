@@ -96,7 +96,7 @@ long voiture::get_id_client()
     return id_client;
 }
 
-void voiture::set_id_client(int id)
+void voiture::set_id_client(long id)
 {
     id_client=id;
 }
@@ -123,7 +123,7 @@ void voiture::set_date_de_remise(date d)
 
 /*******************Surcharge des operateurs*****************/
 
-ostream& operator<<(ostream& s,const Voiture& V)
+ostream& operator<<(ostream& s,const voiture& V)
 {
     s<<"Voiture "<<V.immatricule<<":/n/tMarque: "<<V.marque<<"/n";
     s<<"/tAge: "<<V.age<<"/n/tPrix par jour: "<<V.prix_par_jour<<endl;
@@ -137,13 +137,13 @@ ostream& operator<<(ostream& s,const Voiture& V)
 
 bool voiture::operator==(const voiture& v)
 {
-    return ((marque==v.marque)&&(prix_par_jour<=v.prix_par_jour))
+    return ((marque==v.marque)&&(prix_par_jour<=v.prix_par_jour));
 }
 
 /*******************Destructeur*************************/
 voiture::~voiture()
 {
-};
+}
 
 
 

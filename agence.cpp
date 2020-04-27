@@ -161,6 +161,10 @@ using namespace std;
 
 void agence::lire_fichier_voiture()
 {
+    //Au cas où le fichier n'existe pas déjà
+    FILE* fichier1 = fopen("liste_voitures.txt","a+");
+    int fclose(FILE* fichier1);
+    
     FILE* fichier = fopen("liste_voitures.txt","r+");
 
     int nbr;

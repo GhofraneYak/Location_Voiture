@@ -41,8 +41,8 @@ using namespace std;
     void sauvegarder_client(list<client> l)
         {
             freopen("fichier_client.txt", "a"+, stdout);
-            lis<client>::iterator it;
-            for (it=l.beging();it!=l.end();++it)
+            list<client>::iterator it;
+            for (it=l.begin();it!=l.end();++it)
             {
                 cout<<(*it).getnom<<(*it).getid<<((*it).getdate).getjour<<((*it).getdate).getmois<<((*it).getdate).getannee<<endl;
             }
@@ -53,7 +53,7 @@ using namespace std;
     bool agence::client_existe(long id)
         {
             list<client>::iterator it;
-            for (it=liste_client.beging();it!=liste_client.end();++it)
+            for (it=liste_client.begin();it!=liste_client.end();++it)
             {
                 if ((*it).getid==id)
                     return true;
@@ -75,7 +75,7 @@ using namespace std;
             list<client>::iterator it;
             for (it=liste_client.begin();it!=liste_client.end();++it)
             {
-                if (    (   date_auj - (((*it).getdate()).dernier_date_loc)    ) >=6   )
+                if (    (   date_auj - ((*it).getdate())    ) >=6   )
                     l.emplace(liste_client.end(), (*it).getnom, (*it).getid,(*it).getdate );
             }
 

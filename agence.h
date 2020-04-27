@@ -41,24 +41,14 @@ class agence
 
 //********************** Méthodes des parkings **************************//
         //Lire les données concernant les parking
-        list<parking> lire_fichier_park();
-        void sauvegarder_parking(string nomf, list<parking> l);
+ 
+         list<parking> lire_fichier_park(); 
+        void sauvegarder_parking(string nomf, list<parking> l); 
 
 
-        Voiture get_voiture(string immatricule);
+         int parking_disponible(); 
 
-        void ajout_voiture(Voiture v,int id);
-        void delete_voiture(Voiture V),int id;;
-
-
-        bool voiture_est_dans_ce_parking(Voiture V, int id,);
-        bool le_parking_est_disponible(int id;)
-
-
-        float moy_prix();
-
-        void vider_le_parking();
-        void grouper_dans_un_parking();
+        void grouper_dans_un_parking(); 
         void vider_selon_categories();
  //********************** Création du contrat **************************//
     voiture wanted_car();    

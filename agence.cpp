@@ -13,12 +13,6 @@ using namespace std;
             lire_fichier_cl();
         }
 
-   /*list<parking> lire_fichier_park()
-        {
-            //fichier_parking.txt
-        }
-    */
-
         //********************** Méthodes des clients **************************//
     void agence::lire_fichier_cl()
         {
@@ -168,65 +162,110 @@ using namespace std;
         //********************** Méthodes des parkings **************************//
        
 
-            void agence::ajout_voiture(voiture V,int id)
-            {
-                bool test;
+           list<parking> agence::lire_fichier_park()
+    {
+            //ouverture de fichier
+            //création du fichier au cas où il n'existe pas
+            freopen( string "fichier_parking.txt, string a+, stdout);
+            fclose();
+            //Ouverture du fichier en mode lecture
+            freopen( string "fichier_parking.txt", string r, stdin);
+            cin>>nbP;
+            bool test=false;
+            int id,capacite,nbV;
+            string immatricule;
+            list<Voiture> liste;
 
-                list<parking>::iterator it;
-                while (it!=liste_parking.end())
+            while (test==false)
+            {
+                cin>>id>>capacite>>nbV;
+                for(int i=0;i<nbV;i++)
                 {
-                    if (((*it).get_id)!=id)
-                    {
-                        it++;
-                    }
-                    if  (it.le_parking_est_disponible())==false)
-                    {
-                        cout<<"Le parking est plein"<<endl;
-                    }
-                    else
-                    {
-                    (it.le_parking_est_disponible()).push_back(V);
-                    }
+                    cin>>immatricule;
+                    liste.push_back(get_voiture(immatricule));
+                }
+                liste_parking.emplace(liste_parking.end(),id,capacite,nbV,liste);
+
+
+                if (immatricule=="")   //fin du fichier
+                {
+                    test=true;
                 }
 
-
             }
+            fclose();
 
-            bool agence::le_parking_est_disponible(int id)
+    }
+
+    int agence::parking_disponible()
+    {
+        list<parking>::iterator it;
+        for(it=liste_parking.begin();it!=liste_parking.end;it++)
+        {
+            if(it.parking_disponible())
             {
-                list<parking>::iterator it;
-                while (it!=liste_parking.end())
-                {
-                    if (((*it).get_id)!=id)
-                    {
-                        it++;
-                    }
-                    iterator l;
-                    int S=0;
-                    for(l=parking::liste_voiture.begin();l!=parking::liste_voiture.end();l++)
-                    {
-                        S++;
-                    }
-                return(parking::capacite==S);
+                return(it.get_id());
             }
+        }
+    }
 
-            bool agence::voiture_est_dans_ce_parking(voiture V,int id)
+    void agence::sauvegarder_parking(string nomF,list liste_parking)
+    {
+        freopen(string nom_fichier, string a+, stdout);
+        cout<<parking::get_nbV();
+        list<parking>::iterator it;
+        for(it=liste_parking.begin();it!=liste_parking.end();it++)
+        {
+            cout<<(*it).get_id()<<endl;
+            cout<<(*it).get_capacite()<<endl;
+            cout<<(*it).get_nbV()<<endl;
+            cout<<(*it).get_voitures_de_parking()<<endl;
+
+        }
+        cout<<""<<endl;
+        fclose();
+
+    }
+
+    void agence::grouper_dans_un_parking(parking p1, parking p2, parking p3)
+    {
+
+        int nb1=p1.get_nbV();
+        int nb2=p2.get_nbV();
+        int nb3=p3.get_nbV();
+        int c=p3.get_capacite();
+        list<voiture> liste1=p1.get_voitures_de_parking();
+        list<voiture> liste2=p2.get_voitures_de_parking();
+        list<voiture> liste3=p3.get_voitures_de_parking();
+
+            //véfification !
+        if ((nb1+nb2)>(c-nb3))
+        {
+            cout<<"Vous ne pouvez pas faire cette opération"<<endl;
+        }
+        else
+        {
+            liste<voiture>::iterator it;
+            for(it=liste1.begin();it!=liste1.end();it++)
             {
-                 list<parking>::iterator it;
-                while (it!=liste_parking.end())
-                {
-                    if (((*it).get_id)!=id)
-                    {
-                        it++;
-                    }
+                liste3.push_back((*it));
+                liste1.erase((*it));
 
-                     list<voiture>::iterator l;
-                    for(l=parking::liste_voiture.begin();l!=parking::liste_voiture.end();l++)
-                    {
-                        if((*l)==V)
-                            return(true);
-                    }
-                    return(false);
+            }
+            for(it=liste2.begin();it!=liste2.end();it++)
+            {
+                liste3.push_back((*it));
+                liste2.erase((*it));
             }
 
+        }
 
+    }
+
+    void agence::vider_selon_categories(parking p1, parking p2, parking p3)
+    {
+
+    
+         // parcours de liste des catégories
+
+    }

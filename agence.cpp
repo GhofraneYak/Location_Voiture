@@ -273,6 +273,7 @@ using namespace std;
                     
   
  /**************************Liste voiture methodes*******************/
+
 void agence::lire_fichier_voiture()
 {
     FILE* fichier = fopen("liste_voitures.txt","r+");

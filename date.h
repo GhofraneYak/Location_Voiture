@@ -1,4 +1,5 @@
-
+#pragma once
+#ifndef DATE_H
 #include <iostream>
 
 using namespace std;
@@ -50,6 +51,7 @@ class date
 
 
 };
+#endif
 
 
 

@@ -205,10 +205,11 @@ voiture agence::nouvelle_voiture()
 
 }
 
-voiture agence::get_voiture(string immatricule,int prix)
+voiture agence::get_voiture(string immatricule,int prix, date d1, date d2)
 {
-     string voiture_immatricule;
-     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+    list<voiture>::iterator v;
+    
+     for(v=liste_voiture_available(d1,d2).begin();v!=liste_voiture_available(d1,d2).end();v++)
      {
         if( ((*v).get_immatricule()==immatricule) && ((*v).get_prix<=prix) )
         {

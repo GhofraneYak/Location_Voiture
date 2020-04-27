@@ -9,6 +9,7 @@ using namespace std;
 class agence
 {
     private:
+        date date_auj;
         list<voiture> liste_voiture;
         list<parking> liste_parking;
         list<client> liste_client;

@@ -1,6 +1,5 @@
 
 #include <iostream>
-#include "voiture.h"
 
 using namespace std;
 
@@ -47,7 +46,7 @@ class date
             //Date de retour de la voiture
             date& date_remise(int nb_jr);
 
-            bool voiture_available(voiture v);
+            //bool voiture_available(voiture v);
 
 
 };

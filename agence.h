@@ -24,7 +24,7 @@ class agence
 
 
         //Sauvegarder les données des clients dans le fichier
-        void sauvegarder_client(string nom_fichier, list<client> l);
+        void sauvegarder_client(list<client> l);
 
 
         bool client_existe(long id);

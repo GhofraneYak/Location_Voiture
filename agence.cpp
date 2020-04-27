@@ -7,8 +7,9 @@ using namespace std;
 
 
 
-    agence::agence()
+    agence::agence(date d_auj)
         {
+            date_auj=d_auj;
             lire_fichier_park();
             lire_fichier_cl();
             lire_fichier_voiture();

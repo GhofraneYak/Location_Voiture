@@ -201,7 +201,7 @@ voiture agence::nouvelle_voiture()
     parking_id=parking_disponible();
     list<parking>::iterator p =liste_parking.begin();
     advance(p, parking_id);
-    *p.ajout_voiture(v);
+    (*p).ajout_voiture(v);
 
 }
 
@@ -213,7 +213,7 @@ voiture agence::get_voiture(string immatricule)
         voiture_immatricule=(*v).get_immatricule();
         if(voiture_immatricule==immatricule)
         {
-            return *v;
+            return (*v);
         }
      }
      cout<<"voiture non trouvable";
@@ -236,7 +236,7 @@ void update_v_non_disponible(voiture& v)
     parking_id=recherche_parking(const voiture& v);
     list<parking>::iterator p =liste_parking.begin();
     advance(p, parking_id);
-    *p.delete_voiture(v);
+    (*p).delete_voiture(v);
 }
 
 void agence::update_v_disponible(voiture& v)
@@ -252,7 +252,7 @@ void agence::update_v_disponible(voiture& v)
     parking_id=parking_disponible();
     list<parking>::iterator p =liste_parking.begin();
     advance(p, parking_id);
-    *p.ajout_voiture(v);
+    (*p).ajout_voiture(v);
 }
 
 list<voiture> agence::liste_voiture_available(date d1,date d2)
@@ -266,7 +266,7 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
            voitures_disponibles.push_back(*v);
        else
        {
-           date date_p=*v.get_date_prise();
+           date date_p=(*v).get_date_prise();
            date date_r=*v.get_date_remise();
            if ((d2<date_p)||(date_r<d1))
                voitures_disponibles.push_back(*v);

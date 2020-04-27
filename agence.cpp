@@ -205,15 +205,14 @@ voiture agence::nouvelle_voiture()
 
 }
 
-voiture agence::get_voiture(string immatricule)
+voiture agence::get_voiture(string immatricule,int prix)
 {
      string voiture_immatricule;
      for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
      {
-        voiture_immatricule=(*v).get_immatricule();
-        if(voiture_immatricule==immatricule)
+        if( ((*v).get_immatricule()==immatricule) && ((*v).get_prix<=prix) )
         {
-            return *v;
+            return (*v);
         }
      }
      cout<<"voiture non trouvable";

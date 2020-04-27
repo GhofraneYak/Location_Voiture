@@ -11,6 +11,7 @@ using namespace std;
         {
             lire_fichier_park();
             lire_fichier_cl();
+            lire_fichier_voiture();
         }
 
         //********************** Méthodes des clients **************************//

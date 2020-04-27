@@ -43,7 +43,7 @@ int voiture::get_age()
     return age;
 }
 
-void set_age(int a)
+void voiture::set_age(int a)
 {
     age=a;
 }

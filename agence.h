@@ -43,7 +43,7 @@ class agence
         //Lire les données concernant les parking
  
          list<parking> lire_fichier_park(); 
-        void sauvegarder_parking(string nomf, list<parking> l); 
+        void sauvegarder_parking(list<parking> l); 
 
 
          int parking_disponible(); 

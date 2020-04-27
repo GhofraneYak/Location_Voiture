@@ -205,20 +205,21 @@ voiture agence::nouvelle_voiture()
 
 }
 
-voiture agence::get_voiture(string immatricule,int prix, date d1, date d2)
+voiture agence::get_voiture(string immatricule)
 {
-    list<voiture>::iterator v;
-    
-     for(v=liste_voiture_available(d1,d2).begin();v!=liste_voiture_available(d1,d2).end();v++)
+     string voiture_immatricule;
+     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
      {
-        if( ((*v).get_immatricule()==immatricule) && ((*v).get_prix<=prix) )
+        voiture_immatricule=(*v).get_immatricule();
+        if(voiture_immatricule==immatricule)
         {
-            return (*v);
+            return *v;
         }
      }
      cout<<"voiture non trouvable";
      return voiture("nontrouvable","nontrouvable",0);
 }
+
 
 void agence::location_voiture(voiture& v,long id_client,date date_de_prise,date date_de_remise)//appeler dans creation contrat
 {

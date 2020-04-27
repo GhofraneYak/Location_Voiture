@@ -3,7 +3,7 @@
 using namespace std;
 
 /*******************Constructeurs***********************/
-voiture::voiture(string immatricule,string marque,float prix_par_jour,date date_de_creation,int age,bool est_loue,int nbr_de_fois_loue,date date_de_prise ,date date_de_remise,int id_client);
+voiture::voiture(string immatricule,string marque,float prix_par_jour,date date_de_creation,int age,bool est_loue,int nbr_de_fois_loue,date date_de_prise ,date date_de_remise,long id_client);
 {
     this->immatricule=immatricule;
     this->marque=marque;
@@ -91,7 +91,7 @@ void voiture::set_nbr_de_fois_loue()
     nbr_de_fois_loue++;
 }
 
-int voiture::get_id_client()
+long voiture::get_id_client()
 {
     return id_client;
 }

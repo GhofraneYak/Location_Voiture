@@ -81,14 +81,14 @@ using namespace std;
         }
 
 
-        //********************** Méthodes des voitures **************************//
+        //********************** Méthodes update des voitures **************************//
 
     void update_age_voiture(voiture v)
         {
-            date d=v.getdate();
+            date d=v.get_date();
             int age;
             age=d.age_voiture(date_auj,d);
-            v.setage(age);
+            v.set_age(age);
         }
 
     bool date::voiture_available(voiture v,date date_prise)

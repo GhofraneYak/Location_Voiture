@@ -18,10 +18,10 @@ using namespace std;
     void agence::lire_fichier_cl()
         {
             //création du fichier au cas où il n'existe pas
-            freopen( string "fichier_client.txt", string a+, stdout);
-            fclose();
+            freopen("fichier_client.txt","a+", stdout);
+            fclose;
             //Ouverture du fichier en mode lecture
-            freopen( string "fichier_client.txt", string r, stdin);
+            freopen("fichier_client.txt", "r", stdin);
             int nb;
             cin>>nb;
             string nom;
@@ -33,19 +33,19 @@ using namespace std;
                 date da(j,m,a);
                 liste_client.emplace(liste_client.end(),nom,ident,da);
             }
-            fclose();
+            fclose;
         }
 
         //Sauvegarder les données des clients dans le fichier
-    void sauvegarder_client(string nom_fichier, list<client> l)
+    void sauvegarder_client(list<client> l)
         {
-            freopen( string nom_fichier, string a+, stdout);
+            freopen("fichier_client.txt", "a"+, stdout);
             lis<client>::iterator it;
             for (it=l.beging();it!=l.end();++it)
             {
                 cout<<(*it).getnom<<(*it).getid<<((*it).getdate).getjour<<((*it).getdate).getmois<<((*it).getdate).getannee<<endl;
             }
-            fclose();
+            fclose;
         }
 
     //Vérifier si un client existe ou pas
@@ -274,10 +274,10 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
     {
             //ouverture de fichier
             //création du fichier au cas où il n'existe pas
-            freopen( string "fichier_parking.txt, string a+, stdout);
-            fclose();
+            freopen("fichier_parking.txt, "a+", stdout);
+            fclose;
             //Ouverture du fichier en mode lecture
-            freopen( string "fichier_parking.txt", string r, stdin);
+            freopen("fichier_parking.txt", "r", stdin);
             cin>>nbP;
             bool test=false;
             int id,capacite,nbV;
@@ -301,7 +301,7 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
                 }
 
             }
-            fclose();
+            fclose;
 
     }
 
@@ -317,9 +317,9 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
         }
     }
 
-    void agence::sauvegarder_parking(string nomF,list l)
+    void agence::sauvegarder_parking(list l)
     {
-        freopen(string nom_fichier, string a+, stdout);
+        freopen("liste_parking", "a+", stdout);
         cout<<parking::get_nbV();
         list<parking>::iterator it;
         for(it=l.begin();it!=l.end();it++)
@@ -331,7 +331,7 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
 
         }
         cout<<""<<endl;
-        fclose();
+        fclose;
 
     }
 

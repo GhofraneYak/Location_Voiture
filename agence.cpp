@@ -275,7 +275,7 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
     {
             //ouverture de fichier
             //création du fichier au cas où il n'existe pas
-            freopen("fichier_parking.txt, "a+", stdout);
+            freopen("fichier_parking.txt", "a+", stdout);
             fclose;
             //Ouverture du fichier en mode lecture
             freopen("fichier_parking.txt", "r", stdin);

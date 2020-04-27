@@ -178,7 +178,10 @@ void agence::lire_fichier_voiture()
     for(int i=0;i<nbr;i++)
     {
         cin>>immatricule>>marque>>prix_par_jour>>date_de_creation>>age>>est_loue>>nbr_de_fois_loue>>date_de_prise>>date_de_remise>>id_client;
-        liste_voiture.push_back(voiture(immatricule, marque,prix_par_jour,date_de_creation,age, est_loue, nbr_de_fois_loue,date_de_prise ,date_de_remise,id_client));
+        voiture v(immatricule, marque,prix_par_jour,date_de_creation,age, est_loue, nbr_de_fois_loue,date_de_prise ,date_de_remise,id_client);
+        if (date_de_remise<date_auj)
+            update_v_disponible(v);
+        liste_voiture.push_back(v);
     }
     int fclose(FILE* fichier);
 }

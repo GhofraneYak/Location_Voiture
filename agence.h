@@ -9,7 +9,7 @@ using namespace std;
 class agence
 {
     private:
-        list<voiture> liste_voitures;
+        list<voiture> liste_voiture;
         list<parking> liste_parking;
         list<client> liste_client;
 
@@ -55,12 +55,12 @@ class agence
     void creer_contrat();
         
 /*************************Methodes liste de voitures *****************/
-    void lire_fichier_voiture(string fichier_voitures);//appeler cette methode dans le constructeur d'agence
+    void lire_fichier_voiture();//appeler cette methode dans le constructeur d'agence
     voiture nouvelle_voiture();
     voiture get_voiture(string immatricule);//pour avoir liste de voiture de chaque parking
     void location_voiture(voiture& v,long id_client,date date_de_prise,date date_de_remise);//appeler dans creation contrat
-    void update_v_non_disponible();//elle change le boolean et supprime la voiture de parking on l'appel dans update methode
-    void update_v_disponible();//elle appel parking disponible pour remettre voiture dans un parking. on l'appel dans update methode     
+    void update_v_non_disponible(voiture& v);//elle change le boolean et supprime la voiture de parking on l'appel dans update methode
+    void update_v_disponible(voiture& v);//elle appel parking disponible pour remettre voiture dans un parking. on l'appel dans update methode     
     voiture la_voiture_plus_ancienne();
     voiture la_voiture_plus_loue();
     list<voiture> voitures_2_3();//dont l'age entre 2 et 3ans

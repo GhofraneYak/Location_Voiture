@@ -35,7 +35,7 @@ public:
     int get_nbr_de_fois_loue();
     void set_nbr_de_fois_loue();//incrementer nbr de fois loué
     long get_id_client();
-    void set_id_client(int);
+    void set_id_client(long);
     date get_date_de_prise();
     date get_date_de_remise();
     void set_date_de_prise(date);

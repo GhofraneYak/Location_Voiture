@@ -209,12 +209,12 @@ using namespace std;
         }
     }
 
-    void agence::sauvegarder_parking(string nomF,list liste_parking)
+    void agence::sauvegarder_parking(string nomF,list l)
     {
         freopen(string nom_fichier, string a+, stdout);
         cout<<parking::get_nbV();
         list<parking>::iterator it;
-        for(it=liste_parking.begin();it!=liste_parking.end();it++)
+        for(it=l.begin();it!=l.end();it++)
         {
             cout<<(*it).get_id()<<endl;
             cout<<(*it).get_capacite()<<endl;

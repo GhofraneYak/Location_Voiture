@@ -166,20 +166,43 @@ void agence::lire_fichier_voiture()
     string immatricule;
     string marque;
     float prix_par_jour;
-    //date date_de_creation;
+    date date_de_creation;
     int age;
     bool est_loue;
     int nbr_de_fois_loue;
-    //date date_de_prise;
-    //date date_de_remise;
+    date date_de_prise;
+    date date_de_remise;
     long id_client;
     cin>>nbr;
     for(int i=0;i<nbr;i++)
     {
-        cin>>immatricule>>marque>>prix_par_jour>>age>>est_loue>>nbr_de_fois_loue>>id_client;
-        liste_voiture.push_back(voiture(immatricule,marque,prix_par_jour,age,id_client,nbr_de_fois_loue,est_loue));
+        cin>>immatricule>>marque>>prix_par_jour>>date_de_creation>>age>>est_loue>>nbr_de_fois_loue>>date_de_prise>>date_de_remise>>id_client;
+        liste_voiture.push_back(voiture(immatricule, marque,prix_par_jour,date_de_creation,age, est_loue, nbr_de_fois_loue,date_de_prise ,date_de_remise,id_client));
     }
     int fclose(FILE* fichier);
+}
+
+voiture agence::nouvelle_voiture()
+{
+    string immatricule;
+    string marque;
+    float prix_par_jour;
+    int parking_id;
+//creation de nouveau objet voiture
+    cout<<"immatricule: ";
+    cin>>immatricule;
+    cout<<"marque: ";
+    cin>>marque;
+    cout<<"prix par jour de location: ";
+    cin>>prix_par_jour;
+    voiture v(immatricule,marque,prix_par_jour);
+    liste_voiture.push_back(v);
+//ajout voiture dans le parking
+    parking_id=parking_disponible();
+    list<parking>::iterator p =liste_parking.begin();
+    advance(p, parking_id);
+    *p.ajout_voiture(v);
+
 }
 
 voiture agence::get_voiture(string immatricule)
@@ -197,6 +220,39 @@ voiture agence::get_voiture(string immatricule)
      return voiture("nontrouvable","nontrouvable",0);
 }
 
+void agence::location_voiture(voiture& v,long id_client,date date_de_prise,date date_de_remise)//appeler dans creation contrat
+{
+    v.set_date_de_prise(date_de_prise);
+    v.set_date_de_remise(date_de_remise);
+    v.set_id_client(id_client);
+    v.set_nbr_de_fois_loue();
+}
+
+void update_v_non_disponible(voiture& v)
+{
+    int parking_id;
+    v.set_voiture_loue();
+    parking_id=recherche_parking(const voiture& v);
+    list<parking>::iterator p =liste_parking.begin();
+    advance(p, parking_id);
+    *p.delete_voiture(v);
+}
+
+void agence::update_v_disponible(voiture& v)
+{
+    int parking_id;
+    date d(1,1,1);
+    //voiture disponible
+    v.set_id_client(0);
+    v.set_date_de_prise(d);
+    v.set_date_de_remise(d);
+    v.set_voiture_loue();
+    //ajout voiture dans un parking
+    parking_id=parking_disponible();
+    list<parking>::iterator p =liste_parking.begin();
+    advance(p, parking_id);
+    *p.ajout_voiture(v);
+}
 
 
 

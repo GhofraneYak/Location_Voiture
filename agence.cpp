@@ -82,23 +82,6 @@ using namespace std;
         }
 
 
-        //********************** Méthodes update des voitures **************************//
-
-    void update_age_voiture(voiture v)
-        {
-            date d=v.get_date();
-            int age;
-            age=d.age_voiture(date_auj,d);
-            v.set_age(age);
-        }
-
-    bool date::voiture_available(voiture v,date date_prise)
-        {
-            if ((v.date_remise>date_prise))
-                        return false;
-            else return true;
-         }
-
 
         //********************** Création d'un contrat **************************//
 

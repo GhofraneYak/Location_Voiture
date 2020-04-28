@@ -44,7 +44,7 @@ using namespace std;
             list<client>::iterator it;
             for (it=l.begin();it!=l.end();++it)
             {
-                cout<<(*it).getnom<<" "<<(*it).getid<<" "<<((*it).getdate).getjour<<" "<<((*it).getdate).getmois<<" "<<((*it).getdate).getannee<<endl;
+                cout<<(*it).getnom()<<" "<<(*it).getid()<<" "<<((*it).getdate()).getjour()<<" "<<((*it).getdate()).getmois()<<" "<<((*it).getdate()).getannee()<<endl;
             }
             fclose;
         }

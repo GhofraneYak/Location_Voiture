@@ -38,8 +38,8 @@ class date
             static date& soustraction(const date& d1, const date& d2);
 
             //Comparaison date remise et date aujourd'hui
-            bool operator<(const date& d);
-            bool operator>(const date& d);
+            bool operator<(date& d);
+            bool operator>(date& d);
             //<=
 
             bool est_bissextile();

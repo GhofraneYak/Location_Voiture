@@ -114,7 +114,7 @@ using namespace std;
        {
            S+=((*it).get_prix());
        }
-       return(S/nbv);
+       return(S/nbV);
    }
 
    void parking::delete_voiture(Voiture v)
@@ -124,7 +124,7 @@ using namespace std;
        {
             if (    ((*it).get_immatricule())==(V.get_immatricule())  )// lezm surchage ? 
             {
-                liste_voiture.erase((*it));
+                liste_voiture.erase(it);
                 nbV--;
             }
 
@@ -136,12 +136,12 @@ using namespace std;
 
        cout<<"Merci de confirmer le vidage du parking"<<endl;
        cin>>test;
-       if (test="Oui")
+       if (test=="Oui")
        {
-            list<Voiture>::iterator it;
+            list<voiture>::iterator it;
             for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
             {
-                liste_voiture.erase((*it));
+                liste_voiture.erase(it);
                 nbV=0;
             }
         }

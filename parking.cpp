@@ -81,6 +81,7 @@ using namespace std;
             else
             {
                 liste_voiture.push_back(V);
+                nbV++;
             }
 
 
@@ -123,6 +124,7 @@ using namespace std;
             if ((*it)==V)// lezm surchage ?
             {
                 liste_voiture.erase((*it));
+                nbV--;
             }
 
        }
@@ -139,6 +141,7 @@ using namespace std;
             for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
             {
                 liste_voiture.erase((*it));
+                nbV=0;
             }
         }
 

@@ -26,8 +26,8 @@ voiture::voiture(string immatricule,string marque,float prix_par_jour)
     age=0;
     est_loue=false;
     nbr_de_fois_loue=0;
-    date_de_prise=new date(1,1,1);
-    date_de_remise=new date(1,1,1);
+    date date_de_prise(1,1,1);
+    date date_de_remise(1,1,1);
 }
 
 voiture::voiture(string marque,float prix_max)

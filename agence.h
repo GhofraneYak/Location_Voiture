@@ -1,9 +1,6 @@
 
-#include <iostream>
-#include "voiture.h"
-#include "parking.h"
+#include <bits/stdc++.h>
 #include "client.h"
-#include "date.h"
 using namespace std;
 
 class agence

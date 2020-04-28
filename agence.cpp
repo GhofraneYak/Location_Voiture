@@ -332,7 +332,7 @@ list<voiture> agence::tri_voitures_age()
 
 }
 
-list<string> agence::liste_des_marque()
+list<string> agence::get_liste_des_marques()
 {
     list<string> liste_marque;
     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
@@ -348,7 +348,7 @@ list<voiture> agence::tri_voiture_categorie()
 {
     list<voiture> voiture_par_categorie;
     list<string> liste_marque;
-    liste_marque=liste_des_marque();
+    liste_marque=get_liste_des_marques();
     for(list<string>::iterator m=liste_marque.begin();m!=liste_marque.end();m++)
     {
         for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)

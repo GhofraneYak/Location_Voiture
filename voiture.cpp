@@ -140,18 +140,18 @@ bool voiture::operator==(const voiture& v)
     return ((marque==v.marque)&&(prix_par_jour<=v.prix_par_jour));
 }
 
-/*******************Destructeur*************************/
+/*******************Sauvegarde*************************/
 void voiture::sauvegarder_une_voiture()
 {
     cout<<immatricule<<endl;
     cout<<marque<<endl;
     cout<<prix_par_jour<<endl;
-    cout<<date_de_creation<<endl;
+    cout<<date_de_creation.getjour()<<date_de_creation.getmois()<<date_de_creation.getannee()<<endl;
     cout<<age<<endl;
     cout<<est_loue<<endl;
     cout<<nbr_de_fois_loue<<endl;
-    cout<<date_de_prise<<endl;
-    cout<<date_de_remise<<endl;
+    cout<<date_de_prise.getjour()<<date_de_prise.getmois()<<date_de_prise.getannee()<<endl;
+    cout<<date_de_remise.getjour()<<date_de_remise.getmois()<<date_de_remise.getannee()<<endl;
     cout<<id_client<<endl;
 }
 

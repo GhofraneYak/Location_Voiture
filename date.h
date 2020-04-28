@@ -44,9 +44,6 @@ class date
 
             bool est_bissextile();
 
-            //Date de retour de la voiture
-            date& date_remise(int nb_jr);
-
             //bool voiture_available(voiture v);
 
             bool date::operator==(const date& d)

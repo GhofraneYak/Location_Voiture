@@ -13,7 +13,8 @@ class date
 
     public:
 
-            //Constructeur
+        date(){}    
+        //Constructeur
             date(int j, int m, int a);
 
             int getjour();

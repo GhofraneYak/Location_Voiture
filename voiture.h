@@ -43,5 +43,6 @@ public:
     //surcharge des operateur
     friend ostream& operator<<(ostream& s,const voiture& V);
     bool operator==(const voiture& v);//comparaison avec wanted car
+    void sauvegarder_une_voiture();//elle facilite le sauvegard de liste des voitures sans appelé get et set
     ~voiture();
 };

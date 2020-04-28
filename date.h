@@ -29,13 +29,13 @@ class date
 
 
             //Retourne l'age d'une voiture en années
-            int age_voiture(date auj, date date_v);
+            static int age_voiture(date auj, date date_v);
 
 
             int dernier_loc_client(date date_cl);
 
             //Date résultante d'une différence entre 2 dates
-            date& soustraction(const date& d1, const date& d2);
+            static date& soustraction(const date& d1, const date& d2);
 
             //Comparaison date remise et date aujourd'hui
             bool operator<(const date& d);

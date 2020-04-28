@@ -40,7 +40,7 @@ using namespace std;
         //Sauvegarder les données des clients dans le fichier
     void sauvegarder_client(list<client> l)
         {
-            freopen("fichier_client.txt", "a"+, stdout);
+            freopen("fichier_client.txt", "a+", stdout);
             list<client>::iterator it;
             for (it=l.begin();it!=l.end();++it)
             {

@@ -124,7 +124,7 @@ using namespace std;
 
 
         //Comparaison date remise et date aujourd'hui
-        bool date::operator<(const date& d)
+        bool date::operator<(date& d)
         {
             int j,m,a;
             j=this->jour;
@@ -148,7 +148,7 @@ using namespace std;
 
         }
 
-        bool date::operator>(const date& d)
+        bool date::operator>(date& d)
         {
             return (d<(*this));
         }

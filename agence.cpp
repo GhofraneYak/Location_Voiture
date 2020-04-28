@@ -106,7 +106,7 @@ using namespace std;
 
                 for(i=L.begin();i!=L.end();i++)
                 {
-                    if ((*i.categorie==marq)&&((*i).get_prix_par_jour<pmax))
+                    if (((*i).get_marque()==marq)&&((*i).get_prix<pmax))
                         return *i ;
 
                 }
@@ -125,14 +125,14 @@ using namespace std;
             cout<<"Entrer la cin du client";
             long y;
             cin>>y;
-            if !(client_existe(x))
+            if (!(client_existe(y)))
                 ajouter_client(nom,y,date_auj);
             else
             {
                 list<client>::iterator c;
                 for(c=liste_client.begin();c!=liste_client.end();c++)
                 {
-                    if ((*c).id==x)
+                    if ((*c).getid()==y)
                         (*c).setdate(date_auj); //da : date d'aujourd'hui
                 }
                 
@@ -212,7 +212,8 @@ voiture agence::get_voiture(string immatricule)
         }
      }
      cout<<"voiture non trouvable";
-     return voiture("nontrouvable","nontrouvable",0);
+     voiture p("nontrouvable","nontrouvable",0);
+     return p;
 }
 
 

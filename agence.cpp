@@ -75,7 +75,7 @@ using namespace std;
             list<client>::iterator it;
             for (it=liste_client.begin();it!=liste_client.end();++it)
             {
-                if (    (   date_auj - ((*it).getdate())    ) >=6   )
+                if (    (   date_auj.dernier_loc_client((*it).getdate()    ) >=6   )
                     l.emplace(liste_client.end(), (*it).getnom, (*it).getid,(*it).getdate );
             }
 

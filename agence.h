@@ -14,7 +14,7 @@ class agence
     public:
 
         //Constructeur
-        agence();
+        agence(date d_auj);
     
 //********************** Méthodes des clients **************************//
         //Lire les données concernant les clients

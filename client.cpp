@@ -3,7 +3,7 @@
 #include "client.h"
 using namespace std;
 
-        client::client(string n, long idd, int j,int m, int a)
+        client::client(string n, long idd, date d)
         {
             nom=n;
             id=idd;

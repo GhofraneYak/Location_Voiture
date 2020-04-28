@@ -168,7 +168,11 @@ void agence::lire_fichier_voiture()
     cin>>nbr;
     for(int i=0;i<nbr;i++)
     {
-        cin>>immatricule>>marque>>prix_par_jour>>date_de_creation>>age>>est_loue>>nbr_de_fois_loue>>date_de_prise>>date_de_remise>>id_client;
+        int a,b,c,d,e,f,g,h,i;
+        cin>>immatricule>>marque>>prix_par_jour>>a>>b>>c>>age>>est_loue>>nbr_de_fois_loue>>d>>e>>f>>g>>h>>i>>id_client;
+        date date_de_creation(a,b,c);
+        date date_de_prise(d,e,f);
+        date date_de_remise(g,h,i);
         voiture v(immatricule, marque,prix_par_jour,date_de_creation,age, est_loue, nbr_de_fois_loue,date_de_prise ,date_de_remise,id_client);
         if (    (date_de_remise<date_auj) && (v.voiture_loue()==true) )
             update_v_disponible(v);
@@ -177,6 +181,7 @@ void agence::lire_fichier_voiture()
             if (    (date_de_prise<date_auj) && (date_de_remise>date_auj) && (v.voiture_loue()==false)  )
                 update_v_non_disponible(v);
         }
+        date::age_voiture(date_auj,date_de_creation);
         liste_voiture.push_back(v);
     }
     fclose(stdin);

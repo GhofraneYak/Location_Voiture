@@ -143,15 +143,15 @@ bool voiture::operator==(const voiture& v)
 /*******************Sauvegarde*************************/
 void voiture::sauvegarder_une_voiture()
 {
-    cout<<immatricule<<endl;
-    cout<<marque<<endl;
-    cout<<prix_par_jour<<endl;
-    cout<<date_de_creation.getjour()<<date_de_creation.getmois()<<date_de_creation.getannee()<<endl;
-    cout<<age<<endl;
-    cout<<est_loue<<endl;
-    cout<<nbr_de_fois_loue<<endl;
-    cout<<date_de_prise.getjour()<<date_de_prise.getmois()<<date_de_prise.getannee()<<endl;
-    cout<<date_de_remise.getjour()<<date_de_remise.getmois()<<date_de_remise.getannee()<<endl;
+    cout<<immatricule<<" ";
+    cout<<marque<<" ";
+    cout<<prix_par_jour<<" ";
+    cout<<date_de_creation.getjour()<<date_de_creation.getmois()<<date_de_creation.getannee()<<" ";
+    cout<<age<<" ";
+    cout<<est_loue<<" ";
+    cout<<nbr_de_fois_loue<<" ";
+    cout<<date_de_prise.getjour()<<date_de_prise.getmois()<<date_de_prise.getannee()<<" ";
+    cout<<date_de_remise.getjour()<<date_de_remise.getmois()<<date_de_remise.getannee()<<" ";
     cout<<id_client<<endl;
 }
 

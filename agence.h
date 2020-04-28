@@ -18,7 +18,7 @@ class agence
     
 //********************** Méthodes des clients **************************//
         //Lire les données concernant les clients
-        void lire_fichier_cl(date d_auj);
+        void lire_fichier_cl();
 
 
         //Sauvegarder les données des clients dans le fichier

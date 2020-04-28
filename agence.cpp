@@ -397,11 +397,58 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
 
 
 
-    void agence::vider_selon_categories(parking p1, parking p2, parking p3)
+     void agence::vider_selon_categories(parking p1, parking p2, parking p3)
     {
 
-    
-         // parcours de liste des catégories
+
+        int nb2=p2.get_nbV();
+        int nb3=p3.get_nbV();
+        int c2=p2.get_capacite();
+        int c3=p3.get_capacite();
+        list<string> listem=get_liste_des_marques();
+        list<string>::iterator m;
+        list<parking>::iterator p;
+        for(m=listem.begin();m!=listem.end();m++)
+        {
+            int nb=0;
+            for(p=liste1.begin();v!=liste1.end();p++)
+            {
+                if ((*v).get_marque()==m)
+                {
+                    nb++;
+                }
+            }
+            if (nb=<(c2-nb2))
+            {
+                for(p=liste1.begin();v!=liste1.end();p++)
+                {
+                    if ((*v).get_marque()==m)
+                    {
+                        p2.ajout_voiture((*v));
+                        p1.delete_voiture((*v));
+                    }
+                }
+
+            }
+
+            else if (nb=<(c3-nb3))
+            {
+                for(p=liste1.begin();v!=liste1.end();p++)
+                {
+                    if ((*v).get_marque()==m)
+                    {
+                        p3.ajout_voiture((*v));
+                        p1.delete_voiture((*v));
+                    }
+                }
+            }
+
+            else
+            {
+                cout<<"Vous ne pouvez pas réaliser cette opération"<<endl;
+            }
+
+        }
 
     }
                     

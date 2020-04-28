@@ -44,7 +44,7 @@ using namespace std;
             list<client>::iterator it;
             for (it=l.begin();it!=l.end();++it)
             {
-                cout<<(*it).getnom<<(*it).getid<<((*it).getdate).getjour<<((*it).getdate).getmois<<((*it).getdate).getannee<<endl;
+                cout<<(*it).getnom<<" "<<(*it).getid<<" "<<((*it).getdate).getjour<<" "<<((*it).getdate).getmois<<" "<<((*it).getdate).getannee<<endl;
             }
             fclose;
         }
@@ -467,9 +467,9 @@ void agence::sauvegarder_liste_voiture()
         list<parking>::iterator it;
         for(it=l.begin();it!=l.end();it++)
         {
-            cout<<(*it).get_id()<<endl;
-            cout<<(*it).get_capacite()<<endl;
-            cout<<(*it).get_nbV()<<endl;
+            cout<<(*it).get_id()<<" ";
+            cout<<(*it).get_capacite()<<" ";
+            cout<<(*it).get_nbV()<<" ";
             cout<<(*it).get_voitures_de_parking()<<endl;
 
         }

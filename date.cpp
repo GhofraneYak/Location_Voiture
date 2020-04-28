@@ -29,7 +29,7 @@ using namespace std;
 
 
         //Vérifier si la date entrée est valide
-        bool date::date_valide(int a, int m, int j)
+        bool date::date_valide(int annee, int mois, int jour)
         {
             if (annee <0)
                 return false;

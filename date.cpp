@@ -217,7 +217,7 @@ using namespace std;
             }
 
 
-        date& date::operator==(const date& d)
+        bool date::operator==(const date& d)
         {
             return (    ((*this).annee==d.annee) && ((*this).mois==d.mois) && ((*this).jour==d.jour)    );
         }

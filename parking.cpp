@@ -18,7 +18,7 @@ using namespace std;
         list<voiture>::iterator it;
         for(it=liste.begin();it!=liste.end();it++)
         {
-            liste_voiture.insert(liste_voiture.size()+1,1,*it);
+            liste_voiture.push_back(*it);
         }
 
     }

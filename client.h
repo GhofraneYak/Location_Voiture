@@ -12,7 +12,7 @@ class client
         date dernier_date_loc;
 
     public:
-        client(string n, long idd, int j,int m, int a);
+        client(string n, long idd, date d);
         string getnom();
         long getid();
         date getdate();

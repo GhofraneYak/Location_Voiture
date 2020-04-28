@@ -1,4 +1,5 @@
 #include "parking.h";
+#include <bits/stdc++.h>
 using namespace std;
 
     parking::parking(int c)

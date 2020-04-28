@@ -38,7 +38,7 @@ using namespace std;
         list<voiture>::iterator it;
         for(it=parking::liste_voiture.begin();it!=parking::liste_voiture.end();it++)
         {
-            cout<<it.get_immatricule()<<endl;
+            cout<<(*it).get_immatricule()<<endl;
 
         }
         if (this->nbV==capacite)
@@ -91,7 +91,7 @@ using namespace std;
     bool parking::parking_disponible()
     {
 
-        return((capacite>nbV);
+        return(capacite>nbV);
     }
 
     bool parking::voiture_est_dans_ce_parking(voiture V)
@@ -109,7 +109,7 @@ using namespace std;
    float parking::moy_prix()
    {
        int S=0;
-       list<Voiture>::iterator it;
+       list<voiture>::iterator it;
        for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
        {
            S+=((*it).get_prix());
@@ -117,12 +117,12 @@ using namespace std;
        return(S/nbv);
    }
 
-   void parking::delete_voiture(Voiture V)
+   void parking::delete_voiture(Voiture v)
    {
-       list<Voiture>::iterator it;
+       list<voiture>::iterator it;
        for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
        {
-            if ((*it)==V)// lezm surchage ?
+            if (    ((*it).get_immatricule())==(V.get_immatricule())  )// lezm surchage ? 
             {
                 liste_voiture.erase((*it));
                 nbV--;

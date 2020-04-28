@@ -67,7 +67,7 @@ class agence
     list<voiture> voitures_2_3();//dont l'age entre 2 et 3ans
     list<voiture> voiture_actuellement_loue();//get liste voiture loue
     list<voiture> tri_voitures_age();
-    list<string> liste_des_marque();//methode qui aide à trie les voitures selon leur marque
+    list<string> get_liste_des_marques();//methode qui aide à trie les voitures selon leur marque
     list<voiture> tri_voiture_categorie();
     list<voiture> liste_voiture_available(date d1,date d2);// pour avoir les voitures disponible dans une periode precise
     void sauvegarder_liste_voiture();

@@ -23,9 +23,9 @@ using namespace std;
 
     }
 
-    list<Voiture> parking::get_voitures_de_parking()
+    list<voiture> parking::get_voitures_de_parking()
     {
-            return(liste_voiture);
+            return liste_voiture;
     }
 
 
@@ -35,13 +35,13 @@ using namespace std;
     {
         cout<<"Le parking numéro"<<id<<"a comme capacité:"<<capacite<<" et contient les immatricules des voitures suivantes :"<<endl;
 
-        list<Voiture>::iterator it;
+        list<voiture>::iterator it;
         for(it=parking::liste_voiture.begin();it!=parking::liste_voiture.end();it++)
         {
             cout<<it.get_immatricule()<<endl;
 
         }
-        if (this.nbV==capacite)
+        if (this->nbV==capacite)
         {
             cout<<"Ce parking est plein"<<endl;
         }

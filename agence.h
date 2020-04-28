@@ -70,6 +70,6 @@ class agence
     list<string> liste_des_marque();//methode qui aide à trie les voitures selon leur marque
     list<voiture> tri_voiture_categorie();
     list<voiture> liste_voiture_available(date d1,date d2);// pour avoir les voitures disponible dans une periode precise
-    void sauvegarder_liste_voiture(string fichier_voiture);
+    void sauvegarder_liste_voiture();
 };
 

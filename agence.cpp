@@ -251,6 +251,115 @@ void agence::update_v_disponible(voiture& v)
     (*p).ajout_voiture(v);
 }
 
+voiture agence::la_voiture_plus_ancienne()
+{
+    int m;
+    list<voiture>::iterator voiture_ancienne;
+    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+    {
+        if((*v).get_age()>m)
+        {
+            m=(*v).get_age();
+            voiture_ancienne=v;
+        }
+    }
+    cout<<"la voiture la plus ancienne est :\n"<<*voiture_ancienne;
+    return *voiture_ancienne;
+}
+
+voiture agence::la_voiture_plus_loue()
+{
+   int m;
+   m=0;
+   list<voiture>::iterator voiture_plus_loue;
+   for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+   {
+       if((*v).get_nbr_de_fois_loue()>m)
+       {
+           m=(*v).get_nbr_de_fois_loue();
+           voiture_plus_loue=v;
+       }
+   }
+   cout<<"la voiture la plus loue ("<<m<<" fois) est "<<*voiture_plus_loue;
+   return *voiture_plus_loue;
+}
+
+list<voiture> agence::voitures_2_3()
+{
+    list<voiture> voitures_2_3;
+    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+    {
+        if(((*v).get_age()==2)||((*v).get_age()==3))
+            voitures_2_3.push_back(*v);
+    }
+    cout<<"les voitures dont leurs age entre 2 et 3 ans sont: "<<endl;
+    for(list<voiture>::iterator v=voitures_2_3.begin();v!=voitures_2_3.end();v++)
+    {
+        cout<<*v<<endl;
+    }
+    return voitures_2_3;
+}
+
+list<voiture> agence::voiture_actuellement_loue()
+{
+    list<voiture> voitures_non_disponible;
+    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+    {
+        if((*v).voiture_loue())
+            voitures_non_disponible.push_back(*v);
+    }
+    cout<<"les voitures non disponibles à l'instant sont: "<<endl;
+    for(list<voiture>::iterator v=voitures_non_disponible.begin();v!=voitures_non_disponible.end();v++)
+    {
+        cout<<*v<<endl;
+    }
+    return voitures_non_disponible;
+}
+
+list<voiture> agence::tri_voitures_age()
+{
+    list<voiture> voiture_tri_par_age;
+    int age_max=la_voiture_plus_ancienne().get_age();
+    for(int i=0;i<=age_max;i++)
+    {
+        for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+        {
+            if((*v).get_age()==i)
+                voiture_tri_par_age.push_back(*v);
+        }
+    }
+    return voiture_tri_par_age;
+
+}
+
+list<string> agence::liste_des_marque()
+{
+    list<string> liste_marque;
+    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+    {
+
+        if (find(liste_marque.begin(), liste_marque.end(), (*v).get_marque())== liste_marque.end())
+            liste_marque.push_back((*v).get_marque());
+    }
+    return liste_marque;
+}
+
+list<voiture> agence::tri_voiture_categorie()
+{
+    list<voiture> voiture_par_categorie;
+    list<string> liste_marque;
+    liste_marque=liste_des_marque();
+    for(list<string>::iterator m=liste_marque.begin();m!=liste_marque.end();m++)
+    {
+        for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+        {
+            if(*m==(*v).get_marque())
+                voiture_par_categorie.push_back(*v);
+        }
+    }
+    return voiture_par_categorie;
+}
+
 list<voiture> agence::liste_voiture_available(date d1,date d2)
 {
     long client_cin;

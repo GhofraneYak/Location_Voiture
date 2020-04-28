@@ -8,7 +8,7 @@ using namespace std;
             nom=n;
             id=idd;
             date date_loc(j,m,a);
-            dernier_date_loc=date_loc;
+            dernier_date_loc=d;
         }
 
 

@@ -35,7 +35,7 @@ class date
             int dernier_loc_client(date date_cl);
 
             //Date résultante d'une différence entre 2 dates
-            static date& soustraction(const date& d1, const date& d2);
+            static date soustraction(const date& d1, const date& d2);
 
             //Comparaison date remise et date aujourd'hui
             bool operator<(date& d);

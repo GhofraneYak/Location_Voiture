@@ -49,7 +49,7 @@ class date
 
             //bool voiture_available(voiture v);
 
-
+            bool date::operator==(const date& d)
 };
 #endif
 

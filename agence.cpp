@@ -376,6 +376,27 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
 
     }
 
+
+      int agence::recherche_parking(Voiture v)
+    {
+        list<parking>::iterator it;
+        list<voiture>::iterator l;
+        for(it=liste_parking.begin();it!=liste_parking.end();it++)
+        {
+            list<voiture> liste=(*it).get_voiture_de_parking();
+            for(l=liste.begin();l!=liste.end();l++)
+            {
+                if ((*l)==v)
+                {
+                    return((*it).get_id());
+                }
+            }
+        }
+        cout<<"Cette voiture n'est dans aucun parking"<<endl;
+    }
+
+
+
     void agence::vider_selon_categories(parking p1, parking p2, parking p3)
     {
 

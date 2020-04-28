@@ -75,7 +75,7 @@ using namespace std;
         }
 
 
-        date& date::soustraction(const date& d1, const date& d2)
+        date date::soustraction(const date& d1, const date& d2)
         //OR date& soustraction(const date& d1, const date& d2)
         {
             date p(0,0,0);

@@ -13,9 +13,9 @@ using namespace std;
     parking::parking(int id,int c,int nb, list<voiture> liste)
     {
         capacite=c;
-        this.id=id;
+        this->id=id;
         nbV=nb;
-        list<Voiture>::iterator it;
+        list<voiture>::iterator it;
         for(it=liste.begin();it!=liste.end();it++)
         {
             liste_voiture.insert(liste_voiture.size()+1,1,*it);

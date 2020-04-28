@@ -95,9 +95,12 @@ using namespace std;
                 int pmax;
                 cin>>pmax;
                 cout<<"Entrer la date de prise de la voiture";
-                cin>>date_de_prise;
+                int x,y,z;
+                cin>>x>>y>>z;
+                date date_de_prise(x,y,z);
                 cout<<"Entrer la date de remise de la voiture";
-                cin>>date_de_remise;
+                cin>>x>>y>>z;
+                date date_de_remise(x,y,z);
                 list<voiture>::iterator i;
                 L=liste_voiture_available(date_de_prise,date_de_remise);
 

@@ -362,14 +362,13 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
             liste<voiture>::iterator it;
             for(it=liste1.begin();it!=liste1.end();it++)
             {
-                liste3.push_back((*it));
-                liste1.erase((*it));
-
+                p3.ajout_voiture((*it));
+                p1.delete_voiture((*it));
             }
             for(it=liste2.begin();it!=liste2.end();it++)
             {
-                liste3.push_back((*it));
-                liste2.erase((*it));
+                p3.ajout_voiture((*it));
+                p2.delete_voiture((*it));
             }
 
         }

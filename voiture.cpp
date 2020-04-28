@@ -141,6 +141,20 @@ bool voiture::operator==(const voiture& v)
 }
 
 /*******************Destructeur*************************/
+void voiture::sauvegarder_une_voiture()
+{
+    cout<<immatricule<<endl;
+    cout<<marque<<endl;
+    cout<<prix_par_jour<<endl;
+    cout<<date_de_creation<<endl;
+    cout<<age<<endl;
+    cout<<est_loue<<endl;
+    cout<<nbr_de_fois_loue<<endl;
+    cout<<date_de_prise<<endl;
+    cout<<date_de_remise<<endl;
+    cout<<id_client<<endl;
+}
+
 voiture::~voiture()
 {
 }

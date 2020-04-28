@@ -32,7 +32,8 @@ using namespace std;
             {
                 cin>>nom>>ident>>j>>m>>a;
                 date da(j,m,a);
-                liste_client.emplace(liste_client.end(),nom,ident,da);
+                client c(nom,ident,da);
+                liste_client.push_back(c);
             }
             fclose;
         }
@@ -55,7 +56,7 @@ using namespace std;
             list<client>::iterator it;
             for (it=liste_client.begin();it!=liste_client.end();++it)
             {
-                if ((*it).getid==id)
+                if ((*it).getid()==id)
                     return true;
             }
             return false;
@@ -64,7 +65,8 @@ using namespace std;
     //Ajouter un client
     void agence::ajouter_client(string nom, long id, date date_auj)
         {
-            liste_client.emplace(liste_client.end(),nom,id,date_auj);
+            client c(nom,id,date_auj);
+            liste_client.push_back(c);
         }
 
     //La liste des clients dont la date de leur dernière location dépasse 6mois
@@ -75,8 +77,11 @@ using namespace std;
             list<client>::iterator it;
             for (it=liste_client.begin();it!=liste_client.end();++it)
             {
-                if (    (   date_auj.dernier_loc_client((*it).getdate()    ) >=6   )
-                    l.emplace(liste_client.end(), (*it).getnom, (*it).getid,(*it).getdate );
+                if (      date_auj.dernier_loc_client((*it).getdate()    ) >=6   )
+                    {
+                        client c(   (*it).getnom(), (*it).getid(),(*it).getdate()  )
+                        l.push_back(c);
+                    }
             }
 
             return l;

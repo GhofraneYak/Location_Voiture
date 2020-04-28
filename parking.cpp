@@ -9,7 +9,7 @@ using namespace std;
         nbV=0;
     }
 
-    parking::parking(int id,int c,int nb, list<Voiture> liste)
+    parking::parking(int id,int c,int nb, list<voiture> liste)
     {
         capacite=c;
         this.id=id;

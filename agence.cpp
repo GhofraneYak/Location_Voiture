@@ -170,8 +170,13 @@ void agence::lire_fichier_voiture()
     {
         cin>>immatricule>>marque>>prix_par_jour>>date_de_creation>>age>>est_loue>>nbr_de_fois_loue>>date_de_prise>>date_de_remise>>id_client;
         voiture v(immatricule, marque,prix_par_jour,date_de_creation,age, est_loue, nbr_de_fois_loue,date_de_prise ,date_de_remise,id_client);
-        if (date_de_remise<date_auj)
+        if (    (date_de_remise<date_auj) && (v.voiture_loue()==true) )
             update_v_disponible(v);
+        else
+        {
+            if (    (date_de_prise<date_auj) && (date_de_remise>date_auj) && (v.voiture_loue()==false)  )
+                update_v_non_disponible(v);
+        }
         liste_voiture.push_back(v);
     }
     fclose(stdin);

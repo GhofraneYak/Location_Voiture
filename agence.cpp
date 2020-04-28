@@ -148,11 +148,11 @@ using namespace std;
 
 void agence::lire_fichier_voiture()
 {
-    //Au cas où le fichier n'existe pas déjà
-    FILE* fichier1 = fopen("liste_voitures.txt","a+");
-    int fclose(FILE* fichier1);
-    
-    FILE* fichier = fopen("liste_voitures.txt","r+");
+    //création du fichier au cas où il n'existe pas
+    freopen("fichiervoitures.txt","a+", stdout);
+    fclose(stdout);
+    //Ouverture du fichier en mode lecture
+    freopen("fichiervoitures.txt", "r", stdin);
 
     int nbr;
     string immatricule;
@@ -174,7 +174,7 @@ void agence::lire_fichier_voiture()
             update_v_disponible(v);
         liste_voiture.push_back(v);
     }
-    int fclose(FILE* fichier);
+    fclose(stdin);
 }
 
 voiture agence::nouvelle_voiture()
@@ -380,6 +380,24 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
     return voitures_disponibles;
 }
 
+void agence::sauvegarder_liste_voiture()
+{
+    int nbr_voitures=0;
+    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+        nbr_voitures++;
+    if (nbr_voitures!=0)
+    {
+        freopen("fichiervoitures.txt", "w", stdout);
+        cout<<nbr_voitures
+        for(list<voiture>::iterator v=liste_voiture.begin();v)
+        {
+            (*v).sauvegarder_une_voiture();
+        }
+        fclose(stdout);
+    }
+    else
+        cout<<"pas de voitures enregistrés";
+}
 
         //********************** Méthodes des parkings **************************//
        

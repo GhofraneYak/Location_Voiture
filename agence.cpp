@@ -257,13 +257,13 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
     list<voiture> voitures_disponibles;
     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
     {
-       client_cin=*v.get_id_client;
+       client_cin=(*v).getid();
        if (client_cin==0)//voiture non reservé
            voitures_disponibles.push_back(*v);
        else
        {
-           date date_p=(*v).get_date_prise();
-           date date_r=*v.get_date_remise();
+           date date_p=(*v).get_date_de_prise();
+           date date_r=*v.get_date_de_remise();
            if ((d2<date_p)||(date_r<d1))
                voitures_disponibles.push_back(*v);
        }
@@ -283,11 +283,12 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
             fclose;
             //Ouverture du fichier en mode lecture
             freopen("fichier_parking.txt", "r", stdin);
+            int nbP;
             cin>>nbP;
             bool test=false;
             int id,capacite,nbV;
             string immatricule;
-            list<Voiture> liste;
+            list<voiture> liste;
 
             while (test==false)
             {
@@ -313,7 +314,7 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
     int agence::parking_disponible()
     {
         list<parking>::iterator it;
-        for(it=liste_parking.begin();it!=liste_parking.end;it++)
+        for(it=liste_parking.begin();it!=liste_parking.end();it++)
         {
             if(it.parking_disponible())
             {

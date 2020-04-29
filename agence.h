@@ -1,6 +1,7 @@
 
 #include <bits/stdc++.h>
 #include "client.h"
+#include "parking.h"
 using namespace std;
 
 class agence
@@ -48,6 +49,8 @@ class agence
 
         void grouper_dans_un_parking(parking p1, parking p2, parking p3); 
         void vider_selon_categories(parking p1, parking p2, parking p3);
+        parking ce_parking(int);
+    
  //********************** Création du contrat **************************//
     voiture wanted_car();    
     void creer_contrat();

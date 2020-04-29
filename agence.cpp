@@ -564,7 +564,7 @@ void agence::sauvegarder_liste_voiture()
                     nb++;
                 }
             }
-            if (nb=<(c2-nb2))
+            if (nb<=(c2-nb2))
             {
                 for(p=liste1.begin();v!=liste1.end();p++)
                 {
@@ -577,9 +577,9 @@ void agence::sauvegarder_liste_voiture()
 
             }
 
-            else if (nb=<(c3-nb3))
+            else if (nb<=(c3-nb3))
             {
-                for(p=liste1.begin();v!=liste1.end();p++)
+                for(p=liste1.begin();p!=liste1.end();p++)
                 {
                     if ((*v).get_marque()==m)
                     {

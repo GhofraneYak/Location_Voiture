@@ -46,7 +46,7 @@ class agence
          int recherche_parking(voiture v);
          int parking_disponible(); 
 
-        void grouper_dans_un_parking(); 
+        void grouper_dans_un_parking(parking p1, parking p2, parking p3); 
         void vider_selon_categories();
  //********************** Création du contrat **************************//
     voiture wanted_car();    

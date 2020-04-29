@@ -1,10 +1,11 @@
-#include "parking.h";
+#include "parking.h"
 #include <bits/stdc++.h>
 using namespace std;
 
+    int parking::nbP=0;
     parking::parking(int c)
     {
-        id++;
+        id=nbP;
         nbP++;
         capacite=c;
         nbV=0;
@@ -33,10 +34,10 @@ using namespace std;
     void parking::affichage_info()
 
     {
-        cout<<"Le parking numéro"<<id<<"a comme capacité:"<<capacite<<" et contient les immatricules des voitures suivantes :"<<endl;
+        cout<<"Le parking numero "<<id<<" a comme capacite :"<<capacite<<" et contient les immatricules des voitures suivantes :"<<endl;
 
         list<voiture>::iterator it;
-        for(it=parking::liste_voiture.begin();it!=parking::liste_voiture.end();it++)
+        for(it=liste_voiture.begin();it!=:liste_voiture.end();it++)
         {
             cout<<(*it).get_immatricule()<<endl;
 
@@ -47,7 +48,7 @@ using namespace std;
         }
         else
         {
-            cout<<"Vous pouvez toujours ajouter "<<(capacite-nbV)<<"voitures"<<endl;
+            cout<<"Vous pouvez toujours ajouter "<<(capacite-nbV)<<" voitures"<<endl;
         }
     }
 
@@ -73,7 +74,6 @@ using namespace std;
 
       void parking::ajout_voiture(voiture V)
     {
-        bool test;
 
             if  (parking_disponible()==false)
             {
@@ -91,14 +91,14 @@ using namespace std;
     bool parking::parking_disponible()
     {
 
-        return(capacite>nbV);
+        return(capacite>=nbV);
     }
 
     bool parking::voiture_est_dans_ce_parking(voiture V)
     {
 
             list<voiture>::iterator l;
-            for(l=parking::liste_voiture.begin();l!=parking::liste_voiture.end();l++)
+            for(l=liste_voiture.begin();l!=liste_voiture.end();l++)
             {
                 if((*l)==V)
                     return(true);
@@ -117,24 +117,27 @@ using namespace std;
        return(S/nbV);
    }
 
-   void parking::delete_voiture(Voiture v)
+   void parking::delete_voiture(voiture v)
    {
+       bool voiture_exist=false;
        list<voiture>::iterator it;
        for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
        {
-            if (    ((*it).get_immatricule())==(V.get_immatricule())  )// lezm surchage ? 
+            if (    ((*it).get_immatricule())==(v.get_immatricule())  ) 
             {
                 liste_voiture.erase(it);
                 nbV--;
+                voiture_exist=true;
             }
-
        }
+       if (voiture_exist==false)
+           cout<<"voiture n est pas deja dans le parking";
    }
 
    void parking::vider_le_parking()
    {    string test;
 
-       cout<<"Merci de confirmer le vidage du parking"<<endl;
+       cout<<"Merci de confirmer le vidage du parking\n-> ecrire Oui pour confirmer :";
        cin>>test;
        if (test=="Oui")
        {
@@ -142,9 +145,10 @@ using namespace std;
             for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
             {
                 liste_voiture.erase(it);
-                nbV=0;
             }
+           nbV=0;
         }
-
+        else
+            cout<<"l action sera annulee";
    }
-
+    parking ::~parking(){}

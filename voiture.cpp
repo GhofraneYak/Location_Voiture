@@ -17,12 +17,12 @@ voiture::voiture(string immatricule,string marque,float prix_par_jour,date date_
     this->id_client=id_client;
 }
 
-voiture::voiture(string immatricule,string marque,float prix_par_jour)
+voiture::voiture(string immatricule,string marque,float prix_par_jour,date date_auj)
 {
     this->immatricule=immatricule;
     this->marque=marque;
     this->prix_par_jour=prix_par_jour;
-    //date_de_creation=date::date_aujourdhui();
+    date_de_creation=date_auj;
     age=0;
     est_loue=false;
     nbr_de_fois_loue=0;
@@ -125,13 +125,13 @@ void voiture::set_date_de_remise(date d)
 
 ostream& operator<<(ostream& s,const voiture& V)
 {
-    s<<"Voiture "<<V.immatricule<<":/n/tMarque: "<<V.marque<<"/n";
-    s<<"/tAge: "<<V.age<<"/n/tPrix par jour: "<<V.prix_par_jour<<endl;
-    s<<"/tNombre de fois loue"<<V.nbr_de_fois_loue<<endl;
+    s<<"Voiture "<<V.immatricule<<":\n\tMarque: "<<V.marque<<"\n";
+    s<<"\tAge: "<<V.age<<"\n\tPrix par jour: "<<V.prix_par_jour<<endl;
+    s<<"\tNombre de fois loue"<<V.nbr_de_fois_loue<<endl;
     if (V.est_loue==true)
-        s<<"la voiture est loue à l'instant"<<endl;
+        s<<"la voiture est loue a l'instant"<<endl;
     else
-        s<<"/tla voiture est disponible à l'instant "<<endl;
+        s<<"\tla voiture est disponible a l'instant "<<endl;
     return s;
 }
 
@@ -146,12 +146,12 @@ void voiture::sauvegarder_une_voiture()
     cout<<immatricule<<" ";
     cout<<marque<<" ";
     cout<<prix_par_jour<<" ";
-    cout<<date_de_creation.getjour()<<date_de_creation.getmois()<<date_de_creation.getannee()<<" ";
+    cout<<date_de_creation.getjour()<<" "<<date_de_creation.getmois()<<" "<<date_de_creation.getannee()<<" ";
     cout<<age<<" ";
     cout<<est_loue<<" ";
     cout<<nbr_de_fois_loue<<" ";
-    cout<<date_de_prise.getjour()<<date_de_prise.getmois()<<date_de_prise.getannee()<<" ";
-    cout<<date_de_remise.getjour()<<date_de_remise.getmois()<<date_de_remise.getannee()<<" ";
+    cout<<date_de_prise.getjour()<<" "<<date_de_prise.getmois()<<" "<<date_de_prise.getannee()<<" ";
+    cout<<date_de_remise.getjour()<<" "<<date_de_remise.getmois()<<" "<<date_de_remise.getannee()<<" ";
     cout<<id_client<<endl;
 }
 

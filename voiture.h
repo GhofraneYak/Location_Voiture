@@ -18,7 +18,7 @@ private:
 public:
     //constructeurs
     voiture(string immatricule,string marque,float prix_par_jour,date date_de_creation,int age,bool est_loue,int nbr_de_fois_loue,date date_de_prise ,date date_de_remise,long id_client);
-    voiture(string immatricule,string marque,float prix_par_jour);//nouvelle voiture
+    voiture(string immatricule,string marque,float prix_par_jour,date date_auj);//nouvelle voiture
     voiture(string marque,float prix_max);//constructeur de wanted car
     //age
     int get_age();

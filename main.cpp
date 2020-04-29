@@ -16,14 +16,14 @@ int main(){
     {
 
 
-        cout << "Entrez un numero : "<< '\n' << "1: vehicule le plus ancien" << '\n' << "2:Le véhicule ayant le plus été loué"<< '\n'
-        << "3:Les voitures ayant un âge entre 2 et 3 ans" << '\n' << "4: la liste des véhicules actuellement loués" << '\n'
-        << "5: la liste des clients n'ayant pas loué de véhicules depuis plus de 6 mois"<< '\n'<<"6:La liste des véhicules triés selon la catégorie"<< '\n'
-        << "7:La liste des véhicules triés selon l'âge"<<'\n'
-        << "8: la moyenne de prix des véhicules d'un parking"<< '\n'<< "9:Grouper les véhicules de 2 parking dans un troisième parking"<<'\n'
-        << "10:Vider un parking de ses véhicules en les distribuant à 2 autres parkings en fonction de leurs catégories"<<'\n'
-        << "11: Creer un contrat" << '\n'<< "12: Ajouter une voiture"<<'\n'<< "13: Pour Ajouter un nouveau client" <<'\n'<< "14: Nouveau parking"<< '\n'
-        <<"Tapez 0 pour fermer l'app" <<endl;
+        cout << "Entrez un numero : "<< '\n' << "1: vehicule le plus ancien" << '\n' << "2:Le vÃ©hicule ayant le plus Ã©tÃ© louÃ©"<< '\n'
+        << "3:Les voitures ayant un Ã¢ge entre 2 et 3 ans" << '\n' << "4: la liste des vÃ©hicules actuellement louÃ©s" << '\n'
+        << "5: la liste des clients n'ayant pas louÃ© de vÃ©hicules depuis plus de 6 mois"<< '\n'<<"6:La liste des vÃ©hicules triÃ©s selon la catÃ©gorie"<< '\n'
+        << "7:La liste des vÃ©hicules triÃ©s selon l'Ã¢ge"<<'\n'
+        << "8: la moyenne de prix des vÃ©hicules d'un parking"<< '\n'<< "9:Grouper les vÃ©hicules de 2 parking dans un troisiÃ¨me parking"<<'\n'
+        << "10:Vider un parking de ses vÃ©hicules en les distribuant Ã  2 autres parkings en fonction de leurs catÃ©gories"<<'\n'
+        << "11: Creer un contrat" << '\n'<< "12: Ajouter une voiture"<<'\n'<< "13: Pour Ajouter un nouveau client" <<'\n'<< "14: Nouveau parking"<<'\n'
+        << "15: Afficher info d'un parking"<< '\n'<<"Tapez 0 pour fermer l'app" <<endl;
         cin>> x;
         switch (x)
         {
@@ -95,6 +95,17 @@ int main(){
             cout<< "Entrer la capacitee du parking";
             cin>>x;
             parking p(x);
+        case 15:
+            int x;
+            cout<< "Entrer l'id du parking pour voir tous ses infos";
+            cin>>x;
+            iterator it;
+            for(it=ag.liste_parking.begin();it!=ag.liste_parking.end();it++)
+            {
+                if ((*it).get_id()==x)
+                    (*it).affichage_info();
+            }
+
 
 
         }

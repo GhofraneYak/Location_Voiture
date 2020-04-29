@@ -79,7 +79,7 @@ using namespace std;
             {
                 if (      date_auj.dernier_loc_client((*it).getdate()    ) >=6   )
                     {
-                        client c(   (*it).getnom(), (*it).getid(),(*it).getdate()  )
+                        client c(   (*it).getnom(), (*it).getid(),(*it).getdate()  );
                         l.push_back(c);
                     }
             }
@@ -172,7 +172,7 @@ void agence::lire_fichier_voiture()
     date date_de_remise;
     long id_client;
     cin>>nbr;
-    for(int n=0;i<nbr;n++)
+    for(int n=0;n<nbr;n++)
     {
         int a,b,c,d,e,f,g,h,i;
         cin>>immatricule>>marque>>prix_par_jour>>a>>b>>c>>age>>est_loue>>nbr_de_fois_loue>>d>>e>>f>>g>>h>>i>>id_client;

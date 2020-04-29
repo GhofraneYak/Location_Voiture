@@ -37,7 +37,7 @@ using namespace std;
         cout<<"Le parking numero "<<id<<" a comme capacite :"<<capacite<<" et contient les immatricules des voitures suivantes :"<<endl;
 
         list<voiture>::iterator it;
-        for(it=liste_voiture.begin();it!=:liste_voiture.end();it++)
+        for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
         {
             cout<<(*it).get_immatricule()<<endl;
 

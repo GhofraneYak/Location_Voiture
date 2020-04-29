@@ -107,11 +107,12 @@ using namespace std;
                 cin>>x>>y>>z;
                 date date_de_remise(x,y,z);
                 list<voiture>::iterator i;
+                list<voiture> L;
                 L=liste_voiture_available(date_de_prise,date_de_remise);
 
                 for(i=L.begin();i!=L.end();i++)
                 {
-                    if (((*i).get_marque()==marq)&&((*i).get_prix<pmax))
+                    if (    ((*i).get_marque()==marq )&& ((*i).get_prix()<pmax) )
                         return *i ;
 
                 }
@@ -143,7 +144,7 @@ using namespace std;
                 
             }
             // voiture
-           Voiture v = wanted_car();
+           voiture v = wanted_car();
 
         }
 
@@ -171,7 +172,7 @@ void agence::lire_fichier_voiture()
     date date_de_remise;
     long id_client;
     cin>>nbr;
-    for(int i=0;i<nbr;i++)
+    for(int n=0;i<nbr;n++)
     {
         int a,b,c,d,e,f,g,h,i;
         cin>>immatricule>>marque>>prix_par_jour>>a>>b>>c>>age>>est_loue>>nbr_de_fois_loue>>d>>e>>f>>g>>h>>i>>id_client;
@@ -244,7 +245,7 @@ void update_v_non_disponible(voiture& v)
 {
     int parking_id;
     v.set_voiture_loue();
-    parking_id=recherche_parking(const voiture& v);
+    parking_id=recherche_parking(v);
     list<parking>::iterator p =liste_parking.begin();
     advance(p, parking_id);
     (*p).delete_voiture(v);
@@ -518,7 +519,7 @@ void agence::sauvegarder_liste_voiture()
     }
 
 
-      int agence::recherche_parking(Voiture v)
+      int agence::recherche_parking(voiture v)
     {
         list<parking>::iterator it;
         list<voiture>::iterator l;

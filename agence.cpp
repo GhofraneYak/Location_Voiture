@@ -246,7 +246,8 @@ void update_v_non_disponible(voiture& v)
     int parking_id;
     v.set_voiture_loue();
     parking_id=recherche_parking(v);
-    list<parking>::iterator p =liste_parking.begin();
+    list<parking>::iterator p;
+    p=liste_parking.begin();
     advance(p, parking_id);
     (*p).delete_voiture(v);
 }
@@ -262,7 +263,8 @@ void agence::update_v_disponible(voiture& v)
     v.set_voiture_loue();
     //ajout voiture dans un parking
     parking_id=parking_disponible();
-    list<parking>::iterator p =liste_parking.begin();
+    list<parking>::iterator p;
+    p=liste_parking.begin();
     advance(p, parking_id);
     (*p).ajout_voiture(v);
 }
@@ -382,13 +384,13 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
     list<voiture> voitures_disponibles;
     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
     {
-       client_cin=(*v).getid();
+       client_cin=(*v).get_id_client();
        if (client_cin==0)//voiture non reservé
            voitures_disponibles.push_back(*v);
        else
        {
            date date_p=(*v).get_date_de_prise();
-           date date_r=*v.get_date_de_remise();
+           date date_r=(*v).get_date_de_remise();
            if ((d2<date_p)||(date_r<d1))
                voitures_disponibles.push_back(*v);
        }
@@ -404,8 +406,8 @@ void agence::sauvegarder_liste_voiture()
     if (nbr_voitures!=0)
     {
         freopen("fichiervoitures.txt", "w", stdout);
-        cout<<nbr_voitures
-        for(list<voiture>::iterator v=liste_voiture.begin();v)
+        cout<<nbr_voitures;
+        for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
         {
             (*v).sauvegarder_une_voiture();
         }
@@ -441,7 +443,8 @@ void agence::sauvegarder_liste_voiture()
                     cin>>immatricule;
                     liste.push_back(get_voiture(immatricule));
                 }
-                liste_parking.emplace(liste_parking.end(),id,capacite,nbV,liste);
+                parking p(id,capacite,nbV,liste);
+                liste_parking.push_back(p);
 
 
                 if (immatricule=="")   //fin du fichier
@@ -459,27 +462,28 @@ void agence::sauvegarder_liste_voiture()
         list<parking>::iterator it;
         for(it=liste_parking.begin();it!=liste_parking.end();it++)
         {
-            if(it.parking_disponible())
+            if((*it).parking_disponible())
             {
-                return(it.get_id());
+                return((*it).get_id());
             }
         }
     }
 
-    void agence::sauvegarder_parking(list l)
+    void agence::sauvegarder_parking(list<parking> l)
     {
         freopen("liste_parking", "a+", stdout);
-        cout<<parking::get_nbV();
+        cout<<( *(l.begin()) ).get_nbV();
         list<parking>::iterator it;
         for(it=l.begin();it!=l.end();it++)
         {
             cout<<(*it).get_id()<<" ";
             cout<<(*it).get_capacite()<<" ";
             cout<<(*it).get_nbV()<<" ";
-            cout<<(*it).get_voitures_de_parking()<<endl;
+            
+            for(list<parking>::iterator j=(*it).get_voitures_de_parking().begin();it!=(*it).get_voitures_de_parking().end();j++)
+            cout<<(*j).get_immatricule()<<endl;
 
         }
-        cout<<""<<endl;
         fclose;
 
     }
@@ -502,7 +506,7 @@ void agence::sauvegarder_liste_voiture()
         }
         else
         {
-            liste<voiture>::iterator it;
+            list<voiture>::iterator it;
             for(it=liste1.begin();it!=liste1.end();it++)
             {
                 p3.ajout_voiture((*it));
@@ -525,7 +529,7 @@ void agence::sauvegarder_liste_voiture()
         list<voiture>::iterator l;
         for(it=liste_parking.begin();it!=liste_parking.end();it++)
         {
-            list<voiture> liste=(*it).get_voiture_de_parking();
+            list<voiture> liste=(*it).get_voitures_de_parking();
             for(l=liste.begin();l!=liste.end();l++)
             {
                 if ((*l)==v)

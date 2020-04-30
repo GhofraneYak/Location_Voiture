@@ -274,7 +274,7 @@ voiture agence::nouvelle_voiture()
     cin>>marque;
     cout<<"prix par jour de location: ";
     cin>>prix_par_jour;
-    voiture v(immatricule,marque,prix_par_jour);
+    voiture v(immatricule,marque,prix_par_jour,date_auj);
     liste_voiture.push_back(v);
 //ajout voiture dans le parking
     parking_id=parking_disponible();
@@ -296,7 +296,7 @@ voiture agence::get_voiture(string immatricule)
         }
      }
      cout<<"voiture non trouvable";
-     voiture p("nontrouvable","nontrouvable",0);
+     voiture p("nontrouvable","nontrouvable",0,date_auj);
      return p;
 }
 

@@ -126,31 +126,29 @@ using namespace std;
         //Comparaison date remise et date aujourd'hui
         bool date::operator>(date& d)
         {
-            int j,m,a;
-            j=this->jour;
-            m=this->mois;
-            a=this->annee;
 
-            if (a>d.annee)
+
+            if (annee>d.annee)
                 return true;
             else
             {
-                if ( (a==d.annee) && (m>d.mois) )
+                if ( (annee==d.annee) && (mois>d.mois) )
                     return true;
                 else
                 {
-                    if ( (m==d.mois) && (j>d.jour) )
+                    if ( (mois==d.mois) && (jour>d.jour) )
                         return true;
-                    else return false;
+
                 }
 
             }
+            return false;
 
         }
 
         bool date::operator<(date& d)
         {
-            return (d<(*this));
+            return !((*this)>d);
         }
 
 

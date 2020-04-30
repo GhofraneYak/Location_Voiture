@@ -29,21 +29,31 @@ using namespace std;
             ofstream f;
             f.open ("fichier_client.txt", fstream::app);
             f.close();
-            //Ouverture du fichier en mode lecture
-            freopen("fichier_client.txt", "r", stdin);
+             //création du fichier au cas où il n'existe pas
+            ofstream f;
+            f.open ("fichier_client.txt", fstream::app);
+            f.close();
+            //verifier si le fichier est vide et l'ouverture  en mode lecture
+            fstream k;
+            k.open ("fichier_client.txt", fstream::in);
             int nb;
-            cin>>nb;
+            bool isEmpty(true);
+            int line;
+            if( !( k>> line ))
+                nb=0;
+            else
+                nb=line;
             string nom;
             long ident;
             int j,m,a;
             for (int i=0;i<nb;i++)
             {
-                cin>>nom>>ident>>j>>m>>a;
+                k>>nom>>ident>>j>>m>>a;
                 date da(j,m,a);
                 client c(nom,ident,da);
                 liste_client.push_back(c);
             }
-            fclose;
+            k.close();
         }
 
         //Sauvegarder les données des clients dans le fichier
@@ -232,10 +242,15 @@ void agence::lire_fichier_voiture()
     ofstream f;
     f.open ("fichiervoitures.txt", fstream::app);
     f.close();
-    //Ouverture du fichier en mode lecture
-    freopen("fichiervoitures.txt", "r", stdin);
-
+    fstream k;
+    k.open ("fichiervoitures.txt", fstream::in);
     int nbr;
+    bool isEmpty(true);
+    int line;
+    if( !( k>> line ))
+        nbr=0;
+    else
+        nbr=line;
     string immatricule;
     string marque;
     float prix_par_jour;
@@ -265,7 +280,7 @@ void agence::lire_fichier_voiture()
         date::age_voiture(date_auj,date_de_creation);
         liste_voiture.push_back(v);
     }
-    fclose(stdin);
+    k.close();
 }
 
 voiture agence::nouvelle_voiture()
@@ -514,13 +529,10 @@ float agence::prix_min(string marq)
 
 void agence::sauvegarder_liste_voiture()
 {
-    int nbr_voitures=0;
-    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
-        nbr_voitures++;
-    if (nbr_voitures!=0)
+    if (liste_voiture.size()!=0)
     {
         freopen("fichiervoitures.txt", "w", stdout);
-        cout<<nbr_voitures;
+        cout<<liste_voiture.size();
         for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
         {
             (*v).sauvegarder_une_voiture();
@@ -536,45 +548,53 @@ void agence::sauvegarder_liste_voiture()
 
            list<parking> agence::lire_fichier_park()
     {
-            //ouverture de fichier
+            
             //création du fichier au cas où il n'existe pas
             ofstream f;
             f.open ("fichier_parking.txt", fstream::app);
             f.close();
-            //Ouverture du fichier en mode lecture
-            freopen("fichier_parking.txt", "r", stdin);
+            //ouverture de fichier
+            fstream k;
+            k.open ("fichier_client.txt", fstream::in);
             int nbP;
-            cin>>nbP;
-            bool test=false;
+            bool isEmpty(true);
+            int line;
+            if( !( k>> line ))
+                nbP=0;
+            else
+                nbP=line;
             int id,capacite,nbV;
             string immatricule;
             list<voiture> liste;
-
-            while (test==false)
+            for(int j=0;j<nbP;j++)//j id de parking
             {
-                cin>>id>>capacite>>nbV;
+                cin>>capacite>>nbV;
                 for(int i=0;i<nbV;i++)
                 {
                     cin>>immatricule;
                     liste.push_back(get_voiture(immatricule));
                 }
-                parking p(id,capacite,nbV,liste);
+                parking p(j,capacite,nbV,liste);
                 liste_parking.push_back(p);
                 while (liste.empty()==false)//assurer que la liste revenir vide lorsque on a un autre parking
                 {
                         liste.pop_front();
                 }
-
-                if (immatricule=="")   //fin du fichier
-                {
-                    test=true;
-                }
-
             }
-            fclose;
+            k.close();
+
 
     }
-
+    
+     void agence::nouveau_parking()
+    {
+            int c;
+            cout<<"donner la capacite de parking :";
+            cin>>c;
+            parking p(c);
+            liste_parking.push_back(p);
+    }
+    
     int agence::parking_disponible()
     {
         list<parking>::iterator it;

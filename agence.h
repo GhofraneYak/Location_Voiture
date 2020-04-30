@@ -41,7 +41,7 @@ class agence
  
          list<parking> lire_fichier_park(); 
         void sauvegarder_parking(list<parking> l); 
-
+         void nouveau_parking();
          int recherche_parking(voiture v);
          int parking_disponible(); 
 

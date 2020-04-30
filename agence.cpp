@@ -19,8 +19,9 @@ using namespace std;
     void agence::lire_fichier_cl()
         {
             //création du fichier au cas où il n'existe pas
-            freopen("fichier_client.txt","a+", stdout);
-            fclose;
+            ofstream f;
+            f.open ("fichier_client.txt", fstream::app);
+            f.close();
             //Ouverture du fichier en mode lecture
             freopen("fichier_client.txt", "r", stdin);
             int nb;
@@ -42,6 +43,7 @@ using namespace std;
     void sauvegarder_client(list<client> l)
         {
             freopen("fichier_client.txt", "a+", stdout);
+            cout<<l.size();//1ere ligne contient combient de client on a
             list<client>::iterator it;
             for (it=l.begin();it!=l.end();++it)
             {
@@ -63,7 +65,7 @@ using namespace std;
         }
 
     //Ajouter un client
-    void agence::ajouter_client(string nom, long id, date date_auj)
+    void agence::ajouter_client(string nom, long id)
         {
             client c(nom,id,date_auj);
             liste_client.push_back(c);
@@ -91,33 +93,90 @@ using namespace std;
 
         //********************** Création d'un contrat **************************//
 
-            voiture agence::wanted_car(){
-                    
-                cout<<"Entrer la marque desirée";
-                string marq;
-                cin>>marq;
-                cout<<"Entrer le prix qu'il ne faut pas depasser";
-                int pmax;
-                cin>>pmax;
-                cout<<"Entrer la date de prise de la voiture";
-                int x,y,z;
-                cin>>x>>y>>z;
-                date date_de_prise(x,y,z);
-                cout<<"Entrer la date de remise de la voiture";
-                cin>>x>>y>>z;
-                date date_de_remise(x,y,z);
+            voiture agence::wanted_car(date date_de_prise,date date_de_remise){
+
+                string test;
+                bool test2;
                 list<voiture>::iterator i;
                 list<voiture> L;
                 L=liste_voiture_available(date_de_prise,date_de_remise);
-
-                for(i=L.begin();i!=L.end();i++)
+                int n;
+                do
                 {
-                    if (    ((*i).get_marque()==marq )&& ((*i).get_prix()<pmax) )
-                        return *i ;
+                    list<voiture> liste_rejete;
+                    cout<<"Entrer la marque desiree parmie :";
+                    //liste des marques dans l'agence
+                    list<string> marque=get_liste_des_marques();
+                    for(list<string>::iterator s=marque.begin();s!=marque.end();s++)
+                        cout<<(*s)<<" ";
+                    string marq;
+                    cin>>marq;
+                    while(marque_existe(marq)==false)//verifier marque existe
+                    {
+                        cout<<"la marque que vous avez donnee est introuvable priere de saisir de nouveau la marque parmi :";
+                        for(list<string>::iterator s=marque.begin();s!=marque.end();s++)
+                            cout<<(*s)<<" ";
+                        cin>> marq;
+                    }
+                    cout<<"les prix de location pour "<<marq<<" est entre"<<prix_min(marq)<<" et "<<prix_max(marq);
+                    cout<<"Entrer le prix qu'il ne faut pas depasser";
+                    int pmax;
+                    cin>>pmax;
+                    cout<<"Entrer le prix minimal:";
+                    int pmin;
+                    cin>>pmin;
+                    for(i=L.begin();i!=L.end();i++)
+                    {
+                        if (    ((*i).get_marque()==marq )&& ((*i).get_prix()<=pmax) && ((*i).get_prix()>=pmin)   )
+                            {
+                                test2=true;
+                                cout<<"voici une voiture qui possede ces caracteristique\n";
+                                cout<<(*i);
+                                cout<<"\voulez vous confirmer votre choix ( ecrire Oui pour confirmer) :";
+                                cin>>test;
+                                if (test=="Oui")
+                                    return (*i);
+                                else
+                                    {
+                                        liste_rejete.push_back(*i);
+                                        L.erase(i);
+                                    }
+                            }
 
-                }
+                    }
+                    if(test2==false)
+                    {
+                        cout<<"il n'y a pas une voiture avec ces caracteristique disponible entre les deux dates que vous donnez";
+                        cout<<"\npriere choisir de nouveau les caracteristique \n";
+                    }
+                    else
+                    {
+                        cout<<"voulez vous choisir d'apres les voitures que nous avons proposer (ecrire Oui pour confirmer) :";
+                        cin>>test;
+                        if (test=="Oui")
+                        {
+                            for(list<voiture>::iterator v=liste_rejete.begin();v!=liste_rejete.end();v++)
+                            {
+                                cout<<(*v)<<"\n1: confirmer le choix\n2:la voiture suivante\n3changer les caracteristiques";
+                                cin>>n;
+                                do
+                                {
+                                    if(n==1)
+                                        return (*v);
+                                    else if (n!=2)
+                                        cout<<"ecrire 1 ou 2 ou 3";
 
-        }
+                                }while((n<=0)&&(n>3));
+                                if (n==3)
+                                    break;
+                            }
+                        }
+                    }
+                    cout<<"il n'y a pas une voiture avec ces caracteristique disponible entre les deux dates que vous donnez";
+                    cout<<"\npriere choisir de nouveau les caracteristique \n";
+                }while (true);
+
+          }
 
         void agence::creer_contrat(){
             //ID contrat
@@ -132,7 +191,7 @@ using namespace std;
             long y;
             cin>>y;
             if (!(client_existe(y)))
-                ajouter_client(nom,y,date_auj);
+                ajouter_client(nom,y);
             else
             {
                 list<client>::iterator c;
@@ -143,9 +202,17 @@ using namespace std;
                 }
                 
             }
+            //date
+            cout<<"Entrer la date de prise de la voiture: jour mois annee ";//preciser le saisir
+            int x,w,z;
+            cin>>x>>w>>z;
+            date date_de_prise(x,w,z);
+            cout<<"Entrer la date de remise de la voiture: jour mois annee ";
+            cin>>x>>y>>z;
+            date date_de_remise(x,w,z);
             // voiture
-           voiture v = wanted_car();
-
+           voiture v = wanted_car(date_de_prise,date_de_remise);
+           location_voiture(v,y,date_de_prise,date_de_remise);
         }
 
 
@@ -155,8 +222,9 @@ using namespace std;
 void agence::lire_fichier_voiture()
 {
     //création du fichier au cas où il n'existe pas
-    freopen("fichiervoitures.txt","a+", stdout);
-    fclose(stdout);
+    ofstream f;
+    f.open ("fichiervoitures.txt", fstream::app);
+    f.close();
     //Ouverture du fichier en mode lecture
     freopen("fichiervoitures.txt", "r", stdin);
 
@@ -172,7 +240,7 @@ void agence::lire_fichier_voiture()
     date date_de_remise;
     long id_client;
     cin>>nbr;
-    for(int n=0;i<nbr;n++)
+    for(int n=0;n<nbr;n++)
     {
         int a,b,c,d,e,f,g,h,i;
         cin>>immatricule>>marque>>prix_par_jour>>a>>b>>c>>age>>est_loue>>nbr_de_fois_loue>>d>>e>>f>>g>>h>>i>>id_client;
@@ -241,7 +309,7 @@ void agence::location_voiture(voiture& v,long id_client,date date_de_prise,date 
     v.set_nbr_de_fois_loue();
 }
 
-void update_v_non_disponible(voiture& v)
+void agence::update_v_non_disponible(voiture& v)
 {
     int parking_id;
     v.set_voiture_loue();
@@ -398,6 +466,45 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
     return voitures_disponibles;
 }
 
+bool agence::marque_existe(string marq)
+{
+    list<string> liste_marque=get_liste_des_marques();
+    for(list<string>::iterator i=liste_marque.begin();i!=liste_marque.end();i++)
+    {
+        if (marq==(*i))
+            return true;
+    }
+    return false;
+}
+
+float agence::prix_max(string marq)
+{
+    int M=0;
+    for(list<voiture>::iterator i=liste_voiture.begin();i!=liste_voiture.end();i++)
+    {
+        if (marq==(*i).get_marque())
+           {
+              if(M<(*i).get_prix())
+                M=(*i).get_prix();
+           }
+    }
+    return M;
+}
+
+float agence::prix_min(string marq)
+{
+    int m=(*liste_voiture.begin()).get_prix();
+    for(list<voiture>::iterator i=liste_voiture.begin();i!=liste_voiture.end();i++)
+    {
+        if (marq==(*i).get_marque())
+           {
+              if(m>(*i).get_prix())
+                m=(*i).get_prix();
+           }
+    }
+    return m;
+}
+
 void agence::sauvegarder_liste_voiture()
 {
     int nbr_voitures=0;
@@ -424,8 +531,9 @@ void agence::sauvegarder_liste_voiture()
     {
             //ouverture de fichier
             //création du fichier au cas où il n'existe pas
-            freopen("fichier_parking.txt", "a+", stdout);
-            fclose;
+            ofstream f;
+            f.open ("fichier_parking.txt", fstream::app);
+            f.close();
             //Ouverture du fichier en mode lecture
             freopen("fichier_parking.txt", "r", stdin);
             int nbP;
@@ -445,7 +553,10 @@ void agence::sauvegarder_liste_voiture()
                 }
                 parking p(id,capacite,nbV,liste);
                 liste_parking.push_back(p);
-
+                while (liste.empty()==false)//assurer que la liste revenir vide lorsque on a un autre parking
+                {
+                        liste.pop_front();
+                }
 
                 if (immatricule=="")   //fin du fichier
                 {
@@ -472,7 +583,7 @@ void agence::sauvegarder_liste_voiture()
     void agence::sauvegarder_parking(list<parking> l)
     {
         freopen("liste_parking", "a+", stdout);
-        cout<<( *(l.begin()) ).get_nbV();
+        cout<<parking::nbP;
         list<parking>::iterator it;
         for(it=l.begin();it!=l.end();it++)
         {
@@ -480,9 +591,8 @@ void agence::sauvegarder_liste_voiture()
             cout<<(*it).get_capacite()<<" ";
             cout<<(*it).get_nbV()<<" ";
             
-            for(list<parking>::iterator j=(*it).get_voitures_de_parking().begin();it!=(*it).get_voitures_de_parking().end();j++)
-            cout<<(*j).get_immatricule()<<endl;
-
+            for(list<voiture>::iterator j=(*it).get_voitures_de_parking().begin();j!=(*it).get_voitures_de_parking().end();j++)
+                 cout<<(*j).get_immatricule()<<" ";
         }
         fclose;
 
@@ -499,7 +609,7 @@ void agence::sauvegarder_liste_voiture()
         list<voiture> liste2=p2.get_voitures_de_parking();
         list<voiture> liste3=p3.get_voitures_de_parking();
 
-            //véfification !
+            
         if ((nb1+nb2)>(c-nb3))
         {
             cout<<"Vous ne pouvez pas faire cette opération"<<endl;
@@ -543,7 +653,7 @@ void agence::sauvegarder_liste_voiture()
 
 
 
-     void agence::vider_selon_categories(parking p1, parking p2, parking p3)
+         void agence::vider_selon_categories(parking p1, parking p2, parking p3)
     {
 
 
@@ -551,24 +661,25 @@ void agence::sauvegarder_liste_voiture()
         int nb3=p3.get_nbV();
         int c2=p2.get_capacite();
         int c3=p3.get_capacite();
+        list<voiture> liste1=p1.get_voitures_de_parking();
         list<string> listem=get_liste_des_marques();
         list<string>::iterator m;
-        list<parking>::iterator p;
+        list<voiture>::iterator v;
         for(m=listem.begin();m!=listem.end();m++)
         {
             int nb=0;
-            for(p=liste1.begin();v!=liste1.end();p++)
+            for(v=liste1.begin();v!=liste1.end();v++)
             {
-                if ((*v).get_marque()==m)
+                if ((*v).get_marque()==(*m))
                 {
                     nb++;
                 }
             }
             if (nb<=(c2-nb2))
             {
-                for(p=liste1.begin();v!=liste1.end();p++)
+                for(v=liste1.begin();v!=liste1.end();v++)
                 {
-                    if ((*v).get_marque()==m)
+                    if ((*v).get_marque()==(*m))
                     {
                         p2.ajout_voiture((*v));
                         p1.delete_voiture((*v));
@@ -579,9 +690,9 @@ void agence::sauvegarder_liste_voiture()
 
             else if (nb<=(c3-nb3))
             {
-                for(p=liste1.begin();p!=liste1.end();p++)
+                for(v=liste1.begin();v!=liste1.end();v++)
                 {
-                    if ((*v).get_marque()==m)
+                    if ((*v).get_marque()==(*m))
                     {
                         p3.ajout_voiture((*v));
                         p1.delete_voiture((*v));

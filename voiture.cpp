@@ -26,8 +26,10 @@ voiture::voiture(string immatricule,string marque,float prix_par_jour,date date_
     age=0;
     est_loue=false;
     nbr_de_fois_loue=0;
-    date date_de_prise(1,1,1);
-    date date_de_remise(1,1,1);
+    date d1(1,1,1);
+    date_de_prise=d1;
+    date_de_remise=d1;
+    id_client=-1;
 }
 
 voiture::voiture(string marque,float prix_max)
@@ -127,7 +129,7 @@ ostream& operator<<(ostream& s,const voiture& V)
 {
     s<<"Voiture "<<V.immatricule<<":\n\tMarque: "<<V.marque<<"\n";
     s<<"\tAge: "<<V.age<<"\n\tPrix par jour: "<<V.prix_par_jour<<endl;
-    s<<"\tNombre de fois loue"<<V.nbr_de_fois_loue<<endl;
+    s<<"\tNombre de fois loue: "<<V.nbr_de_fois_loue<<endl;
     if (V.est_loue==true)
         s<<"la voiture est loue a l'instant"<<endl;
     else

@@ -27,15 +27,12 @@ class agence
 
         bool client_existe(long id);
 
-        void ajouter_client(string nom, long id, date date_auj);
+        void ajouter_client(string nom, long id);
 
         void creer_client();
 
         list<client> client_6_mois();
 
-
-
-        void update_age_voiture(voiture v);
 
 //********************** Méthodes des parkings **************************//
         //Lire les données concernant les parking
@@ -51,7 +48,7 @@ class agence
         parking ce_parking(int);
     
  //********************** Création du contrat **************************//
-    voiture wanted_car();    
+    voiture wanted_car(date,date);    
     void creer_contrat();
         
 /*************************Methodes liste de voitures *****************/
@@ -69,6 +66,9 @@ class agence
     list<string> get_liste_des_marques();//methode qui aide à trie les voitures selon leur marque
     list<voiture> tri_voiture_categorie();
     list<voiture> liste_voiture_available(date d1,date d2);// pour avoir les voitures disponible dans une periode precise
+    bool marque_existe(string marq);//dans wanted car
+    float prix_max(string marq);//dans wanted car
+    float prix_min(string marq);//dans wanted car
     void sauvegarder_liste_voiture();
 };
 

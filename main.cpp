@@ -1,7 +1,7 @@
-#include <iostream>
+#include<iostream>
 #include"agence.h"
 #include"client.h"
-#include "voiture.h"
+#include"voiture.h"
 #include"parking.h"
 #include"date.h"
 
@@ -22,32 +22,39 @@ int main(){
         << "7:La liste des véhicules triés selon l'âge"<<'\n'
         << "8: la moyenne de prix des véhicules d'un parking"<< '\n'<< "9:Grouper les véhicules de 2 parking dans un troisième parking"<<'\n'
         << "10:Vider un parking de ses véhicules en les distribuant à 2 autres parkings en fonction de leurs catégories"<<'\n'
-        << "11: Creer un contrat" << '\n'<< "12: Ajouter une voiture"<<'\n'<< "13: Pour Ajouter un nouveau client" <<'\n'<< "14: Nouveau parking"<<'\n'
-        << "15: Afficher info d'un parking"<< '\n'<<"Tapez 0 pour fermer l'app" <<endl;
+        << "11: Creer un contrat" << '\n'<< "12: Ajouter une voiture"<<'\n'<< "13: Pour Ajouter un nouveau client" <<'\n'<< "14: Nouveau parking"<< '\n'<< "15: Afficher info d'un parking"<< '\n'
+        <<"Tapez 0 pour fermer l'app" <<endl;
         cin>> x;
         switch (x)
         {
         case 1:
             voiture v=ag.la_voiture_plus_ancienne();
             cout<< v;
+            break;
         case 2:
             voiture v=ag.la_voiture_plus_loue();
             cout<< v;
+            break;
         case 3:
             list<voiture> L =ag.voitures_2_3();
             cout<< L;
+            break;
          case 4:
             list<voiture> L=ag.voiture_actuellement_loue();
             cout<< L;
+            break;
         case 5:
             list<client> L=ag.client_6_mois();
             cout<< L;
+            break;
         case 6:
             list<voiture> L=ag.tri_voiture_categorie();
             cout<<L;
+            break;
         case 7:
             list<voiture> L=ag.tri_voitures_age();
             cout<<L;
+            break;
         case 8:
             iterator i;
             int y;
@@ -60,29 +67,25 @@ int main(){
                 else
                     cout<< "parking not found";
             }
-
+            break;
         case 9:
             int a,b,c;
-            cout<< "Entrer l'id du parking"<< endl;
-            cin>>a;
-            cout<< "Entrer l'id du parking"<< endl;
-            cin>>b;
-            cout<< "Entrer l'id du parking"<< endl;
-            cin>>c;
+            cout<< "Entrer l'id des 3 parkings"<< endl;
+            cin>>a>>b>>c;
             ag.grouper_dans_un_parking(ag.ce_parking(a),ag.ce_parking(b) , ag.ce_parking(c));
+            break;
         case 10:
             int a,b,c;
-            cout<< "Entrer l'id du parking"<< endl;
-            cin>>a;
-            cout<< "Entrer l'id du parking"<< endl;
-            cin>>b;
-            cout<< "Entrer l'id du parking"<< endl;
-            cin>>c;
+            cout<< "Entrer l'id des 3 parkings"<< endl;
+            cin>>a>>b>>c;
             ag.vider_selon_categories(ag.ce_parking(a),ag.ce_parking(b),ag.ce_parking(c));
+            break;
         case 11:
             ag.creer_contrat();
+            break;
         case 12:
             Voiture v=ag.nouvelle_voiture();
+            break;
         case 13:
             string nom;
             long id;
@@ -90,11 +93,13 @@ int main(){
             cout<< "Entrer  nom id date_auj ";
             cin>>nom>>id>>date_auj;
             ag.ajouter_client();
+            break;
         case 14:
             int x;
             cout<< "Entrer la capacitee du parking";
             cin>>x;
             parking p(x);
+            break;
         case 15:
             int x;
             cout<< "Entrer l'id du parking pour voir tous ses infos";
@@ -105,8 +110,7 @@ int main(){
                 if ((*it).get_id()==x)
                     (*it).affichage_info();
             }
-
-
+            break;
 
         }
     }

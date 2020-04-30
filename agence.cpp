@@ -1,4 +1,3 @@
-//f
 #include <iostream>
 #include <list>
 #include "agence.h"

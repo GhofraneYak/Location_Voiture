@@ -25,10 +25,7 @@ using namespace std;
         //********************** Méthodes des clients **************************//
     void agence::lire_fichier_cl()
         {
-            //création du fichier au cas où il n'existe pas
-            ofstream f;
-            f.open ("fichier_client.txt", fstream::app);
-            f.close();
+         
              //création du fichier au cas où il n'existe pas
             ofstream f;
             f.open ("fichier_client.txt", fstream::app);
@@ -57,12 +54,12 @@ using namespace std;
         }
 
         //Sauvegarder les données des clients dans le fichier
-    void sauvegarder_client(list<client> l)
+    void agence::sauvegarder_client()
         {
-            freopen("fichier_client.txt", "a+", stdout);
-            cout<<l.size();//1ere ligne contient combient de client on a
+            freopen("fichier_client.txt", "w", stdout);
+            cout<<liste_client.size()<<"\n";//1ere ligne contient combient de client on a
             list<client>::iterator it;
-            for (it=l.begin();it!=l.end();++it)
+            for (it=liste_client.begin();it!=liste_client.end();++it)
             {
                 cout<<(*it).getnom()<<" "<<(*it).getid()<<" "<<((*it).getdate()).getjour()<<" "<<((*it).getdate()).getmois()<<" "<<((*it).getdate()).getannee()<<endl;
             }
@@ -607,12 +604,12 @@ void agence::sauvegarder_liste_voiture()
         }
     }
 
-    void agence::sauvegarder_parking(list<parking> l)
+    void agence::sauvegarder_parking()
     {
-        freopen("liste_parking", "a+", stdout);
-        cout<<parking::nbP;
+        freopen("liste_parking", "w", stdout);
+        cout<<parking::nbP<<"\n";
         list<parking>::iterator it;
-        for(it=l.begin();it!=l.end();it++)
+        for(it=liste_parking.begin();it!=liste_parking.end();it++)
         {
             cout<<(*it).get_id()<<" ";
             cout<<(*it).get_capacite()<<" ";
@@ -734,6 +731,14 @@ void agence::sauvegarder_liste_voiture()
 
         }
 
+    }
+
+
+    agence::~agence()
+    {
+        sauvegarder_client();
+        sauvegarder_liste_voiture();
+        sauvegarder_parking();      
     }
                     
                     

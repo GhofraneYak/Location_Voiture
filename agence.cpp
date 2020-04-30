@@ -529,7 +529,7 @@ void agence::sauvegarder_liste_voiture()
     if (liste_voiture.size()!=0)
     {
         freopen("fichiervoitures.txt", "w", stdout);
-        cout<<liste_voiture.size();
+        cout<<liste_voiture.size()<<"\n";
         for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
         {
             (*v).sauvegarder_une_voiture();

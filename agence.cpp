@@ -303,7 +303,7 @@ voiture agence::nouvelle_voiture()
 
 }
 
-voiture agence::get_voiture(string immatricule)
+list<voiture>::iterator agence::get_voiture(string immatricule)
 {
      string voiture_immatricule;
      for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
@@ -311,12 +311,11 @@ voiture agence::get_voiture(string immatricule)
         voiture_immatricule=(*v).get_immatricule();
         if(voiture_immatricule==immatricule)
         {
-            return (*v);
+            return v;
         }
      }
      cout<<"voiture non trouvable";
-     voiture p("nontrouvable","nontrouvable",0,date_auj);
-     return p;
+     
 }
 
 
@@ -358,7 +357,7 @@ void agence::update_v_disponible(voiture& v)
 
 voiture agence::la_voiture_plus_ancienne()
 {
-    int m;
+    int m=(*liste_voiture.begin()).get_age();
     list<voiture>::iterator voiture_ancienne;
     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
     {
@@ -413,10 +412,15 @@ list<voiture> agence::voiture_actuellement_loue()
         if((*v).voiture_loue())
             voitures_non_disponible.push_back(*v);
     }
-    cout<<"les voitures non disponibles à l'instant sont: "<<endl;
-    for(list<voiture>::iterator v=voitures_non_disponible.begin();v!=voitures_non_disponible.end();v++)
+    if(voitures_non_disponible.size()==0)
+        cout<<"Tout les voitures sont disponibles\n";
+    else
     {
-        cout<<*v<<endl;
+        cout<<"les voitures non disponibles a l'instant sont: "<<endl;
+        for(list<voiture>::iterator v=voitures_non_disponible.begin();v!=voitures_non_disponible.end();v++)
+        {
+            cout<<*v<<endl;
+        }
     }
     return voitures_non_disponible;
 }
@@ -432,6 +436,11 @@ list<voiture> agence::tri_voitures_age()
             if((*v).get_age()==i)
                 voiture_tri_par_age.push_back(*v);
         }
+    }
+    cout<<"Voila liste des voitures triee selon leur age: "<<endl;
+    for(list<voiture>::iterator v=voiture_tri_par_age.begin();v!=voiture_tri_par_age.end();v++)
+    {
+        cout<<(*v)<<endl;
     }
     return voiture_tri_par_age;
 
@@ -461,6 +470,11 @@ list<voiture> agence::tri_voiture_categorie()
             if(*m==(*v).get_marque())
                 voiture_par_categorie.push_back(*v);
         }
+    }
+    cout<<"Voila liste des voitures triee selon leur marque: "<<endl;
+    for(list<voiture>::iterator v=voiture_par_categorie.begin();v!=voiture_par_categorie.end();v++)
+    {
+        cout<<(*v)<<endl;
     }
     return voiture_par_categorie;
 }

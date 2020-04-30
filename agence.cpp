@@ -265,7 +265,7 @@ void agence::lire_fichier_voiture()
     for(int n=0;n<nbr;n++)
     {
         int a,b,c,d,e,f,g,h,i;
-        cin>>immatricule>>marque>>prix_par_jour>>a>>b>>c>>age>>est_loue>>nbr_de_fois_loue>>d>>e>>f>>g>>h>>i>>id_client;
+        k>>immatricule>>marque>>prix_par_jour>>a>>b>>c>>age>>est_loue>>nbr_de_fois_loue>>d>>e>>f>>g>>h>>i>>id_client;
         date date_de_creation(a,b,c);
         date date_de_prise(d,e,f);
         date date_de_remise(g,h,i);
@@ -277,7 +277,7 @@ void agence::lire_fichier_voiture()
             if (    (date_de_prise<date_auj) && (date_de_remise>date_auj) && (v.voiture_loue()==false)  )
                 update_v_non_disponible(v);
         }
-        date::age_voiture(date_auj,date_de_creation);
+        v.set_age(date::age_voiture(date_auj,date_de_creation));
         liste_voiture.push_back(v);
     }
     k.close();
@@ -568,10 +568,10 @@ void agence::sauvegarder_liste_voiture()
             list<voiture> liste;
             for(int j=0;j<nbP;j++)//j id de parking
             {
-                cin>>capacite>>nbV;
+                k>>capacite>>nbV;
                 for(int i=0;i<nbV;i++)
                 {
-                    cin>>immatricule;
+                    k>>immatricule;
                     liste.push_back(get_voiture(immatricule));
                 }
                 parking p(j,capacite,nbV,liste);

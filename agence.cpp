@@ -13,7 +13,15 @@ using namespace std;
             lire_fichier_cl();
             lire_fichier_voiture();
         }
-
+    //**********************Verifier l'agence contient des donnée dans les fichier***************//
+    bool agence::agence_vide_de_parking()
+    {
+        return liste_parking.size();
+    }
+    bool agence::agence_vide_de_voiture()
+    {
+        return liste_voiture.size();
+    }
         //********************** Méthodes des clients **************************//
     void agence::lire_fichier_cl()
         {

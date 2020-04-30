@@ -15,14 +15,16 @@ class agence
 
         //Constructeur
         agence(date d_auj);
-    
+ //**********************Verifier l'agence contient des donnée dans les fichier***************//
+    bool agence_vide_de_parking();//ces methodes sont utile pour le main 
+    bool agence_vide_de_voiture();
 //********************** Méthodes des clients **************************//
         //Lire les données concernant les clients
         void lire_fichier_cl();
 
 
         //Sauvegarder les données des clients dans le fichier
-        void sauvegarder_client(list<client> l);
+        void sauvegarder_client();
 
 
         bool client_existe(long id);
@@ -38,8 +40,8 @@ class agence
         //Lire les données concernant les parking
  
          list<parking> lire_fichier_park(); 
-        void sauvegarder_parking(list<parking> l); 
-
+        void sauvegarder_parking(); 
+         void nouveau_parking();
          int recherche_parking(voiture v);
          int parking_disponible(); 
 
@@ -70,5 +72,8 @@ class agence
     float prix_max(string marq);//dans wanted car
     float prix_min(string marq);//dans wanted car
     void sauvegarder_liste_voiture();
+    
+ //************************destructeur*************************//
+    ~agence();
 };
 

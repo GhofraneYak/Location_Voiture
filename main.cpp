@@ -11,11 +11,28 @@ using namespace std;
 int main(){
 
     agence ag(date_auj); // date d'aujourdh'ui
-    int x ;
+    int x=99 ;
     while (x!=0)
     {
 
-
+        if(ag.agence_vide_de_parking())
+        {
+            cout<<"l'agence ne possede pas aucun parking\n";
+            cout << "Entrez un numero : \n1:Ajout un nouveau parking\nTapez 0 pour fermer l'app";
+            cin>>x;
+            if(x==1)
+                ag.nouveau_parking();
+        }
+        if(ag.agence_vide_de_voiture())
+        {
+            cout<<"l'agence ne possede pas aucune voiture\n";
+            cout << "Entrez un numero : \n1:Ajout une nouvelle voiture\nTapez 0 pour fermer l'app";
+            cin>>x;
+            if(x==1)
+                ag.nouvelle_voiture();
+        }
+        else
+        {
         cout << "Entrez un numero : "<< '\n' << "1: vehicule le plus ancien" << '\n' << "2:Le véhicule ayant le plus été loué"<< '\n'
         << "3:Les voitures ayant un âge entre 2 et 3 ans" << '\n' << "4: la liste des véhicules actuellement loués" << '\n'
         << "5: la liste des clients n'ayant pas loué de véhicules depuis plus de 6 mois"<< '\n'<<"6:La liste des véhicules triés selon la catégorie"<< '\n'
@@ -112,6 +129,7 @@ int main(){
             }
             break;
 
+        }
         }
     }
 

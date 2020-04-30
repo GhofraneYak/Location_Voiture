@@ -39,7 +39,7 @@ class agence
 //********************** Méthodes des parkings **************************//
         //Lire les données concernant les parking
  
-         list<parking> lire_fichier_park(); 
+         void lire_fichier_park(); 
         void sauvegarder_parking(); 
          void nouveau_parking();
          int recherche_parking(voiture v);
@@ -50,7 +50,7 @@ class agence
         parking ce_parking(int);
     
  //********************** Création du contrat **************************//
-    voiture wanted_car(date,date);    
+    list<voiture>::iterator wanted_car(date,date);    
     void creer_contrat();
         
 /*************************Methodes liste de voitures *****************/

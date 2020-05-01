@@ -212,6 +212,8 @@ using namespace std;
                 }
                 while (ok==false);
                 //test
+                 date d(j,m,a);
+                 return d;
             }
 
 

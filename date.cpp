@@ -159,7 +159,7 @@ using namespace std;
                   else return true;
             }
             //Date de retour de la voiture
-            date& date::date_remise(int nb_jr)
+            date date::date_remise(int nb_jr)
             {
                 int j,m,a;
                 j=this->jour+nb_jr;
@@ -212,8 +212,8 @@ using namespace std;
                 }
                 while (ok==false);
                 //test
-                 //date d(j,m,a);
-                 //return d;
+                 date d(j,m,a);
+                 return d;
             }
 
 

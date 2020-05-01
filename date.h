@@ -34,7 +34,8 @@ class date
 
             int dernier_loc_client(date date_cl);
     
-            date& date_remise(int nb_jr);
+            //Passage non par valeur
+            date date_remise(int nb_jr);
 
             //Date résultante d'une différence entre 2 dates
             static date soustraction(const date& d1, const date& d2);

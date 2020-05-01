@@ -107,10 +107,10 @@ using namespace std;
 
         //********************** Création d'un contrat **************************//
 
-            voiture agence::wanted_car(date date_de_prise,date date_de_remise){
+            list<voiture>::iterator agence::wanted_car(date date_de_prise,date date_de_remise){
 
                 string test;
-                bool test2;
+                bool test2=false;
                 list<voiture>::iterator i;
                 list<voiture> L;
                 L=liste_voiture_available(date_de_prise,date_de_remise);
@@ -132,11 +132,11 @@ using namespace std;
                             cout<<(*s)<<" ";
                         cin>> marq;
                     }
-                    cout<<"les prix de location pour "<<marq<<" est entre"<<prix_min(marq)<<" et "<<prix_max(marq);
-                    cout<<"Entrer le prix qu'il ne faut pas depasser";
+                    cout<<"les prix de location pour "<<marq<<" est entre "<<prix_min(marq)<<" et "<<prix_max(marq);
+                    cout<<"\nEntrer le prix qu'il ne faut pas depasser: ";
                     int pmax;
                     cin>>pmax;
-                    cout<<"Entrer le prix minimal:";
+                    cout<<"Entrer le prix minimal: ";
                     int pmin;
                     cin>>pmin;
                     for(i=L.begin();i!=L.end();i++)
@@ -149,12 +149,9 @@ using namespace std;
                                 cout<<"\voulez vous confirmer votre choix ( ecrire Oui pour confirmer) :";
                                 cin>>test;
                                 if (test=="Oui")
-                                    return (*i);
+                                    return(find(liste_voiture.begin(), liste_voiture.end(), (*i)));
                                 else
-                                    {
-                                        liste_rejete.push_back(*i);
-                                        L.erase(i);
-                                    }
+                                    liste_rejete.push_back(*i);
                             }
 
                     }
@@ -176,7 +173,7 @@ using namespace std;
                                 do
                                 {
                                     if(n==1)
-                                        return (*v);
+                                        return(find(liste_voiture.begin(), liste_voiture.end(), (*i)));
                                     else if (n!=2)
                                         cout<<"ecrire 1 ou 2 ou 3";
 
@@ -194,14 +191,14 @@ using namespace std;
 
         void agence::creer_contrat(){
             //ID contrat
-             cout<<"Donner un id pour ce contrat";
+             cout<<"Donner un id pour ce contrat: ";
              int id;
              cin>>id;
              // Client
-            cout<<"Entrer le nom du client";
+            cout<<"Entrer le nom du client: ";
             string nom;
             cin>>nom;
-            cout<<"Entrer la cin du client";
+            cout<<"Entrer la cin du client: ";
             long y;
             cin>>y;
             if (!(client_existe(y)))
@@ -222,11 +219,11 @@ using namespace std;
             cin>>x>>w>>z;
             date date_de_prise(x,w,z);
             cout<<"Entrer la date de remise de la voiture: jour mois annee ";
-            cin>>x>>y>>z;
-            date date_de_remise(x,w,z);
-            // voiture
-           voiture v = wanted_car(date_de_prise,date_de_remise);
-           location_voiture(v,y,date_de_prise,date_de_remise);
+            cin>>x>>h>>z;
+            date date_de_remise(x,h,z);
+             // voiture
+           list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise);
+           location_voiture((*v),y,date_de_prise,date_de_remise);
         }
 
 
@@ -583,7 +580,7 @@ void agence::sauvegarder_liste_voiture()
                 for(int i=0;i<nbV;i++)
                 {
                     k>>immatricule;
-                    liste.push_back(get_voiture(immatricule));
+                    liste.push_back((*get_voiture(immatricule)));
                 }
                 parking p(j,capacite,nbV,liste);
                 liste_parking.push_back(p);
@@ -594,8 +591,8 @@ void agence::sauvegarder_liste_voiture()
             }
             k.close();
 
-
     }
+
     
      void agence::nouveau_parking()
     {

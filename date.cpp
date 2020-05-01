@@ -210,7 +210,7 @@ using namespace std;
                         ok=true;
 
                 }
-                while (ok=false);
+                while (ok==false);
                 //test
             }
 

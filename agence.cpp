@@ -219,8 +219,8 @@ using namespace std;
             cin>>x>>w>>z;
             date date_de_prise(x,w,z);
             cout<<"Entrer la date de remise de la voiture: jour mois annee ";
-            cin>>x>>h>>z;
-            date date_de_remise(x,h,z);
+            cin>>x>>w>>z;
+            date date_de_remise(x,w,z);
              // voiture
            list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise);
            location_voiture((*v),y,date_de_prise,date_de_remise);

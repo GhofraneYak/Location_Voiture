@@ -9,9 +9,9 @@ using namespace std;
     agence::agence(date d_auj)
         {
             date_auj=d_auj;
-            lire_fichier_park();
             lire_fichier_cl();
             lire_fichier_voiture();
+            lire_fichier_park();
         }
     //**********************Verifier l'agence contient des donnée dans les fichier***************//
     bool agence::agence_vide_de_parking()
@@ -563,7 +563,7 @@ void agence::sauvegarder_liste_voiture()
             f.close();
             //ouverture de fichier
             fstream k;
-            k.open ("fichier_client.txt", fstream::in);
+            k.open ("fichier_parking.txt", fstream::in);
             int nbP;
             bool isEmpty(true);
             int line;
@@ -617,7 +617,7 @@ void agence::sauvegarder_liste_voiture()
 
     void agence::sauvegarder_parking()
     {
-        freopen("liste_parking", "w", stdout);
+        freopen("fichier_parking.txt", "w", stdout);
         cout<<parking::nbP<<"\n";
         list<parking>::iterator it;
         for(it=liste_parking.begin();it!=liste_parking.end();it++)

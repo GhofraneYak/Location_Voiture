@@ -46,8 +46,8 @@ class agence
          int recherche_parking(string);
          int parking_disponible();
         list<parking> get_liste_parking();
-        void grouper_dans_un_parking(parking p1, parking p2, parking p3);
-        void vider_selon_categories(parking p1, parking p2, parking p3);
+        void grouper_dans_un_parking(parking& p1, parking& p2, parking& p3);
+        void vider_selon_categories(parking& p1, parking& p2, parking& p3);
         parking ce_parking(int);
 
  //********************** Création du contrat **************************//

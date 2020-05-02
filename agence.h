@@ -16,7 +16,7 @@ class agence
         //Constructeur
         agence(date d_auj);
  //**********************Verifier l'agence contient des donnée dans les fichier***************//
-    bool agence_vide_de_parking();//ces methodes sont utile pour le main 
+    bool agence_vide_de_parking();//ces methodes sont utile pour le main
     bool agence_vide_de_voiture();
 //********************** Méthodes des clients **************************//
         //Lire les données concernant les clients
@@ -38,28 +38,28 @@ class agence
 
 //********************** Méthodes des parkings **************************//
         //Lire les données concernant les parking
- 
-         void lire_fichier_park(); 
-        void sauvegarder_parking(); 
-         void nouveau_parking();
-         int recherche_parking(voiture v);
-         int parking_disponible(); 
 
-        void grouper_dans_un_parking(parking p1, parking p2, parking p3); 
+         void lire_fichier_park();
+        void sauvegarder_parking();
+         void nouveau_parking();
+         int recherche_parking(string);
+         int parking_disponible();
+        list<parking> get_liste_parking();
+        void grouper_dans_un_parking(parking p1, parking p2, parking p3);
         void vider_selon_categories(parking p1, parking p2, parking p3);
         parking ce_parking(int);
-    
+
  //********************** Création du contrat **************************//
-    list<voiture>::iterator wanted_car(date,date);    
+    list<voiture>::iterator wanted_car(date,date);
     void creer_contrat();
-        
+
 /*************************Methodes liste de voitures *****************/
     void lire_fichier_voiture();//appeler cette methode dans le constructeur d'agence
     voiture nouvelle_voiture();
     list<voiture>::iterator get_voiture(string immatricule); //pour avoir liste de voiture de chaque parking
     void location_voiture(voiture& v,long id_client,date date_de_prise,date date_de_remise);//appeler dans creation contrat
     void update_v_non_disponible(voiture& v);//elle change le boolean et supprime la voiture de parking on l'appel dans update methode
-    void update_v_disponible(voiture& v);//elle appel parking disponible pour remettre voiture dans un parking. on l'appel dans update methode     
+    void update_v_disponible(voiture& v);//elle appel parking disponible pour remettre voiture dans un parking. on l'appel dans update methode
     voiture la_voiture_plus_ancienne();
     voiture la_voiture_plus_loue();
     list<voiture> voitures_2_3();//dont l'age entre 2 et 3ans
@@ -72,7 +72,7 @@ class agence
     float prix_max(string marq);//dans wanted car
     float prix_min(string marq);//dans wanted car
     void sauvegarder_liste_voiture();
-    
+
  //************************destructeur*************************//
     ~agence();
 };

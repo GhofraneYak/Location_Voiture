@@ -1,5 +1,6 @@
 #include<iostream>
 #include"agence.cpp"
+#include <ctime>
 
 using namespace std;
 

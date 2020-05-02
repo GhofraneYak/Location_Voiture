@@ -58,12 +58,10 @@ int main(){
                 switch(y)
                 {
                     case 1:
-                        voiture v=ag.la_voiture_plus_ancienne();
-                        cout<< v;
+                        cout<<ag.la_voiture_plus_ancienne();
                         break;
                     case 2:
-                        voiture v=ag.la_voiture_plus_loue();
-                        cout<< v;
+                        cout<<ag.la_voiture_plus_loue();
                         break;
                     case 3:
                         list<voiture> L =ag.voitures_2_3();

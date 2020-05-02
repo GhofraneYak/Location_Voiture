@@ -40,6 +40,7 @@ class agence
         //Lire les données concernant les parking
 
          void lire_fichier_park();
+         parking get_parking(int id);
         void sauvegarder_parking();
          void nouveau_parking();
          int recherche_parking(string);

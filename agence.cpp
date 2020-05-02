@@ -636,6 +636,15 @@ void agence::sauvegarder_liste_voiture()
         nouveau_parking();
     }
 
+    parking agence::get_parking(int id)
+    {
+        list<parking>::iterator p;
+        p=liste_parking.begin();
+        advance(p, id);
+        return (*p);
+    }
+
+
    void agence::sauvegarder_parking()
     {
         freopen("fichier_parking.txt", "w", stdout);
@@ -659,16 +668,16 @@ void agence::sauvegarder_liste_voiture()
 
     }
 
-    void agence::grouper_dans_un_parking(parking p1, parking p2, parking p3)
+    void agence::grouper_dans_un_parking(parking& p1, parking& p2, parking& p3)
     {
 
         int nb1=p1.get_nbV();
         int nb2=p2.get_nbV();
         int nb3=p3.get_nbV();
         int c=p3.get_capacite();
-        list<voiture> liste1=p1.get_voitures_de_parking();
-        list<voiture> liste2=p2.get_voitures_de_parking();
-        list<voiture> liste3=p3.get_voitures_de_parking();
+        list<voiture>& liste1=p1.get_voitures_de_parking();
+        list<voiture>& liste2=p2.get_voitures_de_parking();
+        list<voiture>& liste3=p3.get_voitures_de_parking();
 
 
         if ((nb1+nb2)>(c-nb3))
@@ -714,7 +723,7 @@ void agence::sauvegarder_liste_voiture()
 
 
 
-         void agence::vider_selon_categories(parking p1, parking p2, parking p3)
+         void agence::vider_selon_categories(parking& p1, parking& p2, parking& p3)
     {
 
 
@@ -765,7 +774,8 @@ void agence::sauvegarder_liste_voiture()
             {
                 cout<<"Vous ne pouvez pas réaliser cette opération"<<endl;
             }
-
+            nb2=p2.get_nbV();//mettre ajour nbr de voitures pour savoir la capacité
+            nb3=p3.get_nbV();
         }
 
     }

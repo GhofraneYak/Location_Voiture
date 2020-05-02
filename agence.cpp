@@ -13,7 +13,7 @@ using namespace std;
 
             lire_fichier_cl();
             lire_fichier_voiture();
-            //lire_fichier_park();
+            lire_fichier_park();
         }
     //**********************Verifier l'agence contient des donnée dans les fichier***************//
     bool agence::agence_vide_de_parking()
@@ -292,10 +292,10 @@ voiture agence::nouvelle_voiture()
     voiture v(immatricule,marque,prix_par_jour,date_auj);
     liste_voiture.push_back(v);
 //ajout voiture dans le parking
-   /* parking_id=parking_disponible();
+  parking_id=parking_disponible();
     list<parking>::iterator p =liste_parking.begin();
     advance(p, parking_id);
-    (*p).ajout_voiture(v);*/
+    (*p).ajout_voiture(v);
 
 }
 
@@ -327,11 +327,11 @@ void agence::update_v_non_disponible(voiture& v)
 {
     int parking_id;
     v.set_voiture_loue();
-    /*parking_id=recherche_parking(v);
+    parking_id=recherche_parking(v.get_immatricule());
     list<parking>::iterator p;
     p=liste_parking.begin();
     advance(p, parking_id);
-    (*p).delete_voiture(v);*/
+    (*p).delete_voiture(v);
 }
 
 void agence::update_v_disponible(voiture& v)
@@ -344,11 +344,11 @@ void agence::update_v_disponible(voiture& v)
     v.set_date_de_remise(d);
     v.set_voiture_loue();
     //ajout voiture dans un parking
-    /*parking_id=parking_disponible();
+  parking_id=parking_disponible();
     list<parking>::iterator p;
     p=liste_parking.begin();
     advance(p, parking_id);
-    (*p).ajout_voiture(v);*/
+    (*p).ajout_voiture(v);
 }
 
 voiture agence::la_voiture_plus_ancienne()
@@ -551,7 +551,7 @@ void agence::sauvegarder_liste_voiture()
 }
 
         //********************** Méthodes des parkings **************************//
-/*
+
 
            void agence::lire_fichier_park()
     {
@@ -568,7 +568,7 @@ void agence::sauvegarder_liste_voiture()
                 nbP=0;
             else
                 nbP=line;
-            int id,capacite,nbV;
+            int capacite,nbV;
             string immatricule;
             list<voiture> liste;
             for(int j=0;j<nbP;j++)//j id de parking
@@ -579,16 +579,27 @@ void agence::sauvegarder_liste_voiture()
                     k>>immatricule;
                     liste.push_back((*get_voiture(immatricule)));
                 }
-                parking p(j,capacite,nbV,liste);
+                if(nbV!=0)
+                {parking p(j,capacite,nbV,liste);
                 liste_parking.push_back(p);
                 while (liste.empty()==false)//assurer que la liste revenir vide lorsque on a un autre parking
                 {
                         liste.pop_front();
+                }}
+                else
+                {
+                    parking p(capacite,j);
+                    liste_parking.push_back(p);
                 }
             }
             k.close();
 
     }
+
+        list<parking> agence::get_liste_parking()
+        {
+            return liste_parking;
+        }
 
         void agence::nouveau_parking()
     {
@@ -609,21 +620,29 @@ void agence::sauvegarder_liste_voiture()
                 return((*it).get_id());
             }
         }
+        cout<<"Tout les parking sont pleines voulez vous saisir un nouveau parking";
+        nouveau_parking();
     }
 
-    void agence::sauvegarder_parking()
+   void agence::sauvegarder_parking()
     {
         freopen("fichier_parking.txt", "w", stdout);
         cout<<parking::nbP<<"\n";
+        if (parking::nbP!=0)
+      {
         list<parking>::iterator it;
         for(it=liste_parking.begin();it!=liste_parking.end();it++)
         {
             cout<<(*it).get_capacite()<<" ";
             cout<<(*it).get_nbV()<<" ";
-
-            for(list<voiture>::iterator j=(*it).get_voitures_de_parking().begin();j!=(*it).get_voitures_de_parking().end();j++)
-                 cout<<(*j).get_immatricule()<<" ";
+            if((*it).get_nbV()!=0)
+            {for(list<voiture>::iterator j=(*it).get_voitures_de_parking().begin();j!=(*it).get_voitures_de_parking().end();j++)
+                 cout<<(*j).get_immatricule()<<" ";}
+                 cout<<"\n";
         }
+
+
+      }
         fclose;
 
     }
@@ -663,16 +682,16 @@ void agence::sauvegarder_liste_voiture()
     }
 
 
-      int agence::recherche_parking(voiture v)
+     int agence::recherche_parking(string immatricule)
     {
         list<parking>::iterator it;
         list<voiture>::iterator l;
         for(it=liste_parking.begin();it!=liste_parking.end();it++)
         {
-            list<voiture> liste=(*it).get_voitures_de_parking();
+            list<voiture>& liste=(*it).get_voitures_de_parking();
             for(l=liste.begin();l!=liste.end();l++)
             {
-                if ((*l)==v)
+                if ((*l).get_immatricule()==immatricule)
                 {
                     return((*it).get_id());
                 }
@@ -737,13 +756,11 @@ void agence::sauvegarder_liste_voiture()
 
         }
 
-    }*/
+    }
 
     agence::~agence()
     {
         sauvegarder_client();
         sauvegarder_liste_voiture();
-        //sauvegarder_parking();
+        sauvegarder_parking();
     }
-
-

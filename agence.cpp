@@ -263,6 +263,7 @@ void agence::lire_fichier_voiture()
         date date_de_creation(a,b,c);
         date date_de_prise(d,e,f);
         date date_de_remise(g,h,i);
+        voiture v(immatricule, marque,prix_par_jour,date_de_creation,age, est_loue, nbr_de_fois_loue,date_de_prise ,date_de_remise,id_client);
         v.set_age(date::age_voiture(date_auj,date_de_creation));
         liste_voiture.push_front(v);
 

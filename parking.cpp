@@ -3,16 +3,27 @@
 using namespace std;
 
     int parking::nbP=0;
+
     parking::parking(int c)
     {
         id=nbP;
         nbP++;
         capacite=c;
         nbV=0;
+        //date d(1,1,1);
+       // voiture v("introuvable","introuvable",0,d);
+        //liste_voiture.push_back(v);
     }
-
+    parking::parking(int c,int idd)
+    {
+        id=idd;
+        capacite=c;
+        nbV=0;
+        nbP++;
+    }
     parking::parking(int id,int c,int nb, list<voiture> liste)
     {
+        nbP++;
         capacite=c;
         this->id=id;
         nbV=nb;
@@ -24,7 +35,7 @@ using namespace std;
 
     }
 
-    list<voiture> parking::get_voitures_de_parking()
+    list<voiture>& parking::get_voitures_de_parking()
     {
             return liste_voiture;
     }
@@ -91,7 +102,7 @@ using namespace std;
     bool parking::parking_disponible()
     {
 
-        return(capacite>=nbV);
+        return(capacite>nbV);
     }
 
     bool parking::voiture_est_dans_ce_parking(voiture V)

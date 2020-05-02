@@ -55,6 +55,7 @@ class agence
 
 /*************************Methodes liste de voitures *****************/
     void lire_fichier_voiture();//appeler cette methode dans le constructeur d'agence
+    void update_voiture();
     voiture nouvelle_voiture();
     list<voiture>::iterator get_voiture(string immatricule); //pour avoir liste de voiture de chaque parking
     void location_voiture(voiture& v,long id_client,date date_de_prise,date date_de_remise);//appeler dans creation contrat

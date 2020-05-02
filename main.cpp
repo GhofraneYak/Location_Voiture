@@ -6,8 +6,6 @@ using namespace std;
 int main(){
     
     time_t now = time(0);
-
-
     tm *ltm = localtime(&now);
     int a,m,j;
     a=1900 + ltm->tm_year;

@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <list>
 #include "agence.h"
@@ -9,9 +10,10 @@ using namespace std;
     agence::agence(date d_auj)
         {
             date_auj=d_auj;
+
             lire_fichier_cl();
             lire_fichier_voiture();
-            lire_fichier_park();
+            //lire_fichier_park();
         }
     //**********************Verifier l'agence contient des donnée dans les fichier***************//
     bool agence::agence_vide_de_parking()
@@ -25,8 +27,7 @@ using namespace std;
         //********************** Méthodes des clients **************************//
     void agence::lire_fichier_cl()
         {
-         
-             //création du fichier au cas où il n'existe pas
+            //création du fichier au cas où il n'existe pas
             ofstream f;
             f.open ("fichier_client.txt", fstream::app);
             f.close();
@@ -34,7 +35,6 @@ using namespace std;
             fstream k;
             k.open ("fichier_client.txt", fstream::in);
             int nb;
-            bool isEmpty(true);
             int line;
             if( !( k>> line ))
                 nb=0;
@@ -139,9 +139,10 @@ using namespace std;
                     cout<<"Entrer le prix minimal: ";
                     int pmin;
                     cin>>pmin;
+
                     for(i=L.begin();i!=L.end();i++)
                     {
-                        if (    ((*i).get_marque()==marq )&& ((*i).get_prix()<=pmax) && ((*i).get_prix()>=pmin)   )
+                        if (    ((*i).get_marque()==marq )&& ((*i).get_prix()<=pmax) && ((*i).get_prix()>=pmin)  )
                             {
                                 test2=true;
                                 cout<<"voici une voiture qui possede ces caracteristique\n";
@@ -211,7 +212,7 @@ using namespace std;
                     if ((*c).getid()==y)
                         (*c).setdate(date_auj); //da : date d'aujourd'hui
                 }
-                
+
             }
             //date
             cout<<"Entrer la date de prise de la voiture: jour mois annee ";//preciser le saisir
@@ -221,7 +222,7 @@ using namespace std;
             cout<<"Entrer la date de remise de la voiture: jour mois annee ";
             cin>>x>>w>>z;
             date date_de_remise(x,w,z);
-             // voiture
+            // voiture
            list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise);
            location_voiture((*v),y,date_de_prise,date_de_remise);
         }
@@ -239,7 +240,6 @@ void agence::lire_fichier_voiture()
     fstream k;
     k.open ("fichiervoitures.txt", fstream::in);
     int nbr;
-    bool isEmpty(true);
     int line;
     if( !( k>> line ))
         nbr=0;
@@ -255,7 +255,6 @@ void agence::lire_fichier_voiture()
     date date_de_prise;
     date date_de_remise;
     long id_client;
-    cin>>nbr;
     for(int n=0;n<nbr;n++)
     {
         int a,b,c,d,e,f,g,h,i;
@@ -293,10 +292,10 @@ voiture agence::nouvelle_voiture()
     voiture v(immatricule,marque,prix_par_jour,date_auj);
     liste_voiture.push_back(v);
 //ajout voiture dans le parking
-    parking_id=parking_disponible();
+   /* parking_id=parking_disponible();
     list<parking>::iterator p =liste_parking.begin();
     advance(p, parking_id);
-    (*p).ajout_voiture(v);
+    (*p).ajout_voiture(v);*/
 
 }
 
@@ -312,7 +311,7 @@ list<voiture>::iterator agence::get_voiture(string immatricule)
         }
      }
      cout<<"voiture non trouvable";
-     
+
 }
 
 
@@ -328,11 +327,11 @@ void agence::update_v_non_disponible(voiture& v)
 {
     int parking_id;
     v.set_voiture_loue();
-    parking_id=recherche_parking(v);
+    /*parking_id=recherche_parking(v);
     list<parking>::iterator p;
     p=liste_parking.begin();
     advance(p, parking_id);
-    (*p).delete_voiture(v);
+    (*p).delete_voiture(v);*/
 }
 
 void agence::update_v_disponible(voiture& v)
@@ -340,16 +339,16 @@ void agence::update_v_disponible(voiture& v)
     int parking_id;
     date d(1,1,1);
     //voiture disponible
-    v.set_id_client(0);
+    v.set_id_client(-1);
     v.set_date_de_prise(d);
     v.set_date_de_remise(d);
     v.set_voiture_loue();
     //ajout voiture dans un parking
-    parking_id=parking_disponible();
+    /*parking_id=parking_disponible();
     list<parking>::iterator p;
     p=liste_parking.begin();
     advance(p, parking_id);
-    (*p).ajout_voiture(v);
+    (*p).ajout_voiture(v);*/
 }
 
 voiture agence::la_voiture_plus_ancienne()
@@ -410,7 +409,7 @@ list<voiture> agence::voiture_actuellement_loue()
             voitures_non_disponible.push_back(*v);
     }
     if(voitures_non_disponible.size()==0)
-        cout<<"Tout les voitures sont disponibles\n";
+        cout<<"Tout les voitures sont disponibles";
     else
     {
         cout<<"les voitures non disponibles a l'instant sont: "<<endl;
@@ -437,8 +436,9 @@ list<voiture> agence::tri_voitures_age()
     cout<<"Voila liste des voitures triee selon leur age: "<<endl;
     for(list<voiture>::iterator v=voiture_tri_par_age.begin();v!=voiture_tri_par_age.end();v++)
     {
-        cout<<(*v)<<endl;
+        cout<<*v<<endl;
     }
+
     return voiture_tri_par_age;
 
 }
@@ -471,7 +471,7 @@ list<voiture> agence::tri_voiture_categorie()
     cout<<"Voila liste des voitures triee selon leur marque: "<<endl;
     for(list<voiture>::iterator v=voiture_par_categorie.begin();v!=voiture_par_categorie.end();v++)
     {
-        cout<<(*v)<<endl;
+        cout<<*v<<endl;
     }
     return voiture_par_categorie;
 }
@@ -490,7 +490,7 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
            date date_p=(*v).get_date_de_prise();
            date date_r=(*v).get_date_de_remise();
            if ((d2<date_p)||(date_r<d1))
-               voitures_disponibles.push_back(*v);
+              voitures_disponibles.push_back(*v);
        }
     }
     return voitures_disponibles;
@@ -547,25 +547,22 @@ void agence::sauvegarder_liste_voiture()
         }
         fclose(stdout);
     }
-    else
-        cout<<"pas de voitures enregistrés";
+
 }
 
         //********************** Méthodes des parkings **************************//
-       
+/*
 
            void agence::lire_fichier_park()
     {
-            
+            //ouverture de fichier
             //création du fichier au cas où il n'existe pas
             ofstream f;
             f.open ("fichier_parking.txt", fstream::app);
             f.close();
-            //ouverture de fichier
             fstream k;
             k.open ("fichier_parking.txt", fstream::in);
             int nbP;
-            bool isEmpty(true);
             int line;
             if( !( k>> line ))
                 nbP=0;
@@ -593,8 +590,7 @@ void agence::sauvegarder_liste_voiture()
 
     }
 
-    
-     void agence::nouveau_parking()
+        void agence::nouveau_parking()
     {
             int c;
             cout<<"donner la capacite de parking :";
@@ -602,7 +598,7 @@ void agence::sauvegarder_liste_voiture()
             parking p(c);
             liste_parking.push_back(p);
     }
-    
+
     int agence::parking_disponible()
     {
         list<parking>::iterator it;
@@ -622,10 +618,9 @@ void agence::sauvegarder_liste_voiture()
         list<parking>::iterator it;
         for(it=liste_parking.begin();it!=liste_parking.end();it++)
         {
-            cout<<(*it).get_id()<<" ";
             cout<<(*it).get_capacite()<<" ";
             cout<<(*it).get_nbV()<<" ";
-            
+
             for(list<voiture>::iterator j=(*it).get_voitures_de_parking().begin();j!=(*it).get_voitures_de_parking().end();j++)
                  cout<<(*j).get_immatricule()<<" ";
         }
@@ -644,7 +639,7 @@ void agence::sauvegarder_liste_voiture()
         list<voiture> liste2=p2.get_voitures_de_parking();
         list<voiture> liste3=p3.get_voitures_de_parking();
 
-            
+
         if ((nb1+nb2)>(c-nb3))
         {
             cout<<"Vous ne pouvez pas faire cette opération"<<endl;
@@ -742,16 +737,13 @@ void agence::sauvegarder_liste_voiture()
 
         }
 
-    }
-
+    }*/
 
     agence::~agence()
     {
         sauvegarder_client();
         sauvegarder_liste_voiture();
-        sauvegarder_parking();      
+        //sauvegarder_parking();
     }
-                    
-                    
-  
+
 

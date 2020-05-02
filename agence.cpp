@@ -14,6 +14,7 @@ using namespace std;
             lire_fichier_cl();
             lire_fichier_voiture();
             lire_fichier_park();
+            update_voiture();
         }
     //**********************Verifier l'agence contient des donnée dans les fichier***************//
     bool agence::agence_vide_de_parking()
@@ -262,19 +263,29 @@ void agence::lire_fichier_voiture()
         date date_de_creation(a,b,c);
         date date_de_prise(d,e,f);
         date date_de_remise(g,h,i);
-        voiture v(immatricule, marque,prix_par_jour,date_de_creation,age, est_loue, nbr_de_fois_loue,date_de_prise ,date_de_remise,id_client);
-        if (    (date_de_remise<date_auj) && (v.voiture_loue()==true) )
-            update_v_disponible(v);
-        else
-        {
-            if (    (date_de_prise<date_auj) && (date_de_remise>date_auj) && (v.voiture_loue()==false)  )
-                update_v_non_disponible(v);
-        }
         v.set_age(date::age_voiture(date_auj,date_de_creation));
-        liste_voiture.push_back(v);
+        liste_voiture.push_front(v);
+
     }
     k.close();
 }
+
+void agence::update_voiture()
+{
+    for(list<voiture>::iterator it=liste_voiture.begin();it!=liste_voiture.end();it++)
+    {
+
+    if (    ((*it).get_date_de_remise()<date_auj) && ((*it).voiture_loue()==true) )
+            update_v_disponible((*it));
+        else
+        {
+            if (    ((*it).get_date_de_prise()<date_auj) && ((*it).get_date_de_remise()>date_auj) && ((*it).voiture_loue()==false)  )
+                update_v_non_disponible((*it));
+        }
+
+
+     }
+    }
 
 voiture agence::nouvelle_voiture()
 {

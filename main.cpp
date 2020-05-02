@@ -4,7 +4,17 @@
 using namespace std;
 
 int main(){
+    
+    time_t now = time(0);
 
+
+    tm *ltm = localtime(&now);
+    int a,m,j;
+    a=1900 + ltm->tm_year;
+    m=1 + ltm->tm_mon;
+    j=ltm->tm_mday;
+    date date_auj(j,m,a);
+    
     agence ag(date_auj);
 
     int x,y;

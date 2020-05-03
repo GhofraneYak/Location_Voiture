@@ -15,9 +15,10 @@ class agence
 
         //Constructeur
         agence(date d_auj);
-        void get_liste_parking();
-        void get_liste_voiture();
-        void get_liste_client();
+        list<parking> get_liste_parking();
+        list<voiture> get_liste_voiture();
+        list<client> get_liste_client();
+
  //**********************Verifier l'agence contient des donnée dans les fichier***************//
     bool agence_vide_de_parking();//ces methodes sont utile pour le main
     bool agence_vide_de_voiture();

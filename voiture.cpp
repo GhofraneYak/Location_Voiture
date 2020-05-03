@@ -131,9 +131,9 @@ ostream& operator<<(ostream& s,const voiture& V)
     s<<"\tAge: "<<V.age<<"\n\tPrix par jour: "<<V.prix_par_jour<<endl;
     s<<"\tNombre de fois loue: "<<V.nbr_de_fois_loue<<endl;
     if (V.est_loue==true)
-        s<<"la voiture est loue a l'instant"<<endl;
+        s<<"La voiture est louee pour le moment"<<endl;
     else
-        s<<"\tla voiture est disponible a l'instant "<<endl;
+        s<<"\t La voiture est disponible pour le moment "<<endl;
     return s;
 }
 

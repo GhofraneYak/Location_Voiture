@@ -43,7 +43,7 @@ using namespace std;
 
     void parking::affichage_info()
     {
-        cout<<"Le parking numero "<<id<<" a comme capacite :"<<capacite<<" et contient les immatricules des voitures suivantes :"<<endl;
+        cout<<"Le parking numero  "<<id<<" a comme capacite  : "<<capacite<<" et contient les immatricules des voitures suivantes :"<<endl;
 
         list<voiture>::iterator it;
         if(nbV!=0)
@@ -88,7 +88,7 @@ using namespace std;
 
             if  (parking_disponible()==false)
             {
-                cout<<"Le parking est plein"<<endl;
+                cout<<"Le parking numero : "<<id<< " est plein"<<endl;
             }
             else
             {
@@ -139,10 +139,11 @@ using namespace std;
                 liste_voiture.erase(it);
                 nbV--;
                 voiture_exist=true;
+
             }
        }
        if (voiture_exist==false)
-           cout<<"voiture n est pas deja dans le parking";
+           cout<<"La voiture n'est pas dans ce parking";
    }
 
    void parking::vider_le_parking()
@@ -160,6 +161,6 @@ using namespace std;
            nbV=0;
         }
         else
-            cout<<"l action sera annulee";
+            cout<<"Annulation de l'action";
    }
     parking ::~parking(){}

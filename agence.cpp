@@ -94,6 +94,7 @@ using namespace std;
         {
             client c(nom,id,date_auj);
             liste_client.push_back(c);
+            cout<<"Client ajoute avec succes"<<endl;
         }
 
     //La liste des clients dont la date de leur dernière location dépasse 6mois
@@ -112,7 +113,7 @@ using namespace std;
             }
 
             //Affichage de la liste
-            cout<<"Les clients dont leur date de derniere location depasse les 6 mois:"<<endl;
+            cout<<"Les clients qui ont depasse 6 mois depuis leur derniere location  : "<<endl;
             for (it=l.begin();it!=l.end();++it)
             {
                 cout<<(*it);
@@ -155,16 +156,16 @@ using namespace std;
                     cin>>marq;
                     while(marque_existe(marq)==false)//verifier marque existe
                     {
-                        cout<<"la marque que vous avez donnee est introuvable priere de saisir de nouveau la marque parmi :";
+                        cout<<"La marque que vous avez choisi est introuvable, merci de choisir de nouveau la marque parmi :";
                         for(list<string>::iterator s=marque.begin();s!=marque.end();s++)
                             cout<<(*s)<<" ";
                         cin>> marq;
                     }
-                    cout<<"les prix de location pour "<<marq<<" est entre "<<prix_min(marq)<<" et "<<prix_max(marq);
-                    cout<<"\nEntrer le prix qu'il ne faut pas depasser: ";
+                    cout<<"Les prix de location pour "<<marq<<" varient entre "<<prix_min(marq)<<" et "<<prix_max(marq);
+                    cout<<"\nEntrer le prix que vous ne voulez pas depasser: ";
                     int pmax;
                     cin>>pmax;
-                    cout<<"Entrer le prix minimal: ";
+                    cout<<"Entrer votre bugdet minimal: ";
                     int pmin;
                     cin>>pmin;
 
@@ -173,9 +174,9 @@ using namespace std;
                         if (    ((*i).get_marque()==marq )&& ((*i).get_prix()<=pmax) && ((*i).get_prix()>=pmin)  )
                             {
                                 test2=true;
-                                cout<<"voici une voiture qui possede ces caracteristique\n";
+                                cout<<"Voici une voiture avec ses caracteristiques \n";
                                 cout<<(*i);
-                                cout<<"\voulez vous confirmer votre choix ( ecrire Oui pour confirmer) :";
+                                cout<<"Voulez vous confirmer votre choix ( ecrire Oui pour confirmer) :";
                                 cin>>test;
                                 if (test=="Oui")
                                     return(find(liste_voiture.begin(), liste_voiture.end(), (*i)));
@@ -186,18 +187,18 @@ using namespace std;
                     }
                     if(test2==false)
                     {
-                        cout<<"il n'y a pas une voiture avec ces caracteristique disponible entre les deux dates que vous donnez";
-                        cout<<"\npriere choisir de nouveau les caracteristique \n";
+                        cout<<"il n'y a pas une voiture ,avec les caracteristiques demandees, disponible entre les deux dates de location";
+                        cout<<"\n Merci de choisir de nouveau les caracteristiques \n";
                     }
                     else
                     {
-                        cout<<"voulez vous choisir d'apres les voitures que nous avons proposer (ecrire Oui pour confirmer) :";
+                        cout<<"Voulez vous choisir d'apres les voitures que nous avons deja proposer auparavant  (ecrire Oui pour confirmer) :";
                         cin>>test;
                         if (test=="Oui")
                         {
                             for(list<voiture>::iterator v=liste_rejete.begin();v!=liste_rejete.end();v++)
                             {
-                                cout<<(*v)<<"\n1: confirmer le choix\n2:la voiture suivante\n3changer les caracteristiques";
+                                cout<<(*v)<<"\n1: Confirmer le choix\n2: La voiture suivante\n3: Changer les caracteristiques";
                                 cin>>n;
                                 do
                                 {
@@ -212,15 +213,15 @@ using namespace std;
                             }
                         }
                     }
-                    cout<<"il n'y a pas une voiture avec ces caracteristique disponible entre les deux dates que vous donnez";
-                    cout<<"\npriere choisir de nouveau les caracteristique \n";
+                    cout<<"Il n'y a pas une voiture avec les caracteristiques demandees, disponible entre les deux dates de location";
+                    cout<<"\n Merci de  choisir de nouveau les caracteristiques \n";
                 }while (true);
 
           }
 
         void agence::creer_contrat(){
             //ID contrat
-             cout<<"Donner un id pour ce contrat: ";
+             cout<<"Donner un id pour le contrat: ";
              int id;
              cin>>id;
              // Client
@@ -243,16 +244,17 @@ using namespace std;
 
             }
             //date
-            cout<<"Entrer la date de prise de la voiture: jour mois annee ";//preciser le saisir
+            cout<<"Entrer la date de prise de la voiture : jour mois annee ";//preciser le saisir
             int x,w,z;
             cin>>x>>w>>z;
             date date_de_prise(x,w,z);
-            cout<<"Entrer la date de remise de la voiture: jour mois annee ";
+            cout<<"Entrer la date de remise de la voiture : jour mois annee ";
             cin>>x>>w>>z;
             date date_de_remise(x,w,z);
             // voiture
            list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise);
            location_voiture((*v),y,date_de_prise,date_de_remise);
+           cout<<"Contract creer avec succes "<<endl;
         }
 
 
@@ -326,7 +328,7 @@ voiture agence::nouvelle_voiture()
     cin>>immatricule;
     cout<<"marque: ";
     cin>>marque;
-    cout<<"prix par jour de location: ";
+    cout<<"Prix par jour de location: ";
     cin>>prix_par_jour;
     voiture v(immatricule,marque,prix_par_jour,date_auj);
     liste_voiture.push_back(v);
@@ -335,6 +337,7 @@ voiture agence::nouvelle_voiture()
     list<parking>::iterator p =liste_parking.begin();
     advance(p, parking_id);
     (*p).ajout_voiture(v);
+    cout<<"Operation reussie"<<endl;
 
 }
 
@@ -349,7 +352,7 @@ list<voiture>::iterator agence::get_voiture(string immatricule)
             return v;
         }
      }
-     cout<<"voiture non trouvable";
+     cout<<"Voiture n'exsite pas";
 
 }
 
@@ -419,7 +422,7 @@ voiture agence::la_voiture_plus_loue()
            voiture_plus_loue=v;
        }
    }
-   cout<<"la voiture la plus loue ("<<m<<" fois) est "<<*voiture_plus_loue;
+   cout<<"La voiture la plus louee  ("<<m<<"  fois) est "<<*voiture_plus_loue;
    return *voiture_plus_loue;
 }
 
@@ -431,7 +434,7 @@ list<voiture> agence::voitures_2_3()
         if(((*v).get_age()==2)||((*v).get_age()==3))
             voitures_2_3.push_back(*v);
     }
-    cout<<"les voitures dont leurs age entre 2 et 3 ans sont: "<<endl;
+    cout<<"Les voitures d'age entre 2 et 3 ans sont : "<<endl;
     for(list<voiture>::iterator v=voitures_2_3.begin();v!=voitures_2_3.end();v++)
     {
         cout<<*v<<endl;
@@ -448,10 +451,10 @@ list<voiture> agence::voiture_actuellement_loue()
             voitures_non_disponible.push_back(*v);
     }
     if(voitures_non_disponible.size()==0)
-        cout<<"Tout les voitures sont disponibles";
+        cout<<"Toutes les voitures sont disponibles";
     else
     {
-        cout<<"les voitures non disponibles a l'instant sont: "<<endl;
+        cout<<"Les voitures non disponibles pour le moment sont : "<<endl;
         for(list<voiture>::iterator v=voitures_non_disponible.begin();v!=voitures_non_disponible.end();v++)
         {
             cout<<*v<<endl;
@@ -472,7 +475,7 @@ list<voiture> agence::tri_voitures_age()
                 voiture_tri_par_age.push_back(*v);
         }
     }
-    cout<<"Voila liste des voitures triee selon leur age: "<<endl;
+    cout<<"La liste des voitures triee selon leur age: "<<endl;
     for(list<voiture>::iterator v=voiture_tri_par_age.begin();v!=voiture_tri_par_age.end();v++)
     {
         cout<<*v<<endl;
@@ -507,7 +510,7 @@ list<voiture> agence::tri_voiture_categorie()
                 voiture_par_categorie.push_back(*v);
         }
     }
-    cout<<"Voila liste des voitures triee selon leur marque: "<<endl;
+    cout<<"La liste des voitures triee selon leur marque: "<<endl;
     for(list<voiture>::iterator v=voiture_par_categorie.begin();v!=voiture_par_categorie.end();v++)
     {
         cout<<*v<<endl;
@@ -621,7 +624,7 @@ void agence::sauvegarder_liste_voiture()
                 if(nbV!=0)
                 {parking p(j,capacite,nbV,liste);
                 liste_parking.push_back(p);
-                while (liste.empty()==false)//assurer que la liste revenir vide lorsque on a un autre parking
+                while (liste.empty()==false)//assurer que la liste revient  vide lorsque on a un autre parking
                 {
                         liste.pop_front();
                 }}
@@ -643,10 +646,11 @@ void agence::sauvegarder_liste_voiture()
         void agence::nouveau_parking()
     {
             int c;
-            cout<<"donner la capacite de parking :";
+            cout<<"Donner la capacite du parking :"<<endl;
             cin>>c;
             parking p(c);
             liste_parking.push_back(p);
+            cout<<"Parking ajoute avec succes"<<endl;
     }
 
     int agence::parking_disponible()
@@ -659,7 +663,7 @@ void agence::sauvegarder_liste_voiture()
                 return((*it).get_id());
             }
         }
-        cout<<"Tout les parking sont pleines voulez vous saisir un nouveau parking";
+        cout<<"Tous les parking sont occupes, voulez vous creer un nouveau parking";
         nouveau_parking();
     }
 
@@ -709,7 +713,7 @@ void agence::sauvegarder_liste_voiture()
 
         if ((nb1+nb2)>(c-nb3))
         {
-            cout<<"Vous ne pouvez pas faire cette opération"<<endl;
+            cout<<"Vous ne pouvez pas faire cette operation"<<endl;
         }
         else
         {
@@ -724,6 +728,7 @@ void agence::sauvegarder_liste_voiture()
                 p3.ajout_voiture((*it));
                 p2.delete_voiture((*it));
             }
+        cout<<"Operation reussie"<<endl;
 
         }
 
@@ -782,7 +787,6 @@ void agence::sauvegarder_liste_voiture()
                         p1.delete_voiture((*v));
                     }
                 }
-
             }
 
             else if (nb<=(c3-nb3))
@@ -795,14 +799,13 @@ void agence::sauvegarder_liste_voiture()
                         p1.delete_voiture((*v));
                     }
                 }
+                cout<<"Operation reussie"<<endl;
             }
 
             else
             {
-                cout<<"Vous ne pouvez pas réaliser cette opération"<<endl;
+                cout<<"Vous ne pouvez pas realiser cette operation"<<endl;
             }
-            nb2=p2.get_nbV();//mettre ajour nbr de voitures pour savoir la capacité
-            nb3=p3.get_nbV();
         }
 
     }

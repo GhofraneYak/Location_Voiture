@@ -12,14 +12,19 @@ using namespace std;
 
     public:
         static int nbP;
+
+// *******************Constructeurs***********************
         parking(int c,int idd);//lire un parking sans voitures du fichier
         parking (int id, int c, int nb,  list<voiture> liste) ;// re-creation des parking à partir du
         parking (int c);  // création d'un nouveau parking
+
+//*******************getter/setter*****************
         list<voiture>& get_voitures_de_parking();
         int get_capacite();
         void set_capacite(int c);
         int get_nbV();
         int get_id();
+//*******************Methode du parking*****************/
         void affichage_info();
         bool parking_disponible();
         bool voiture_est_dans_ce_parking(voiture); // Recherche d'une voiture dans ce parking
@@ -27,6 +32,7 @@ using namespace std;
         float moy_prix();
         void delete_voiture(voiture);
         void vider_le_parking();
+
         ~parking();
     };
 

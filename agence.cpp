@@ -174,7 +174,7 @@ using namespace std;
 
         //********************** Création d'un contrat **************************//
 
-            list<voiture>::iterator agence::wanted_car(date date_de_prise,date date_de_remise){
+        list<voiture>::iterator agence::wanted_car(date date_de_prise,date date_de_remise){
 
                 string test;
                 bool test2=false;
@@ -194,16 +194,17 @@ using namespace std;
                     cin>>marq;
                     while(marque_existe(marq)==false)//verifier marque existe
                     {
-                        cout<<"La marque que vous avez choisi est introuvable, merci de choisir de nouveau la marque parmi :";
+                        system("cls");
+                        cout<<"la marque que vous avez donnee est introuvable priere de saisir de nouveau la marque parmi :";
                         for(list<string>::iterator s=marque.begin();s!=marque.end();s++)
                             cout<<(*s)<<" ";
                         cin>> marq;
                     }
-                    cout<<"Les prix de location pour "<<marq<<" varient entre "<<prix_min(marq)<<" et "<<prix_max(marq);
-                    cout<<"\nEntrer le prix que vous ne voulez pas depasser: ";
+                    cout<<"les prix de location pour "<<marq<<" est entre "<<prix_min(marq)<<" et "<<prix_max(marq);
+                    cout<<"\nEntrer le prix qu'il ne faut pas depasser: ";
                     int pmax;
                     cin>>pmax;
-                    cout<<"Entrer votre bugdet minimal: ";
+                    cout<<"Entrer le prix minimal: ";
                     int pmin;
                     cin>>pmin;
 
@@ -212,9 +213,14 @@ using namespace std;
                         if (    ((*i).get_marque()==marq )&& ((*i).get_prix()<=pmax) && ((*i).get_prix()>=pmin)  )
                             {
                                 test2=true;
-                                cout<<"Voici une voiture avec ses caracteristiques \n";
+                                system("cls");
+                                cout<<"voici une voiture qui possede ces caracteristique\n";
+                                if (    (*i).get_age() > 15 )
+                                {
+                                    (*i).set_prix((*i).get_prix()*90/100);
+                                }
                                 cout<<(*i);
-                                cout<<"Voulez vous confirmer votre choix ( ecrire Oui pour confirmer) :";
+                                cout<<"\voulez vous confirmer votre choix ( ecrire Oui pour confirmer) :";
                                 cin>>test;
                                 if (test=="Oui")
                                     return(find(liste_voiture.begin(), liste_voiture.end(), (*i)));
@@ -225,18 +231,18 @@ using namespace std;
                     }
                     if(test2==false)
                     {
-                        cout<<"il n'y a pas une voiture ,avec les caracteristiques demandees, disponible entre les deux dates de location";
-                        cout<<"\n Merci de choisir de nouveau les caracteristiques \n";
+                        cout<<"il n'y a pas une voiture avec ces caracteristique disponible entre les deux dates que vous donnez";
+                        cout<<"\npriere choisir de nouveau les caracteristique \n";
                     }
                     else
                     {
-                        cout<<"Voulez vous choisir d'apres les voitures que nous avons deja proposer auparavant  (ecrire Oui pour confirmer) :";
+                        cout<<"voulez vous choisir d'apres les voitures que nous avons proposer (ecrire Oui pour confirmer) :";
                         cin>>test;
                         if (test=="Oui")
                         {
                             for(list<voiture>::iterator v=liste_rejete.begin();v!=liste_rejete.end();v++)
                             {
-                                cout<<(*v)<<"\n1: Confirmer le choix\n2: La voiture suivante\n3: Changer les caracteristiques";
+                                cout<<(*v)<<"\n1: confirmer le choix\n2:la voiture suivante\n3changer les caracteristiques";
                                 cin>>n;
                                 do
                                 {
@@ -251,11 +257,48 @@ using namespace std;
                             }
                         }
                     }
-                    cout<<"Il n'y a pas une voiture avec les caracteristiques demandees, disponible entre les deux dates de location";
-                    cout<<"\n Merci de  choisir de nouveau les caracteristiques \n";
+                    cout<<"il n'y a pas une voiture avec ces caracteristique disponible entre les deux dates que vous donnez";
+                    cout<<"\npriere choisir de nouveau les caracteristique \n";
                 }while (true);
 
           }
+
+        void agence::creer_contrat(){
+            //ID contrat
+             cout<<"Donner un id pour ce contrat: ";
+             int id;
+             cin>>id;
+             // Client
+            cout<<"Entrer le nom du client: ";
+            string nom;
+            cin>>nom;
+            cout<<"Entrer la cin du client: ";
+            long y;
+            cin>>y;
+            if (!(client_existe(y)))
+                ajouter_client(nom,y);
+            else
+            {
+                list<client>::iterator c;
+                for(c=liste_client.begin();c!=liste_client.end();c++)
+                {
+                    if ((*c).getid()==y)
+                        (*c).setdate(date_auj); //da : date d'aujourd'hui
+                }
+
+            }
+            //date
+            cout<<"Entrer la date de prise de la voiture: jour mois annee ";//preciser le saisir
+            int x,w,z;
+            cin>>x>>w>>z;
+            date date_de_prise(x,w,z);
+            cout<<"Entrer la date de remise de la voiture: jour mois annee ";
+            cin>>x>>w>>z;
+            date date_de_remise(x,w,z);
+            // voiture
+           list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise);
+           location_voiture((*v),y,date_de_prise,date_de_remise);
+        }
 
         void agence::creer_contrat(){
             //ID contrat

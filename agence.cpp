@@ -263,42 +263,6 @@ using namespace std;
 
           }
 
-        void agence::creer_contrat(){
-            //ID contrat
-             cout<<"Donner un id pour ce contrat: ";
-             int id;
-             cin>>id;
-             // Client
-            cout<<"Entrer le nom du client: ";
-            string nom;
-            cin>>nom;
-            cout<<"Entrer la cin du client: ";
-            long y;
-            cin>>y;
-            if (!(client_existe(y)))
-                ajouter_client(nom,y);
-            else
-            {
-                list<client>::iterator c;
-                for(c=liste_client.begin();c!=liste_client.end();c++)
-                {
-                    if ((*c).getid()==y)
-                        (*c).setdate(date_auj); //da : date d'aujourd'hui
-                }
-
-            }
-            //date
-            cout<<"Entrer la date de prise de la voiture: jour mois annee ";//preciser le saisir
-            int x,w,z;
-            cin>>x>>w>>z;
-            date date_de_prise(x,w,z);
-            cout<<"Entrer la date de remise de la voiture: jour mois annee ";
-            cin>>x>>w>>z;
-            date date_de_remise(x,w,z);
-            // voiture
-           list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise);
-           location_voiture((*v),y,date_de_prise,date_de_remise);
-        }
 
         void agence::creer_contrat(){
             //ID contrat

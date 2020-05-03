@@ -15,7 +15,6 @@ class agence
 
         //Constructeur
         agence(date d_auj);
-        list<parking> get_liste_parking();
         list<voiture> get_liste_voiture();
         list<client> get_liste_client();
 

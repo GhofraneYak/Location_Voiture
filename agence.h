@@ -15,6 +15,7 @@ class agence
 
         //Constructeur
         agence(date d_auj);
+
         list<voiture> get_liste_voiture();
         list<client> get_liste_client();
 
@@ -29,21 +30,24 @@ class agence
         //Sauvegarder les données des clients dans le fichier
         void sauvegarder_client();
 
-
+        //Vérifie si un client existe ou pas
         bool client_existe(long id);
 
         void ajouter_client(string nom, long id);
 
         void creer_client();
 
-        list<client> client_6_mois();
+        void client_6_mois();
+
+        void effacer_client_date_superieure(int a);
+
 
 
 //********************** Méthodes des parkings **************************//
         //Lire les données concernant les parking
 
          void lire_fichier_park();
-         parking get_parking(int id);
+         parking& get_parking(int id);
         void sauvegarder_parking();
          void nouveau_parking();
          int recherche_parking(string);
@@ -51,7 +55,6 @@ class agence
         list<parking> get_liste_parking();
         void grouper_dans_un_parking(parking& p1, parking& p2, parking& p3);
         void vider_selon_categories(parking& p1, parking& p2, parking& p3);
-        
 
  //********************** Création du contrat **************************//
     list<voiture>::iterator wanted_car(date,date);

@@ -30,6 +30,10 @@ class agence
         //Sauvegarder les données des clients dans le fichier
         void sauvegarder_client();
 
+        void afficher_client();
+
+        void afficher_tous_les_client();
+
         //Vérifie si un client existe ou pas
         bool client_existe(long id);
 

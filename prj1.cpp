@@ -24,19 +24,19 @@ time_t now = time(0);
     long id;
     do
     {
-        cout<<"      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍMENUÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»\n";
-		cout<<"      º   -----------------------------------------------------  º\n";
-		cout<<"      º  (  | 1 | Gestion des Voitures                         ) º\n";
-        cout<<"      º                                                          º\n";
-        cout<<"      º  (  | 2 | Gestion des Parkings                         ) º\n";
-        cout<<"      º                                                          º\n";
-        cout<<"      º  (  | 3 | Gestion des Clients                          ) º\n";
-        cout<<"      º                                                          º\n";
-        cout<<"      º  (  | 4 | Creation des Contrat                         ) º\n";
-        cout<<"      º                                                          º\n";
-	    cout<<"      º  (  | 0 | EXIT                                         ) º\n";
-	    cout<<"      º   -----------------------------------------------------  º\n";
-        cout<<"      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n";
+        cout<<"      Ã‰ÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃMENUÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÂ»\n";
+		cout<<"      Âº   -----------------------------------------------------  Âº\n";
+		cout<<"      Âº  (  | 1 | Gestion des Voitures                         ) Âº\n";
+        cout<<"      Âº                                                          Âº\n";
+        cout<<"      Âº  (  | 2 | Gestion des Parkings                         ) Âº\n";
+        cout<<"      Âº                                                          Âº\n";
+        cout<<"      Âº  (  | 3 | Gestion des Clients                          ) Âº\n";
+        cout<<"      Âº                                                          Âº\n";
+        cout<<"      Âº  (  | 4 | Creation des Contrat                         ) Âº\n";
+        cout<<"      Âº                                                          Âº\n";
+	    cout<<"      Âº  (  | 0 | EXIT                                         ) Âº\n";
+	    cout<<"      Âº   -----------------------------------------------------  Âº\n";
+        cout<<"      ÃˆÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÂ¼\n";
 
         cin>>x;
         system("cls");
@@ -61,25 +61,25 @@ time_t now = time(0);
                     do
                     {
 
-                    cout<<"      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍGestion des VoituresÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»"<<endl;
-                    cout<<"      º   -----------------------------------------------------  º\n";
-                    cout<<"      º  (  | 1 | Voiture la plus ancienne                     ) º\n";
-                    cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 2 | Voiture la plus louee                        ) º\n";
-                    cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 3 | Les voitures ayant un age entre 2 et 3 ans   ) º\n";
-                    cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 4 | Liste des voitures actuellement louees       ) º\n";
-                    cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 5 | Liste des voitures triees selon la categorie ) º\n";
-                    cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 6 | Liste des Voitures triees selon l'age        ) º\n";
-                    cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 7 | Ajouter une nouvelle voiture                 ) º\n";
-                    cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 0 | MENU PRINCIPAL                               ) º\n";
-                    cout<<"      º   -----------------------------------------------------  º\n";
-                    cout<<"      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n";
+                    cout<<"      Ã‰ÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃGestion des VoituresÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÂ»"<<endl;
+                    cout<<"      Âº   -----------------------------------------------------  Âº\n";
+                    cout<<"      Âº  (  | 1 | Voiture la plus ancienne                     ) Âº\n";
+                    cout<<"      Âº                                                          Âº\n";
+                    cout<<"      Âº  (  | 2 | Voiture la plus louee                        ) Âº\n";
+                    cout<<"      Âº                                                          Âº\n";
+                    cout<<"      Âº  (  | 3 | Les voitures ayant un age entre 2 et 3 ans   ) Âº\n";
+                    cout<<"      Âº                                                          Âº\n";
+                    cout<<"      Âº  (  | 4 | Liste des voitures actuellement louees       ) Âº\n";
+                    cout<<"      Âº                                                          Âº\n";
+                    cout<<"      Âº  (  | 5 | Liste des voitures triees selon la categorie ) Âº\n";
+                    cout<<"      Âº                                                          Âº\n";
+                    cout<<"      Âº  (  | 6 | Liste des Voitures triees selon l'age        ) Âº\n";
+                    cout<<"      Âº                                                          Âº\n";
+                    cout<<"      Âº  (  | 7 | Ajouter une nouvelle voiture                 ) Âº\n";
+                    cout<<"      Âº                                                          Âº\n";
+                    cout<<"      Âº  (  | 0 | MENU PRINCIPAL                               ) Âº\n";
+                    cout<<"      Âº   -----------------------------------------------------  Âº\n";
+                    cout<<"      ÃˆÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÂ¼\n";
 
                     cin>>y;
                     system("cls");
@@ -174,21 +174,21 @@ time_t now = time(0);
             else{
                 do
                 {
-                      cout<<"      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍGestion des parkingsÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»\n";
-                      cout<<"      º   ----------------------------------------------------------------   º\n";
-                      cout<<"      º  (  | 1 | Afficher les informations d'un parking                   ) º\n";
-                      cout<<"      º                                                                      º\n";
-                      cout<<"      º  (  | 2 | Le prix moyen des voitures d'un parking                  ) º\n";
-                      cout<<"      º                                                                      º\n";
-                      cout<<"      º  (  | 3 | Grouper les voitures de 2 parking dans un 3eme parking   ) º\n";
-                      cout<<"      º                                                                      º\n";
-                      cout<<"      º  (  | 4 | Regrouper dans 2 parkings selon les categories           ) º\n";
-                      cout<<"      º                                                                      º\n";
-                      cout<<"      º  (  | 5 | Ajouter un nouveau parking                               ) º\n";
-                      cout<<"      º                                                                      º\n";
-                      cout<<"      º  (  | 0 | EXIT                                                     ) º\n";
-                      cout<<"      º   ----------------------------------------------------------------   º\n";
-                      cout<<"      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n";
+                      cout<<"      Ã‰ÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃGestion des parkingsÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÂ»\n";
+                      cout<<"      Âº   ----------------------------------------------------------------   Âº\n";
+                      cout<<"      Âº  (  | 1 | Afficher les informations d'un parking                   ) Âº\n";
+                      cout<<"      Âº                                                                      Âº\n";
+                      cout<<"      Âº  (  | 2 | Le prix moyen des voitures d'un parking                  ) Âº\n";
+                      cout<<"      Âº                                                                      Âº\n";
+                      cout<<"      Âº  (  | 3 | Grouper les voitures de 2 parking dans un 3eme parking   ) Âº\n";
+                      cout<<"      Âº                                                                      Âº\n";
+                      cout<<"      Âº  (  | 4 | Regrouper dans 2 parkings selon les categories           ) Âº\n";
+                      cout<<"      Âº                                                                      Âº\n";
+                      cout<<"      Âº  (  | 5 | Ajouter un nouveau parking                               ) Âº\n";
+                      cout<<"      Âº                                                                      Âº\n";
+                      cout<<"      Âº  (  | 0 | EXIT                                                     ) Âº\n";
+                      cout<<"      Âº   ----------------------------------------------------------------   Âº\n";
+                      cout<<"      ÃˆÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÂ¼\n";
 
                     cin>>y;
                     system("cls");
@@ -287,22 +287,41 @@ time_t now = time(0);
         {
             do
             {
-                cout<<"      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍGestion des clientsÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»\n";
-                cout<<"      º   ------------------------------------------------------------------------------   º\n";
-                cout<<"      º  (  | 1 | Liste des clients n'ayant pas loue de voiture depuis plus de 6 mois    ) º\n";
-                cout<<"      º                                                                                    º\n";
-                cout<<"      º  (  | 2 | Ajouter un nouveau client                                              ) º\n";
-                cout<<"      º                                                                                    º\n";
-               /* cout<<"      º  (  | 3 | Effacer les clients dont leur derniere location depasse une date donnee) º\n";
-                cout<<"      º                                                                                    º\n";*/
-                cout<<"      º  (  | 0 | EXIT                                                                   ) º\n";
-                cout<<"      º   ------------------------------------------------------------------------------   º\n";
-                cout<<"      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n";
+                cout<<"      Ã‰ÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃGestion des clientsÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÂ»\n";
+                cout<<"      Âº   ------------------------------------------------------------------------------   Âº\n";
+                cout<<"      Âº  (  | 1 | Afficher tous les clients                                              ) Âº\n";
+                cout<<"      Âº                                                                                    Âº\n";
+                cout<<"      Âº  (  | 2 | Afficher un client selon l'id                                          ) Âº\n";
+                cout<<"      Âº                                                                                    Âº\n";
+                cout<<"      Âº  (  | 3 | Liste des clients n'ayant pas loue de voiture depuis plus de 6 mois    ) Âº\n";
+                cout<<"      Âº                                                                                    Âº\n";
+                cout<<"      Âº  (  | 4 | Ajouter un nouveau client                                              ) Âº\n";
+                cout<<"      Âº                                                                                    Âº\n";
+               /* cout<<"      Âº  (  | x | Effacer les clients dont leur derniere location depasse une date donnee) Âº\n";
+                cout<<"      Âº                                                                                    Âº\n";*/
+                cout<<"      Âº  (  | 0 | EXIT                                                                   ) Âº\n";
+                cout<<"      Âº   ------------------------------------------------------------------------------   Âº\n";
+                cout<<"      ÃˆÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÂ¼\n";
 
                 cin>>y;
                 system("cls");
 
                 if (y==1)
+                     {
+                     ag.afficher_tous_les_client();
+                     cout<<endl<<"Tapez un chiffre pour revenir"<<endl;
+                     cin>>h;
+                     system("cls");
+                     }
+                if (y==2)
+                     {
+                     ag.afficher_client();
+                     cout<<endl<<"Tapez un chiffre pour revenir"<<endl;
+                     cin>>h;
+                     system("cls");
+                     }
+
+                if (y==3)
                      {
                      ag.client_6_mois();
                      cout<<"\nTapez un chiffre pour revenir"<<endl;
@@ -310,7 +329,7 @@ time_t now = time(0);
                      system("cls");
                      }
 
-                if (y==2)
+                if (y==4)
                     {
                     cout<< "Entrer  nom id ";
                     cin>>nom>>id;
@@ -319,7 +338,7 @@ time_t now = time(0);
                     cin>>h;
                     system("cls");
                     }
-                /*if (y==3)
+                /*if (y==x)
                 {
                     int azerty;
                     cout<<"Entrer le nombre d'annee q'un client ne doit pas depasser"<<endl;
@@ -352,6 +371,4 @@ time_t now = time(0);
 
 
         }
-
-
 

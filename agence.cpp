@@ -355,7 +355,7 @@ void agence::update_voiture()
      }
     }
 
-voiture agence::nouvelle_voiture()
+void agence::nouvelle_voiture()
 {
     string immatricule;
     string marque;

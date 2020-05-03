@@ -16,6 +16,21 @@ using namespace std;
             lire_fichier_park();
             update_voiture();
         }
+
+        list<parking> get_liste_parking()
+        {
+            return liste_parking;
+        }
+
+        list<voiture> get_liste_voiture()
+        {
+            return liste_voiture;
+        }
+
+        list<client> get_liste_client()
+        {
+            return liste_client;
+        }
     //**********************Verifier l'agence contient des donnée dans les fichier***************//
     bool agence::agence_vide_de_parking()
     {

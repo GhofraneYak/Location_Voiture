@@ -40,7 +40,7 @@ using namespace std;
 
         ostream& operator<<(ostream& sortie, client& cl)
         {
-            sortie<<cl.nom<<" "<<cl.id<<" "<<(cl.dernier_date_loc).getjour()<<" "<<(cl.dernier_date_loc).getmois()<<" "<<(cl.dernier_date_loc).getannee()<<endl;
+            sortie<<"Nom,  id,  derniere date de location  :"<<cl.nom<<" "<<cl.id<<" "<<(cl.dernier_date_loc).getjour()<<" "<<(cl.dernier_date_loc).getmois()<<" "<<(cl.dernier_date_loc).getannee()<<endl;
             return sortie;
         }
 

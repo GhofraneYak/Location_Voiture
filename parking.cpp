@@ -41,18 +41,17 @@ using namespace std;
     }
 
 
-
     void parking::affichage_info()
-
     {
         cout<<"Le parking numero "<<id<<" a comme capacite :"<<capacite<<" et contient les immatricules des voitures suivantes :"<<endl;
 
         list<voiture>::iterator it;
-        for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
+        if(nbV!=0)
+        {for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
         {
             cout<<(*it).get_immatricule()<<endl;
 
-        }
+        }}
         if (this->nbV==capacite)
         {
             cout<<"Ce parking est plein"<<endl;
@@ -61,6 +60,7 @@ using namespace std;
         {
             cout<<"Vous pouvez toujours ajouter "<<(capacite-nbV)<<" voitures"<<endl;
         }
+
     }
 
     int parking::get_nbV()
@@ -134,7 +134,7 @@ using namespace std;
        list<voiture>::iterator it;
        for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
        {
-            if (    ((*it).get_immatricule())==(v.get_immatricule())  ) 
+            if (    ((*it).get_immatricule())==(v.get_immatricule())  )
             {
                 liste_voiture.erase(it);
                 nbV--;

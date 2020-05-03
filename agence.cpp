@@ -806,6 +806,8 @@ void agence::sauvegarder_liste_voiture()
             {
                 cout<<"Vous ne pouvez pas realiser cette operation"<<endl;
             }
+            nb2=p2.get_nbV();//mettre ajour nbr de voitures pour savoir la capacité
+            nb3=p3.get_nbV();
         }
 
     }

@@ -18,12 +18,12 @@ using namespace std;
         }
 
 
-        list<voiture> get_liste_voiture()
+        list<voiture> agence::get_liste_voiture()
         {
             return liste_voiture;
         }
 
-        list<client> get_liste_client()
+        list<client> agence::get_liste_client()
         {
             return liste_client;
         }

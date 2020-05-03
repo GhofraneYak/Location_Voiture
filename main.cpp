@@ -25,17 +25,17 @@ time_t now = time(0);
     do
     {
         cout<<"      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍMENUÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»\n";
-		cout<<"      º   -----------------------------------------------------  º\n";
-		cout<<"      º  (  | 1 | Gestion Voitures                             ) º\n";
+	cout<<"      º   -----------------------------------------------------  º\n";
+	cout<<"      º  (  | 1 | Gestion Voitures                             ) º\n";
         cout<<"      º                                                          º\n";
-        cout<<"      º  (  | 2 | Gestion Parkings                             ) º\n";
+        cout<<"      º  (  | 2 | Gestion Des Parkings                         ) º\n";
         cout<<"      º                                                          º\n";
-        cout<<"      º  (  | 3 | Gestion Clients                              ) º\n";
+        cout<<"      º  (  | 3 | Gestion Des Clients                          ) º\n";
         cout<<"      º                                                          º\n";
-        cout<<"      º  (  | 4 | Creation Contrat                             ) º\n";
+        cout<<"      º  (  | 4 | Creation Du Contrat                          ) º\n";
         cout<<"      º                                                          º\n";
-	    cout<<"      º  (  | 0 | EXIT                                         ) º\n";
-	    cout<<"      º   -----------------------------------------------------  º\n";
+	cout<<"      º  (  | 0 | EXIT                                         ) º\n";
+	cout<<"      º   -----------------------------------------------------  º\n";
         cout<<"      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n";
 
         cin>>x;
@@ -45,7 +45,7 @@ time_t now = time(0);
             {
                 if(ag.agence_vide_de_voiture())
                 {
-                    cout<<"l'agence ne possede aucune voiture\n";
+                    cout<<"L'agence n' aucune voiture\n";
                     cout<< "Entrez un numero : \n1:Ajouter une nouvelle voiture\nTapez 0 Revenir au menu principal";
                     cin>>h;
                     if(h==1)
@@ -63,17 +63,17 @@ time_t now = time(0);
 
                     cout<<"      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍGestion VoituresÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»"<<endl;
                     cout<<"      º   -----------------------------------------------------  º\n";
-                    cout<<"      º  (  | 1 | vehicule le plus ancien                      ) º\n";
+                    cout<<"      º  (  | 1 | Voiture la plus ancienne                     ) º\n";
                     cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 2 | véhicule ayant le plus été loué              ) º\n";
+                    cout<<"      º  (  | 2 | Voiture la plus été louee                    ) º\n";
                     cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 3 | Les voitures ayant un âge entre 2 et 3 ans   ) º\n";
+                    cout<<"      º  (  | 3 | Les voitures ayant un age entre 2 et 3 ans   ) º\n";
                     cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 4 | liste des véhicules actuellement loués       ) º\n";
+                    cout<<"      º  (  | 4 | Liste des voitures actuellement louees       ) º\n";
                     cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 5 | liste des véhicules triés selon la catégorie ) º\n";
+                    cout<<"      º  (  | 5 | Liste des voitures triees selon la categorie ) º\n";
                     cout<<"      º                                                          º\n";
-                    cout<<"      º  (  | 6 | liste des véhicules triés selon l'âge        ) º\n";
+                    cout<<"      º  (  | 6 | liste des voitures triees selon l'age        ) º\n";
                     cout<<"      º                                                          º\n";
                     cout<<"      º  (  | 7 | Ajouter une nouvelle voiture                 ) º\n";
                     cout<<"      º                                                          º\n";
@@ -91,7 +91,7 @@ time_t now = time(0);
                     if (y==1)
                         {
                         voiture v=ag.la_voiture_plus_ancienne();
-                        cout<<"la voiture la plus ancienne est :\n"<<v;
+                        cout<<"La voiture la plus ancienne est :\n"<<v;
                         cout<<"\nTapez un chiffre pour revenir";
                         cin>>h;
                         system("cls");
@@ -158,7 +158,7 @@ time_t now = time(0);
 
             if(ag.agence_vide_de_parking())
             {
-                cout<<"l'agence ne possede pas aucun parking\n";
+                cout<<"L'agence n'a aucun parking\n";
                 cout << "Entrez un numero : \n1:Ajout un nouveau parking\nTapez 0 pour revenir au menu principal"<<endl;
                 cin>>y;
                 if(y==1)
@@ -172,21 +172,21 @@ time_t now = time(0);
             else{
                 do
                 {
-                    printf("      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍGestion ParkingsÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»\n");
-                    printf("      º   ----------------------------------------------------------------   º\n");
-                    printf("      º  (  | 1 | Afficher info d'un parking                               ) º\n");
-                    printf("      º                                                                      º\n");
-                    printf("      º  (  | 2 | la moyenne de prix des véhicules d'un parking            ) º\n");
-                    printf("      º                                                                      º\n");
-                    printf("      º  (  | 3 | Grouper les véhicules de 2 parking dans un 3eme parking  ) º\n");
-                    printf("      º                                                                      º\n");
-                    printf("      º  (  | 4 | Regrouper dans 2 parkings selon les categories           ) º\n");
-                    printf("      º                                                                      º\n");
-                    printf("      º  (  | 5 | Ajouter un Nouveau parking                               ) º\n");
-                    printf("      º                                                                      º\n");
-                    printf("      º  (  | 0 | EXIT                                                     ) º\n");
-                    printf("      º   ----------------------------------------------------------------   º\n");
-                    printf("      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n");
+                    cout<<"      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍGestion ParkingsÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»\n";
+                    cout<<"      º   ----------------------------------------------------------------   º\n";
+                    cout<<"      º  (  | 1 | Afficher les informations d'un parking                   ) º\n";
+                    cout<<"      º                                                                      º\n";
+                    cout<<"      º  (  | 2 | Le prix moyen des voitures d'un parking                  ) º\n";
+                    cout<<"      º                                                                      º\n";
+                    cout<<"      º  (  | 3 | Grouper les voitures de 2 parking dans un 3eme parking   ) º\n";
+                    cout<<"      º                                                                      º\n";
+                    cout<<"      º  (  | 4 | Regrouper dans 2 parkings selon les categories           ) º\n";
+                    cout<<"      º                                                                      º\n";
+                    cout<<"      º  (  | 5 | Ajouter un nouveau parking                               ) º\n";
+                    cout<<"      º                                                                      º\n";
+                    cout<<"      º  (  | 0 | EXIT                                                     ) º\n";
+                    cout<<"      º   ----------------------------------------------------------------   º\n";
+                    cout<<"      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n";
 
                     cin>>y;
                     system("cls");
@@ -194,7 +194,7 @@ time_t now = time(0);
                     if (y==1)
                         {
                         test=false;
-                        cout<< "Entrer l'id du parking pour voir tous ses infos";
+                        cout<< "Entrer l'id du parking pour voir tous ses informations";
                         do
                         {
                             cin>>a;
@@ -276,17 +276,17 @@ time_t now = time(0);
         {
             do
             {
-                printf("      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍGestion ClientsÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»\n");
-                printf("      º   ------------------------------------------------------------------------------   º\n");
-                printf("      º  (  | 1 | liste des clients n'ayant pas loué de véhicules depuis plus de 6 mois  ) º\n");
-                printf("      º                                                                                    º\n");
-                printf("      º  (  | 2 | Ajouter un nouveau client                                              ) º\n");
-                printf("      º                                                                                    º\n");
-               /* printf("      º  (  | 3 | Effacer les clients dont leur derniere location depasse une date donnee) º\n");
-                printf("      º                                                                                    º\n");*/
-                printf("      º  (  | 0 | EXIT                                                                   ) º\n");
-                printf("      º   ------------------------------------------------------------------------------   º\n");
-                printf("      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n");
+                cout<<"      ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍGestion ClientsÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»\n";
+                cout<<"      º   ------------------------------------------------------------------------------   º\n";
+                cout<<"      º  (  | 1 | Liste des clients n'ayant pas loues de voitures depuis plus de 6 mois  ) º\n";
+                cout<<"      º                                                                                    º\n";
+                cout<<"      º  (  | 2 | Ajouter un nouveau client                                              ) º\n";
+                cout<<"      º                                                                                    º\n";
+               /* cout<<"      º  (  | 3 | Effacer les clients dont leur derniere location depasse une date donnee) º\n";
+                cout<<"      º                                                                                    º\n";*/
+                cout<<"      º  (  | 0 | EXIT                                                                   ) º\n";
+                cout<<"      º   ------------------------------------------------------------------------------   º\n";
+                cout<<"      ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼\n";
 
                 cin>>y;
                 system("cls");
@@ -301,8 +301,10 @@ time_t now = time(0);
 
                 if (y==2)
                     {
-                    cout<< "Entrer  nom id ";
-                    cin>>nom>>id;
+		    cout<<"Entrer le nom du client"<<endl;
+		    cin>>nom;
+                    cout<<"Entrer l'id du client"<<endl;
+                    cin>>id;
                     ag.ajouter_client(nom,id);
                     cout<<"\nTapez un chiffre pour revenir";
                     cin>>h;

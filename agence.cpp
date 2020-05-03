@@ -77,6 +77,44 @@ using namespace std;
             fclose;
         }
 
+
+        void agence::afficher_client()
+        {
+            bool test=false;
+            cout<<"Entrer l'id du client que vous voulez afficher"<<endl;
+            do
+            {
+                int x;
+                cin>>x;
+                cout<<endl;
+                if (client_existe(x))
+                {
+                    test=true;
+                    for (list<client>::iterator it=liste_client.begin();it!=liste_client.end();++it)
+                    {
+                        if (    (*it).getid()==x  )
+                            cout<<(*it);
+                    }
+                }
+                else
+                    cout<<"Ce client n'existe pas, veuillez entrer un autre id"<<endl;
+
+
+            }while (test==false);
+
+        }
+
+        void agence::afficher_tous_les_client()
+        {
+            for (list<client>::iterator it=liste_client.begin();it!=liste_client.end();++it)
+            {
+                cout<<(*it);
+            }
+        }
+
+
+
+
     //Vérifier si un client existe ou pas
     bool agence::client_existe(long id)
         {

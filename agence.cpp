@@ -17,7 +17,6 @@ using namespace std;
             update_voiture();
         }
 
-
         list<voiture> agence::get_liste_voiture()
         {
             return liste_voiture;
@@ -30,11 +29,11 @@ using namespace std;
     //**********************Verifier l'agence contient des donnée dans les fichier***************//
     bool agence::agence_vide_de_parking()
     {
-        return liste_parking.size();
+        return (liste_parking.size() == 0);
     }
     bool agence::agence_vide_de_voiture()
     {
-        return liste_voiture.size();
+        return (liste_voiture.size() == 0 );
     }
         //********************** Méthodes des clients **************************//
     void agence::lire_fichier_cl()
@@ -98,7 +97,7 @@ using namespace std;
         }
 
     //La liste des clients dont la date de leur dernière location dépasse 6mois
-    list<client> agence::client_6_mois()
+    void agence::client_6_mois()
         {
             list<client> l;
             //for (i in client)
@@ -112,7 +111,24 @@ using namespace std;
                     }
             }
 
-            return l;
+            //Affichage de la liste
+            cout<<"Les clients dont leur date de derniere location depasse les 6 mois:"<<endl;
+            for (it=l.begin();it!=l.end();++it)
+            {
+                cout<<(*it);
+            }
+
+        }
+
+
+        void agence::effacer_client_date_superieure(int a)
+        {
+            list<client>::iterator it;
+            for (it=liste_client.begin();it!=liste_client.end();++it)
+            {
+                if (    (date::age_voiture(date_auj, (*it).getdate())) >= a    )
+                    liste_client.erase(it);
+            }
         }
 
 
@@ -380,13 +396,13 @@ voiture agence::la_voiture_plus_ancienne()
     list<voiture>::iterator voiture_ancienne;
     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
     {
-        if((*v).get_age()>m)
+        if((*v).get_age()>=m)
         {
             m=(*v).get_age();
             voiture_ancienne=v;
         }
     }
-    cout<<"la voiture la plus ancienne est :\n"<<*voiture_ancienne;
+
     return *voiture_ancienne;
 }
 
@@ -397,7 +413,7 @@ voiture agence::la_voiture_plus_loue()
    list<voiture>::iterator voiture_plus_loue;
    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
    {
-       if((*v).get_nbr_de_fois_loue()>m)
+       if((*v).get_nbr_de_fois_loue()>=m)
        {
            m=(*v).get_nbr_de_fois_loue();
            voiture_plus_loue=v;
@@ -647,7 +663,7 @@ void agence::sauvegarder_liste_voiture()
         nouveau_parking();
     }
 
-    parking agence::get_parking(int id)
+    parking& agence::get_parking(int id)
     {
         list<parking>::iterator p;
         p=liste_parking.begin();

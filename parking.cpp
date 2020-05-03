@@ -49,7 +49,7 @@ using namespace std;
         if(nbV!=0)
         {for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
         {
-            cout<<(*it).get_immatricule()<<endl;
+            cout<<(*it).get_immatricule()<<" de marque : "<<(*it).get_marque()<<endl;
 
         }}
         if (this->nbV==capacite)
@@ -153,14 +153,21 @@ using namespace std;
        cin>>test;
        if (test=="Oui")
        {
-            list<voiture>::iterator it;
-            for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
-            {
-                liste_voiture.erase(it);
+           if (nbV!=0)
+           {
+                list<voiture>::iterator it;
+                for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
+                {
+                    liste_voiture.erase(it);
+                }
+               nbV=0;
+               cout<<"Operation reussie"<<endl;
             }
-           nbV=0;
-        }
+            else
+                cout<<"Parking est deja vide"<<endl;
+
+       }
         else
-            cout<<"Annulation de l'action";
-   }
+                cout<<"Annulation de l'action";
+    }
     parking ::~parking(){}

@@ -18,10 +18,11 @@ time_t now = time(0);
     agence ag(date_auj);
 
     int x=99 ;
-    int y,a,b,c,h;
+    int y,a,b,c,h,ii;
     int hh;
     string nom;
     long id;
+
     do
     {
         cout<<"      ษอออออออออออออออออออออออออออMENUอออออออออออออออออออออออออออป\n";
@@ -186,6 +187,8 @@ time_t now = time(0);
                       cout<<"      บ                                                                      บ\n";
                       cout<<"      บ  (  | 5 | Ajouter un nouveau parking                               ) บ\n";
                       cout<<"      บ                                                                      บ\n";
+                      cout<<"      บ  (  | 6 | Vider un parking                                         ) บ\n";
+                      cout<<"      บ                                                                      บ\n";
                       cout<<"      บ  (  | 0 | EXIT                                                     ) บ\n";
                       cout<<"      บ   ----------------------------------------------------------------   บ\n";
                       cout<<"      ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ\n";
@@ -272,6 +275,16 @@ time_t now = time(0);
                         cin>>h;
                         system("cls");
                         }
+
+                    if (y==6)
+                    {
+                        cout<<"Donner l'id du parking a vider"<<endl;
+                        cin>>ii;
+                        ag.get_parking(ii).vider_le_parking();
+                        cout<<"\nTapez un chiffre pour revenir"<<endl;
+                        cin>>h;
+                        system("cls");
+                    }
 
 
                 }while (y!=0);

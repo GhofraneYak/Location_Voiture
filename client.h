@@ -17,4 +17,6 @@ class client
         long getid();
         date getdate();
         void setdate(date d);
+
+        friend ostream& operator<<(ostream& sortie, client& cl);
 };

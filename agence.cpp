@@ -17,10 +17,6 @@ using namespace std;
             update_voiture();
         }
 
-        list<parking> get_liste_parking()
-        {
-            return liste_parking;
-        }
 
         list<voiture> get_liste_voiture()
         {

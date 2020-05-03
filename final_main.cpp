@@ -50,7 +50,12 @@ time_t now = time(0);
                     cout<< "Entrez un numero : \n1:Ajouter une nouvelle voiture\nTapez 0 Revenir au menu principal"<<endl;
                     cin>>h;
                     if(h==1)
+                       {
                         ag.nouvelle_voiture();
+                        cout<<"\nTapez un chiffre pour revenir"<<endl;
+                        cin>>h;
+                        system("cls");
+                        }
                     else
                         x=99;
 

@@ -35,3 +35,12 @@ using namespace std;
         {
             dernier_date_loc=d;
         }
+
+        //ostream& operator<<(ostream& s,const voiture& V)
+
+        ostream& operator<<(ostream& sortie, client& cl)
+        {
+            sortie<<cl.nom<<" "<<cl.id<<" "<<(cl.dernier_date_loc).getjour()<<" "<<(cl.dernier_date_loc).getmois()<<" "<<(cl.dernier_date_loc).getannee()<<endl;
+            return sortie;
+        }
+

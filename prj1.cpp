@@ -48,6 +48,7 @@ time_t now = time(0);
                     cout<<"L'agence ne possede aucune voiture\n";
                     cout<< "Entrez un numero : \n1:Ajouter une nouvelle voiture\nTapez 0 Revenir au menu principal"<<endl;
                     cin>>h;
+		    system("cls");
                     if(h==1)
                         ag.nouvelle_voiture();
                     else

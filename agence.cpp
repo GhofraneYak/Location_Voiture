@@ -160,6 +160,36 @@ using namespace std;
         }
 
 
+    void agence::meilleur_client()
+        {
+            int loc_max=0;
+            list<client>::iterator it;
+            long idd;
+            string nom;
+            date date_cre;
+            if (liste_client.size()!=0)
+            {
+                for (it=liste_client.begin();it!=liste_client.end();++it)
+                {
+                    if (    (*it).get_nbr_loc() >= loc_max   )
+                    {
+                        loc_max=(*it).get_nbr_loc();
+                        //affect(cl,(*it));
+                        idd=(*it).getid();
+                        nom=(*it).getnom();
+                        date_cre=(*it).getdate();
+                    }
+                }
+
+
+                cout<<"Le client de l'annee est :  "<<nom<<"  d'id : "<<idd<<"  avec  "<<loc_max<<"  locations"<<endl;
+
+            }
+            else
+                cout<<"Vous ne disposez d'aucun client pour le moment"<<endl;
+        }
+
+
         void agence::effacer_client_date_superieure()
         {
             int azerty;
@@ -178,7 +208,6 @@ using namespace std;
             {
                 if (    (date::age_voiture(date_auj, (*it).getdate())) < azerty    )
                         liste_client.push_back(*it);
-
             }
         }
 

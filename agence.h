@@ -46,6 +46,8 @@ class agence
         void meilleur_client();
 
         void effacer_client_date_superieure();
+        
+        bool est_meilleur_client(client cl);
 
 
 
@@ -65,7 +67,7 @@ class agence
         void changer_parking(string immatricule, parking& p1, parking& p2);
 
  //********************** Création du contrat **************************//
-    list<voiture>::iterator wanted_car(date,date);
+    list<voiture>::iterator wanted_car(date,date,bool);
     void creer_contrat();
 
 /*************************Methodes liste de voitures *****************/

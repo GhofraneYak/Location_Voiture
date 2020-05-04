@@ -183,7 +183,10 @@ using namespace std;
                 }
 
 
-                cout<<"Le client de l'annee est :  "<<nom<<"  d'id : "<<idd<<"  avec  "<<loc_max<<"  locations"<<endl;
+                cout<<"Le meilleur client est :  "<<endl;
+                cout<<"Nom:  "<<nom<<endl;
+                cout<<"D'id : "<<idd<<endl;
+                cout<<"Nbre de locations est :  "<<loc_max<<endl;
 
             }
             else

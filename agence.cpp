@@ -552,10 +552,17 @@ list<voiture> agence::voitures_2_3()
         if(((*v).get_age()==2)||((*v).get_age()==3))
             voitures_2_3.push_back(*v);
     }
-    cout<<"Les voitures d'age entre 2 et 3 ans sont : "<<endl;
-    for(list<voiture>::iterator v=voitures_2_3.begin();v!=voitures_2_3.end();v++)
+    if(voitures_2_3.size()!=0)
     {
-        cout<<*v<<endl;
+        cout<<"Les voitures d'age entre 2 et 3 ans sont : "<<endl;
+        for(list<voiture>::iterator v=voitures_2_3.begin();v!=voitures_2_3.end();v++)
+        {
+            cout<<*v<<endl;
+        }
+    }
+    else
+    {
+        cout<<"Il n'y a pas des voitures dont leurs ages est entre 2 et 3ans";
     }
     return voitures_2_3;
 }
@@ -710,8 +717,16 @@ void agence::set_prix()
             }
         cout<<(*v);
     }
-    cout<<"Entrer l'immatricule de voiture pour change sa prix de location par jour";
-    cin>>immatricule;
+    do{
+        test=true;
+        cout<<"Entrer l'immatricule de voiture pour change sa prix de location par jour";
+        cin>>immatricule;
+        for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+        {
+            if ((*v).get_immatricule()==immatricule)
+                test=false;
+        }
+      }while(test==true);
     cout<<"Donner le nouveau prix";
     cin>>prix;
     (*get_voiture(immatricule)).set_prix(prix);
@@ -731,8 +746,17 @@ void agence::supprimer_voiture()
             }
         cout<<(*v);
     }
-    cout<<"Entrer l'immatricule de voiture pour supprimer";
-    cin>>immatricule;
+    bool test1;
+    do{
+        cout<<"Entrer l'immatricule de voiture pour supprimer: ";
+        test1=true;
+        cin>>immatricule;
+        for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+        {
+            if ((*v).get_immatricule()==immatricule)
+                test1=false;
+        }
+      }while(test1==true);
     //supprimer de parking
     int parking_id=recherche_parking(immatricule);
     list<parking>::iterator p;
@@ -746,8 +770,19 @@ void agence::voiture_info()
 {
     string immatricule;
     cout<<"Entrer l'immatricule de voiture :";
-    cin>>immatricule;
+    string immatricule;
+    bool test;
+    do{
+        test=true;
+        cout<<"Entrer l'immatricule de voiture :";
+        cin>>immatricule;
+        for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+        {
+            if ((*v).get_immatricule()==immatricule)
+                test=false;
+        }while(test==true);
     cout<<((*get_voiture(immatricule)));
+    
 }
 
 void agence::sauvegarder_liste_voiture()

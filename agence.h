@@ -42,8 +42,11 @@ class agence
         void creer_client();
 
         void client_6_mois();
+        
+        void meilleur_client();
 
         void effacer_client_date_superieure();
+
 
 
 

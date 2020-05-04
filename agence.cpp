@@ -259,7 +259,7 @@ using namespace std;
                                 do
                                 {
                                     if(n==1)
-                                        return(find(liste_voiture.begin(), liste_voiture.end(), (*i)));
+                                        return(find(liste_voiture.begin(), liste_voiture.end(), (*v)));
                                     else if (n!=2)
                                         cout<<"ecrire 1 ou 2 ou 3";
 
@@ -269,8 +269,6 @@ using namespace std;
                             }
                         }
                     }
-                    cout<<"il n'y a pas une voiture avec ces caracteristique disponible entre les deux dates que vous donnez";
-                    cout<<"\npriere choisir de nouveau les caracteristique \n";
                 }while (true);
 
           }
@@ -376,13 +374,22 @@ void agence::update_voiture()
 
 void agence::nouvelle_voiture()
 {
+    bool test;
     string immatricule;
     string marque;
     float prix_par_jour;
     int parking_id;
 //creation de nouveau objet voiture
     cout<<"immatricule: ";
-    cin>>immatricule;
+    do{
+        test=true;
+        cin>>immatricule;
+        for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)//verifier l'unicité d'immatricule
+        {
+            if ((*v).get_immatricule()==immatricule)
+                test=false;
+        }
+      }while(test==false);
     cout<<"marque: ";
     cin>>marque;
     cout<<"Prix par jour de location: ";
@@ -582,7 +589,7 @@ list<voiture> agence::liste_voiture_available(date d1,date d2)
     for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
     {
        client_cin=(*v).get_id_client();
-       if (client_cin==0)//voiture non reservé
+       if (client_cin==-1)//voiture non reservé
            voitures_disponibles.push_back(*v);
        else
        {
@@ -632,6 +639,61 @@ float agence::prix_min(string marq)
            }
     }
     return m;
+}
+
+void agence::set_prix()
+{
+    bool test=true;
+    string immatricule;
+    float prix;
+    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+        if ((*v).get_age()>=2)
+    {
+        if(test==true)
+            {
+                cout<<"On vous recommande ces voitures puisque leur age depasse 2ans:\n";
+                test=false;
+            }
+        cout<<(*v);
+    }
+    cout<<"Entrer l'immatricule de voiture pour change sa prix de location par jour";
+    cin>>immatricule;
+    cout<<"Donner le nouveau prix";
+    cin>>prix;
+    (*get_voiture(immatricule)).set_prix(prix);
+}
+
+void agence::supprimer_voiture()
+{
+    bool test=true;
+    string immatricule;
+    for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)
+    if (((*v).get_age()>=5)&&((*v).voiture_loue()==false))
+    {
+        if(test==true)
+            {
+                cout<<"On vous recommande ces voitures puisque leur age depasse 5ans:\n";
+                test=false;
+            }
+        cout<<(*v);
+    }
+    cout<<"Entrer l'immatricule de voiture pour supprimer";
+    cin>>immatricule;
+    liste_voiture.erase(get_voiture(immatricule));
+    //supprimer de parking
+    int parking_id=recherche_parking(immatricule);
+    list<parking>::iterator p;
+    p=liste_parking.begin();
+    advance(p, parking_id);
+    (*p).delete_voiture((*get_voiture(immatricule)));
+}
+
+void agence::voiture_info()
+{
+    string immatricule;
+    cout<<"Entrer l'immatricule de voiture :";
+    cin>>immatricule;
+    cout<<((*get_voiture(immatricule)));
 }
 
 void agence::sauvegarder_liste_voiture()

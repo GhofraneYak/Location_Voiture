@@ -32,12 +32,6 @@ voiture::voiture(string immatricule,string marque,float prix_par_jour,date date_
     id_client=-1;
 }
 
-voiture::voiture(string marque,float prix_max)
-{
-    this->marque=marque;
-    prix_par_jour=prix_max;
-}
-
 /*******************age***********************/
 
 int voiture::get_age()
@@ -139,7 +133,7 @@ ostream& operator<<(ostream& s,const voiture& V)
 
 bool voiture::operator==(const voiture& v)
 {
-    return ((marque==v.marque)&&(prix_par_jour<=v.prix_par_jour));
+    return (v.immatricule==immatricule);
 }
 
 /*******************Sauvegarde*************************/

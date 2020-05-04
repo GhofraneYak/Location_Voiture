@@ -83,6 +83,9 @@ class agence
     bool marque_existe(string marq);//dans wanted car
     float prix_max(string marq);//dans wanted car
     float prix_min(string marq);//dans wanted car
+    void set_prix();//changer le prix
+    void supprimer_voiture();//voiture agé ou accidenté
+    void voiture_info();//information qui concerne une voiture
     void sauvegarder_liste_voiture();
 
  //************************destructeur*************************//

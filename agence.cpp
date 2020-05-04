@@ -234,8 +234,8 @@ using namespace std;
 
         //********************** Création d'un contrat **************************//
 
-        list<voiture>::iterator agence::wanted_car(date date_de_prise,date date_de_remise){
-
+        list<voiture>::iterator agence::wanted_car(date date_de_prise,date date_de_remise, bool solde)
+        {
                 string test;
                 bool test2=false;
                 list<voiture>::iterator i;
@@ -260,7 +260,15 @@ using namespace std;
                             cout<<(*s)<<" ";
                         cin>> marq;
                     }
-                    cout<<"les prix de location pour "<<marq<<" est entre "<<prix_min(marq)<<" et "<<prix_max(marq);
+                    
+                    if (solde==true)
+                    {
+                        cout<<"Vous etes notre meilleur client ==> Vous disposez d'une réduction de 20%"<<endl<<endl;
+                        cout<<"les prix de location pour "<<marq<<" sont desormais entre "<<prix_min(marq)*80/100<<" et "<<prix_max(marq)*80/100;
+                    }
+                    else
+                        cout<<"les prix de location pour "<<marq<<" est entre "<<prix_min(marq)<<" et "<<prix_max(marq)<<endl;
+                    
                     cout<<"\nEntrer le prix qu'il ne faut pas depasser: ";
                     int pmax;
                     cin>>pmax;
@@ -333,6 +341,7 @@ using namespace std;
             cin>>nom;
             cout<<"Entrer la cin du client: ";
             long y;
+            bool solde=false;
             cin>>y;
             if (!(client_existe(y)))
                 ajouter_client(nom,y);
@@ -346,6 +355,8 @@ using namespace std;
                         (*c).setdate(date_auj);
                         (*c).set_nbr_loc();
                     }
+                    if (est_meilleur_client(*c))
+                        solde=true;
                 }
 
             }
@@ -358,7 +369,7 @@ using namespace std;
             cin>>x>>w>>z;
             date date_de_remise(x,w,z);
             // voiture
-           list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise);
+           list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise,solde);
            location_voiture((*v),y,date_de_prise,date_de_remise);
            cout<<"Contract creer avec succes "<<endl;
         }

@@ -10,9 +10,6 @@ using namespace std;
         nbP++;
         capacite=c;
         nbV=0;
-        //date d(1,1,1);
-       // voiture v("introuvable","introuvable",0,d);
-        //liste_voiture.push_back(v);
     }
     parking::parking(int c,int idd)
     {
@@ -128,22 +125,23 @@ using namespace std;
        return(S/nbV);
    }
 
-   void parking::delete_voiture(voiture v)
+    void parking::delete_voiture(voiture v)
    {
        bool voiture_exist=false;
        list<voiture>::iterator it;
-       for(it=liste_voiture.begin();it!=liste_voiture.end();it++)
+       it=liste_voiture.begin();
+        while((it!=liste_voiture.end())&&(voiture_exist==false))
        {
-            if (    ((*it).get_immatricule())==(v.get_immatricule())  )
+            if (  (*it)==v  )
             {
                 liste_voiture.erase(it);
                 nbV--;
                 voiture_exist=true;
-
             }
+            it++;
        }
        if (voiture_exist==false)
-           cout<<"La voiture n'est pas dans ce parking";
+           cout<<"voiture n est pas deja dans le parking";
    }
 
    void parking::vider_le_parking()

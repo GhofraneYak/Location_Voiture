@@ -42,11 +42,11 @@ class agence
         void creer_client();
 
         void client_6_mois();
-        
+
         void meilleur_client();
 
         void effacer_client_date_superieure();
-        
+
         bool est_meilleur_client(client cl);
 
 
@@ -65,6 +65,7 @@ class agence
         void grouper_dans_un_parking(parking& p1, parking& p2, parking& p3);
         void vider_selon_categories(parking& p1, parking& p2, parking& p3);
         void changer_parking(string immatricule, parking& p1, parking& p2);
+
 
  //********************** Création du contrat **************************//
     list<voiture>::iterator wanted_car(date,date,bool);

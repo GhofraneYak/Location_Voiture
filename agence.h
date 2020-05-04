@@ -62,6 +62,7 @@ class agence
         list<parking> get_liste_parking();
         void grouper_dans_un_parking(parking& p1, parking& p2, parking& p3);
         void vider_selon_categories(parking& p1, parking& p2, parking& p3);
+        void changer_parking(string immatricule, parking& p1, parking& p2);
 
  //********************** Création du contrat **************************//
     list<voiture>::iterator wanted_car(date,date);

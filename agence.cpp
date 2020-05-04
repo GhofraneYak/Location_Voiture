@@ -682,13 +682,13 @@ void agence::supprimer_voiture()
     }
     cout<<"Entrer l'immatricule de voiture pour supprimer";
     cin>>immatricule;
-    liste_voiture.erase(get_voiture(immatricule));
     //supprimer de parking
     int parking_id=recherche_parking(immatricule);
     list<parking>::iterator p;
     p=liste_parking.begin();
     advance(p, parking_id);
     (*p).delete_voiture((*get_voiture(immatricule)));
+     liste_voiture.erase(get_voiture(immatricule));
 }
 
 void agence::voiture_info()

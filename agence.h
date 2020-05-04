@@ -43,7 +43,7 @@ class agence
 
         void client_6_mois();
 
-        void effacer_client_date_superieure(int a);
+        void effacer_client_date_superieure();
 
 
 

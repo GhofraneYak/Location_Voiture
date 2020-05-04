@@ -51,7 +51,10 @@ using namespace std;
 
         ostream& operator<<(ostream& sortie, client& cl)
         {
-            sortie<<"Nom,  id,  derniere date de location, nbr de locations  :"<<cl.nom<<" "<<cl.id<<" "<<(cl.dernier_date_loc).getjour()<<" "<<(cl.dernier_date_loc).getmois()<<" "<<(cl.dernier_date_loc).getannee()<<" "<<cl.nbr_loc<<endl;
+            sortie<<"Nom:                       "<<cl.nom<<endl;
+            sortie<<"Id :                       "<<cl.id<<endl;
+            sortie<<"Derniere date de location: "<<(cl.dernier_date_loc).getjour()<<" "<<(cl.dernier_date_loc).getmois()<<(cl.dernier_date_loc).getannee()<<endl;
+            sortie<<"Nbre de locations :        "<<cl.nbr_loc<<endl<<endl<<endl;
+
             return sortie;
         }
-

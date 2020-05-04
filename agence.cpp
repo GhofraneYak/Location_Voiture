@@ -428,6 +428,8 @@ void agence::location_voiture(voiture& v,long id_client,date date_de_prise,date 
     v.set_date_de_remise(date_de_remise);
     v.set_id_client(id_client);
     v.set_nbr_de_fois_loue();
+    if(date_de_prise==date_auj)
+        update_v_non_disponible(v);
 }
 
 void agence::update_v_non_disponible(voiture& v)

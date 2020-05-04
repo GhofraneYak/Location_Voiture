@@ -3,11 +3,13 @@
 #include "client.h"
 using namespace std;
 
-        client::client(string n, long idd, date d)
+        client::client(string n, long idd, date d, int nbr=0)
         {
             nom=n;
             id=idd;
+            nbr_loc=nbr;
             dernier_date_loc=d;
+            
         }
 
 
@@ -36,6 +38,15 @@ using namespace std;
             dernier_date_loc=d;
         }
 
+        int client::get_nbr_loc()
+        {
+            return nbr_loc;
+        }
+
+        void client::set_nbr_loc()
+        {
+            nbr_loc++;
+        }
         //ostream& operator<<(ostream& s,const voiture& V)
 
         ostream& operator<<(ostream& sortie, client& cl)

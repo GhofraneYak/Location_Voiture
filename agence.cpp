@@ -160,13 +160,25 @@ using namespace std;
         }
 
 
-        void agence::effacer_client_date_superieure(int a)
+        void agence::effacer_client_date_superieure()
         {
+            int azerty;
+            cout<<"Entrer le nombre d'annee q'un client ne doit pas depasser"<<endl;
+            cin>>azerty;
             list<client>::iterator it;
-            for (it=liste_client.begin();it!=liste_client.end();++it)
+            list<client> prov;
+            for(it=liste_client.begin();it!=liste_client.end();++it)
             {
-                if (    (date::age_voiture(date_auj, (*it).getdate())) >= a    )
-                    liste_client.erase(it);
+                prov.push_back(*it);
+            }
+
+                liste_client.clear();
+
+            for (it=prov.begin();it!=prov.end();++it)
+            {
+                if (    (date::age_voiture(date_auj, (*it).getdate())) < azerty    )
+                        liste_client.push_back(*it);
+
             }
         }
 

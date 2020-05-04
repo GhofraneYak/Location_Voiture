@@ -967,6 +967,34 @@ void agence::sauvegarder_liste_voiture()
 
     }
 
+ void    agence::changer_parking(string immatricule, parking& p1, parking& p2)
+    {
+
+        list<voiture>::iterator it;
+        list<voiture> listee=p1.get_voitures_de_parking();
+
+
+        if(listee.size()!=0)
+        {
+            if ( recherche_parking(immatricule)==p1.get_id() )
+
+            {
+                for(it=listee.begin();it!=listee.end();it++)
+                {
+                    if ( ((*it).get_immatricule())==immatricule )
+                    {
+                        p2.ajout_voiture((*it));
+                        p1.delete_voiture((*it));
+                        cout<<"Operation reussie"<<endl;
+                    }
+                }
+            }
+            else
+                cout<<"Voiture n'est pas dans ce parking";
+        }
+
+    }
+
     agence::~agence()
     {
         sauvegarder_client();

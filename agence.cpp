@@ -208,6 +208,33 @@ using namespace std;
                 cout<<"Vous ne disposez d'aucun client pour le moment"<<endl;
         }
 
+        bool agence::est_meilleur_client(client cl)
+        {
+                int loc_max=0;
+                list<client>::iterator it;
+                long idd;
+                string nom;
+                date date_cre;
+
+                for (it=liste_client.begin();it!=liste_client.end();++it)
+                {
+                    if (    (*it).get_nbr_loc() >= loc_max   )
+                    {
+                        loc_max=(*it).get_nbr_loc();
+                        //affect(cl,(*it));
+                        idd=(*it).getid();
+                        nom=(*it).getnom();
+                        date_cre=(*it).getdate();
+                    }
+                }
+
+
+                if (    (idd==cl.getid()) && (nom==cl.getnom()) && (date_cre==cl.getdate()))
+                    return true;
+                else
+                    return false;
+
+        }
 
         void agence::effacer_client_date_superieure()
         {
@@ -234,8 +261,8 @@ using namespace std;
 
         //********************** Création d'un contrat **************************//
 
-        list<voiture>::iterator agence::wanted_car(date date_de_prise,date date_de_remise, bool solde)
-        {
+        list<voiture>::iterator agence::wanted_car(date date_de_prise,date date_de_remise, bool solde){
+
                 string test;
                 bool test2=false;
                 list<voiture>::iterator i;
@@ -260,7 +287,6 @@ using namespace std;
                             cout<<(*s)<<" ";
                         cin>> marq;
                     }
-                    
                     if (solde==true)
                     {
                         cout<<"Vous etes notre meilleur client ==> Vous disposez d'une réduction de 20%"<<endl<<endl;
@@ -268,7 +294,6 @@ using namespace std;
                     }
                     else
                         cout<<"les prix de location pour "<<marq<<" est entre "<<prix_min(marq)<<" et "<<prix_max(marq)<<endl;
-                    
                     cout<<"\nEntrer le prix qu'il ne faut pas depasser: ";
                     int pmax;
                     cin>>pmax;
@@ -369,7 +394,7 @@ using namespace std;
             cin>>x>>w>>z;
             date date_de_remise(x,w,z);
             // voiture
-           list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise,solde);
+           list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise, solde);
            location_voiture((*v),y,date_de_prise,date_de_remise);
            cout<<"Contract creer avec succes "<<endl;
         }
@@ -792,7 +817,7 @@ void agence::voiture_info()
         }
       }while(test==true);
     cout<<((*get_voiture(immatricule)));
-    
+
 }
 
 void agence::sauvegarder_liste_voiture()

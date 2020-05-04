@@ -81,40 +81,49 @@ using namespace std;
 
         void agence::afficher_client()
         {
-            bool test=false;
-            cout<<"Entrer l'id du client que vous voulez afficher"<<endl;
-            do
+            if (    liste_client.size()!=0     )
             {
-                int x;
-                cin>>x;
-                cout<<endl;
-                if (client_existe(x))
+
+                bool test=false;
+                cout<<"Entrer l'id du client que vous voulez afficher"<<endl;
+                do
                 {
-                    test=true;
-                    for (list<client>::iterator it=liste_client.begin();it!=liste_client.end();++it)
+                    int x;
+                    cin>>x;
+                    cout<<endl;
+                    if (client_existe(x))
                     {
-                        if (    (*it).getid()==x  )
-                            cout<<(*it);
+                        test=true;
+                        for (list<client>::iterator it=liste_client.begin();it!=liste_client.end();++it)
+                        {
+                            if (    (*it).getid()==x  )
+                                cout<<(*it);
+                        }
                     }
-                }
-                else
-                    cout<<"Ce client n'existe pas, veuillez entrer un autre id"<<endl;
+                    else
+                        cout<<"Ce client n'existe pas, veuillez entrer un autre id"<<endl;
 
 
-            }while (test==false);
+                }while (test==false);
+
+            }
+            else
+                cout<<"Vous n'avez aucun client";
 
         }
 
         void agence::afficher_tous_les_client()
         {
-            for (list<client>::iterator it=liste_client.begin();it!=liste_client.end();++it)
+            if (    liste_client.size()!=0     )
             {
-                cout<<(*it);
+                for (list<client>::iterator it=liste_client.begin();it!=liste_client.end();++it)
+                {
+                    cout<<(*it);
+                }
             }
+            else
+                cout<<endl<<"Vous n'avez aucun client pour le moment"<<endl;
         }
-
-
-
 
     //Vérifier si un client existe ou pas
     bool agence::client_existe(long id)
@@ -142,21 +151,27 @@ using namespace std;
             list<client> l;
             //for (i in client)
             list<client>::iterator it;
-            for (it=liste_client.begin();it!=liste_client.end();++it)
+            if (    liste_client.size() !=0     )
             {
-                if (      date_auj.dernier_loc_client((*it).getdate()    ) >=6   )
-                    {
-                        client c(   (*it).getnom(), (*it).getid(),(*it).getdate(), (*it).get_nbr_loc()  );
-                        l.push_back(c);
-                    }
-            }
+                for (it=liste_client.begin();it!=liste_client.end();++it)
+                {
+                    if (      date_auj.dernier_loc_client((*it).getdate()    ) >=6   )
+                        {
+                            client c(   (*it).getnom(), (*it).getid(),(*it).getdate(), (*it).get_nbr_loc()  );
+                            l.push_back(c);
+                        }
+                }
 
-            //Affichage de la liste
-            cout<<"Les clients qui ont depasse 6 mois depuis leur derniere location  : "<<endl;
-            for (it=l.begin();it!=l.end();++it)
-            {
-                cout<<(*it);
+                //Affichage de la liste
+                cout<<"Les clients qui ont depasse 6 mois depuis leur derniere location  : "<<endl;
+                for (it=l.begin();it!=l.end();++it)
+                {
+                    cout<<(*it);
+                }
+
             }
+            else
+                cout<<endl<<"Vous n'avez aucun client"<<endl;
 
         }
 

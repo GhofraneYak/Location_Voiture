@@ -769,8 +769,6 @@ void agence::supprimer_voiture()
 void agence::voiture_info()
 {
     string immatricule;
-    cout<<"Entrer l'immatricule de voiture :";
-    string immatricule;
     bool test;
     do{
         test=true;
@@ -780,7 +778,8 @@ void agence::voiture_info()
         {
             if ((*v).get_immatricule()==immatricule)
                 test=false;
-        }while(test==true);
+        }
+      }while(test==true);
     cout<<((*get_voiture(immatricule)));
     
 }

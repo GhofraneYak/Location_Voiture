@@ -54,11 +54,12 @@ using namespace std;
             string nom;
             long ident;
             int j,m,a;
+            int nbr_loc;
             for (int i=0;i<nb;i++)
             {
-                k>>nom>>ident>>j>>m>>a;
+                k>>nom>>ident>>j>>m>>a>>nbr_loc;
                 date da(j,m,a);
-                client c(nom,ident,da);
+                client c(nom,ident,da,nbr_loc);
                 liste_client.push_back(c);
             }
             k.close();
@@ -72,7 +73,7 @@ using namespace std;
             list<client>::iterator it;
             for (it=liste_client.begin();it!=liste_client.end();++it)
             {
-                cout<<(*it).getnom()<<" "<<(*it).getid()<<" "<<((*it).getdate()).getjour()<<" "<<((*it).getdate()).getmois()<<" "<<((*it).getdate()).getannee()<<endl;
+                cout<<(*it).getnom()<<" "<<(*it).getid()<<" "<<((*it).getdate()).getjour()<<" "<<((*it).getdate()).getmois()<<" "<<((*it).getdate()).getannee()<<" "<<(*it).get_nbr_loc()<<endl;
             }
             fclose;
         }
@@ -145,7 +146,7 @@ using namespace std;
             {
                 if (      date_auj.dernier_loc_client((*it).getdate()    ) >=6   )
                     {
-                        client c(   (*it).getnom(), (*it).getid(),(*it).getdate()  );
+                        client c(   (*it).getnom(), (*it).getid(),(*it).getdate(), (*it).get_nbr_loc()  );
                         l.push_back(c);
                     }
             }
@@ -323,7 +324,10 @@ using namespace std;
                 for(c=liste_client.begin();c!=liste_client.end();c++)
                 {
                     if ((*c).getid()==y)
-                        (*c).setdate(date_auj); //da : date d'aujourd'hui
+                    {
+                        (*c).setdate(date_auj);
+                        (*c).set_nbr_loc();
+                    }
                 }
 
             }

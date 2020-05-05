@@ -386,13 +386,20 @@ using namespace std;
 
             }
             //date
-            cout<<"Entrer la date de prise de la voiture : jour mois annee ";//preciser le saisir
-            int x,w,z;
-            cin>>x>>w>>z;
-            date date_de_prise(x,w,z);
-            cout<<"Entrer la date de remise de la voiture : jour mois annee ";
-            cin>>x>>w>>z;
-            date date_de_remise(x,w,z);
+            date date_de_prise(1,1,1);
+            date date_de_remise(1,1,1);
+            int x,w,z,xx,ww,zz;
+            do{
+                //date
+                cout<<"Entrer la date de prise de la voiture : jour mois annee ";//preciser le saisir
+                cin>>x>>w>>z;
+                date d1(x,w,z);
+                cout<<"Entrer la date de remise de la voiture : jour mois annee ";
+                cin>>xx>>ww>>zz;
+                date d2(xx,ww,zz);
+                date_de_prise=d1;
+                date_de_remise=d2;
+            }while((date_de_prise>date_de_remise)||(date_de_prise<date_auj)||(!(date_de_prise.date_valide(z,w,x)))||(!(date_de_remise.date_valide(zz,ww,xx))));
             // voiture
            list<voiture>::iterator v = wanted_car(date_de_prise,date_de_remise, solde);
            location_voiture((*v),y,date_de_prise,date_de_remise);

@@ -53,7 +53,7 @@ using namespace std;
         {
             sortie<<"Nom:                       "<<cl.nom<<endl;
             sortie<<"Id :                       "<<cl.id<<endl;
-            sortie<<"Derniere date de location: "<<(cl.dernier_date_loc).getjour()<<" "<<(cl.dernier_date_loc).getmois()<<(cl.dernier_date_loc).getannee()<<endl;
+            sortie<<"Derniere date de location: "<<(cl.dernier_date_loc).getjour()<<" "<<(cl.dernier_date_loc).getmois()<<" "<<(cl.dernier_date_loc).getannee()<<endl;
             sortie<<"Nbre de locations :        "<<cl.nbr_loc<<endl<<endl<<endl;
 
             return sortie;

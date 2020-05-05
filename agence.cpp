@@ -468,7 +468,7 @@ void agence::nouvelle_voiture()
     int parking_id;
 //creation de nouveau objet voiture
     do{
-        cout<<"immatricule: "
+        cout<<"immatricule: ".
         test=true;
         cin>>immatricule;
         for(list<voiture>::iterator v=liste_voiture.begin();v!=liste_voiture.end();v++)//verifier l'unicité d'immatricule
